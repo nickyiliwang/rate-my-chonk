@@ -1,30 +1,35 @@
+// Import FirebaseAuth and firebase.
 import React, { Component } from "react";
-import * as firebaseui from "firebaseui";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import * as firebaseui from "firebaseui";
 import { firebaseConfig } from "../../util/config";
-import Login from "../../pages/HomeLogin";
+import { connect } from "react-redux";
+import { setAuthenticated } from "../../Redux/actions/userActions";
+import Login from "../../pages/front/login";
 
 firebase.initializeApp(firebaseConfig);
 
-// FirebaseUI config.
+// Configure FirebaseUI.
 const uiConfig = {
-  signInSuccessUrl: "<url-to-redirect-to-on-success>",
+  // Popup signin flow rather than redirect flow.
+  signInFlow: "popup",
+  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+  signInSuccessUrl: "/signedIn",
+  // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ]
 };
-// Initialize the FirebaseUI Widget using Firebase.
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
-// The start method will wait until the DOM is loaded.
-ui.start("#firebaseui-auth-container", uiConfig);
 
-export default class FirebaseAuth extends Component {
+class FirebaseAuth extends Component {
   state = {
     auth: false,
+    user: null,
+    accessToken: null,
     status: null
   };
 
@@ -32,8 +37,9 @@ export default class FirebaseAuth extends Component {
     firebase.auth().onAuthStateChanged(
       user => {
         if (user) {
+          this.setState({ user });
           user.getIdToken().then(accessToken => {
-            console.log(accessToken);
+            this.setState({ auth: true, accessToken });
             this.setState({ status: "Signed In" });
           });
         } else {
@@ -46,20 +52,27 @@ export default class FirebaseAuth extends Component {
     );
   }
 
-  handleOnClick = () => {
-    this.setState({ auth: !this.state.auth });
-  };
-
   render() {
+    console.log(this.state.auth)
     return (
       <div>
-        <button onClick={this.handleOnClick}>Click</button>
+        <h2>Auth Page</h2>
         {this.state.auth ? (
-          <Login auth={this.state.auth} />
+          <Login
+            auth={this.state.auth}
+            accessToken={this.state.accessToken}
+            user={this.state.user}
+            onClick={this.handleOnClick}
+          />
         ) : (
-          <Login auth={this.state.auth} />
+          <StyledFirebaseAuth
+            uiConfig={uiConfig}
+            firebaseAuth={firebase.auth()}
+          />
         )}
       </div>
     );
   }
 }
+
+export default connect(null, { setAuthenticated })(FirebaseAuth);

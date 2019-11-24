@@ -1,23 +1,30 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
+
 
 class HomeLogin extends Component {
   render() {
-    console.log(this.props.auth);
+    console.log(this.props.authState)
     return (
       <div>
-        <h2>Sign In Status: {this.props.auth}</h2>
         <h2>
-          You are
           {this.props.auth
-            ? " signed-In "
-            : " Signed out please use the following method to continue"}
+            ? `Hello there ${
+                !this.props.user.displayName
+                  ? "guest"
+                  : this.props.user.displayName
+              }`
+            : " You are signed out please use the following method to continue"}
         </h2>
-        <div id="firebaseui-auth-container"></div>
+        <button onClick={this.props.onClick}>Click here to sign-out</button>
       </div>
     );
   }
 }
 
-export default HomeLogin;
+const mapStateToProps = (state) => ({
+  authState: state.user.authenticated
+})
 
-//     firebase.auth().signOut();
+
+export default connect(mapStateToProps, null)(HomeLogin);
