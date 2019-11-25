@@ -41,6 +41,7 @@ class FirebaseAuth extends Component {
           user.getIdToken().then(accessToken => {
             this.setState({ auth: true, accessToken });
             this.setState({ status: "Signed In" });
+            this.props.setAuthenticated();
           });
         } else {
           this.setState({ status: "Signed out" });
@@ -53,7 +54,7 @@ class FirebaseAuth extends Component {
   }
 
   render() {
-    console.log(this.state.auth)
+    console.log(this.state.auth);
     return (
       <div>
         <h2>Auth Page</h2>
@@ -62,7 +63,6 @@ class FirebaseAuth extends Component {
             auth={this.state.auth}
             accessToken={this.state.accessToken}
             user={this.state.user}
-            onClick={this.handleOnClick}
           />
         ) : (
           <StyledFirebaseAuth
