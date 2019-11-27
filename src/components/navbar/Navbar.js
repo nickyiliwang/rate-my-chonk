@@ -1,22 +1,14 @@
 import React, { Component, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Redux
 import { connect } from "react-redux";
-
-// firebase
-import * as firebase from "firebase/app";
-import "firebase/auth";
+import HandleSingOut from "./HandleSignOut";
 
 class Navbar extends Component {
-  handleSignOut() {
-    firebase.auth().signOut();
-    history.push("/");
-  }
-
   render() {
     const { authenticated } = this.props;
-    let history = useHistory();
 
+    console.log(authenticated);
     return (
       <div>
         {authenticated ? (
@@ -27,22 +19,16 @@ class Navbar extends Component {
                   <p>Welcome user</p>
                 </li>
                 <li>
-                  <button onClick={this.handleSignOut}>Sign out</button>
+                  <HandleSingOut />
                 </li>
                 <li>
-                  <Button component={Link} to="/chonder">
-                    Chonder
-                  </Button>
+                  <Link to="/chonder">Chonder</Link>
                 </li>
                 <li>
-                  <Button component={Link} to="/hall">
-                    Hall of Chonks
-                  </Button>
+                  <Link to="/hall">Hall of Chonks</Link>
                 </li>
                 <li>
-                  <Button component={Link} to="/user">
-                    User Profile
-                  </Button>
+                  <Link to="/user">User Profile</Link>
                 </li>
               </ul>
             </nav>
@@ -52,14 +38,13 @@ class Navbar extends Component {
             <nav>
               <ul>
                 <li>
-                  <Button component={Link} to="/">
-                    login
-                  </Button>
+                  <Link to="/">Login</Link>
                 </li>
                 <li>
-                  <Button component={Link} to="/signup">
-                    signup
-                  </Button>
+                  <Link to="/chonder">Chonder</Link>
+                </li>
+                <li>
+                  <Link to="/hall">Hall of Chonks</Link>
                 </li>
               </ul>
             </nav>

@@ -1,9 +1,10 @@
-import { SET_CHONKS, SET_CHONK, SET_USERS, LOADING_DATA } from "../types";
+import { SET_CHONKS, SET_CHONK, SET_USERS, LOADING_DATA, INCREMENT } from "../types";
 
 const initialState = {
   chonks: [],
   chonk: {},
   users: [],
+  count: 0,
   loading: false
 };
 
@@ -14,6 +15,12 @@ export default function(state = initialState, action) {
         ...state,
         loading: true
       };
+
+      case INCREMENT:
+        return {
+          ...state,
+          count: state.count + 1,
+        }
 
     case SET_CHONKS:
       return {

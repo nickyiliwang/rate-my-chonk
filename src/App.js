@@ -1,26 +1,19 @@
 import React, { Component } from "react";
-import FirebaseAuth from "./components/FirebaseAuth/FirebaseAuth";
 import axios from "axios";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+// Components
 import NavBar from "./components/navbar/Navbar";
-import PrivateRoute from './util/PrivateRoute'
+import PrivateRoute from "./util/PrivateRoute";
 
 // pages
-import user from "./pages/profile/user";
-import login from "./pages/front/login";
+import User from "./pages/profile/user";
+import login from "./pages/login";
+import chonder from "./pages/chonder";
+import hallOfChonks from "./pages/hallOfChonks";
 
 axios.defaults.baseURL = "http://localhost:3000/";
-
 
 export default class App extends Component {
   render() {
@@ -29,8 +22,15 @@ export default class App extends Component {
         <NavBar />
         <div>
           <Switch>
+            <Route exact path="/chonder" component={chonder} />
+            <Route exact path="/hall" component={hallOfChonks} />
             <Route exact path="/" component={login} />
-            <PrivateRoute exact path="/user" component={user} />
+            
+            {/* <PrivateRoute exact path="/user" component={user} /> */}
+
+            <PrivateRoute exact path="/user">
+              <User />
+            </PrivateRoute>
           </Switch>
         </div>
       </Router>

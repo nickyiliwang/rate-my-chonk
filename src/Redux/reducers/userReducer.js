@@ -2,13 +2,12 @@ import {
   SET_AUTHENTICATED,
   SET_UNAUTHENTICATED,
   SET_USER,
-  LOADING_USER
 } from "../types";
 
 const initialState = {
   authenticated: false,
   loading: false,
-  credentials: {},
+  credentials: {}
 };
 
 export default function(state = initialState, action) {
@@ -19,7 +18,10 @@ export default function(state = initialState, action) {
         authenticated: true
       };
     case SET_UNAUTHENTICATED:
-      return initialState;
+      return {
+        ...state,
+        authenticated: false
+      };
 
     case SET_USER:
       return {
@@ -27,13 +29,6 @@ export default function(state = initialState, action) {
         loading: false,
         ...action.payload // spread the rest of the user obj
       };
-
-    case LOADING_USER:
-      return {
-        ...state,
-        loading: true
-      };
-
 
     default:
       return state;

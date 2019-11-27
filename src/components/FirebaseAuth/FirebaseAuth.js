@@ -7,17 +7,12 @@ import * as firebaseui from "firebaseui";
 import { firebaseConfig } from "../../util/config";
 import { connect } from "react-redux";
 import { setAuthenticated } from "../../Redux/actions/userActions";
-import Login from "../../pages/front/login";
 
 firebase.initializeApp(firebaseConfig);
 
-// Configure FirebaseUI.
 const uiConfig = {
-  // Popup signin flow rather than redirect flow.
   signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: "/signedIn",
-  // We will display Google and Facebook as auth providers.
+  signInSuccessUrl: "/user", // go to user page
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -44,7 +39,7 @@ class FirebaseAuth extends Component {
             this.props.setAuthenticated();
           });
         } else {
-          this.setState({ status: "Signed out" });
+          this.setState({ auth: false, status: "Signed out" });
         }
       },
       function(error) {
@@ -54,21 +49,16 @@ class FirebaseAuth extends Component {
   }
 
   render() {
-    console.log(this.state.auth);
     return (
       <div>
-        <h2>Auth Page</h2>
-        {this.state.auth ? (
-          <Login
-            auth={this.state.auth}
-            accessToken={this.state.accessToken}
-            user={this.state.user}
-          />
-        ) : (
-          <StyledFirebaseAuth
+        {this.state.auth ? null : (
+          <div>
+            <h2>Please Sign in or continue as guest</h2>
+            <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
-          />
+            />
+          </div>
         )}
       </div>
     );
