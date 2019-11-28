@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FirebaseAuth from "../components/FirebaseAuth/FirebaseAuth";
+import FirebaseAuth from "../components/Firebase/FirebaseAuth";
 
 class login extends Component {
   render() {

@@ -1,5 +1,59 @@
 body {
+  font-size: 20px;
+  margin: 10px;
+}
+
+img {
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+nav.mainNav {
+  position: absolute;
+  bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.mainNav ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.mainNav li {
+  margin: 10px;
+}
+
+
+.login h2 {
+  text-align: center;
+}
+
+.hall h2 {
+  text-align: center;
+}
+
+
+.chonder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hallCatImageContainer {
+  width: 30%;
 }

@@ -29,3 +29,25 @@
 // 1. having a user profile page so the user can favorite a cat image
 // 2. having a sort method so the user can sort the cat images with 
 // 3. vote for the cat name / give the cat a name, cat name suggestions
+// user is able to upload a picture of their cat
+
+// this is a mobile first app.
+
+// basic flow is:
+
+// mobile
+
+// sign page without any auth
+// Continue as guest main
+// get firebase auth working or
+// signup
+
+// user interacts with how ever many pictures of cats, they can vote, favorite(has an info about only registered users can save chonks), and 
+
+// maybe they can have an default user Profile with name of guest, and current favorites, once they register, they can even upload pictures. that means the upload component will be nested in the user profile page.
+
+
+
+
+
+

@@ -1,18 +1,15 @@
 // Import FirebaseAuth and firebase.
 import React, { Component } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import * as firebase from "firebase/app";
 import "firebase/auth";
+import firebase from "../../util/config";
 import * as firebaseui from "firebaseui";
-import { firebaseConfig } from "../../util/config";
 import { connect } from "react-redux";
 import { setAuthenticated } from "../../Redux/actions/userActions";
 
-firebase.initializeApp(firebaseConfig);
 
 const uiConfig = {
   signInFlow: "popup",
-  signInSuccessUrl: "/user", // go to user page
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -35,7 +32,6 @@ class FirebaseAuth extends Component {
           this.setState({ user });
           user.getIdToken().then(accessToken => {
             this.setState({ auth: true, accessToken });
-            this.setState({ status: "Signed In" });
             this.props.setAuthenticated();
           });
         } else {
@@ -52,13 +48,13 @@ class FirebaseAuth extends Component {
     return (
       <div>
         {this.state.auth ? null : (
-          <div>
+          <section className="login">
             <h2>Please Sign in or continue as guest</h2>
             <StyledFirebaseAuth
             uiConfig={uiConfig}
             firebaseAuth={firebase.auth()}
             />
-          </div>
+          </section>
         )}
       </div>
     );
