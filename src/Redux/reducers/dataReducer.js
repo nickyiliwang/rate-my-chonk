@@ -5,7 +5,7 @@ import {
 } from "../types";
 
 const initialState = {
-  chonks: [],
+  chonks: ["cat0", "cat1", "cat2", "cat3"],
   chonk: {},
   users: [],
 };

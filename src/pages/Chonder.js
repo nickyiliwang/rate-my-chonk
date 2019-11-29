@@ -14,13 +14,11 @@ class Chonder extends Component {
     catCount: 0,
     catRating: 0,
     catRatingsArr: [],
-    catHandlesArray: ["cat0", "cat1", "cat2", "cat3"],
     favorite: false
-
   };
 
   componentDidMount() {
-    const catHandle = this.state.catHandlesArray[this.state.catCount];
+    const catHandle = this.props.catHandlesArray[this.state.catCount];
     db.ref("cats/" + catHandle).on("value", snapshot => {
       const data = snapshot.val();
       if (data) {
@@ -34,7 +32,7 @@ class Chonder extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.catCount !== this.state.catCount) {
-      const catHandle = this.state.catHandlesArray[this.state.catCount];
+      const catHandle = this.props.catHandlesArray[this.state.catCount];
       db.ref("cats/" + catHandle).once("value", snapshot => {
         const data = snapshot.val();
         if (data) {
@@ -45,10 +43,6 @@ class Chonder extends Component {
         }
       });
     }
-  }
-
-  componentWillUnmount() {
-    console.log("unmounted chonkers");
   }
 
   incrementImgCounter = () => {
@@ -83,7 +77,7 @@ class Chonder extends Component {
     });
     console.log(this.state.catRatingsArr);
 
-    const catHandle = this.state.catHandlesArray[this.state.catCount];
+    const catHandle = this.props.catHandlesArray[this.state.catCount];
     console.log(catHandle);
     this.updateCatData(catHandle, newCatArrForAverage);
     this.incrementImgCounter();
@@ -92,9 +86,8 @@ class Chonder extends Component {
   };
 
   handleFavoriteOnClick = () => {
-    const currentCatIndex = this.state.catCount
-    const catToFavorite = this.state.catHandlesArray[currentCatIndex]
-
+    const currentCatIndex = this.state.catCount;
+    const catToFavorite = this.props.catHandlesArray[currentCatIndex];
 
     console.log(`Favorite ${catToFavorite}`);
   };
@@ -110,10 +103,12 @@ class Chonder extends Component {
       <section className="chonder">
         <h2>Chonder</h2>
         <ImagesOfChonks count={this.state.catCount} />
-        <p>{`at ${this.state.catHandlesArray[this.state.catCount]} `}</p>
+        <p>{`at ${this.props.catHandlesArray[this.state.catCount]} `}</p>
 
         <div className="userControls">
-          <button onClick={this.handleFavoriteOnClick}>favorite</button>
+          <button onClick={this.handleFavoriteOnClick}>
+            {this.state.favorite ? "Un-Favorite" : "Favorite"}
+          </button>
           <button onClick={this.handleSkipOnClick}>Skip</button>
           <button onClick={this.handleSubmitOnClick}>Submit</button>
         </div>
@@ -130,4 +125,8 @@ class Chonder extends Component {
   }
 }
 
-export default connect(null, { favoriteACat })(Chonder);
+const mapStateToProps = state => ({
+  catHandlesArray: state.data.chonks
+});
+
+export default connect(mapStateToProps, { favoriteACat })(Chonder);
