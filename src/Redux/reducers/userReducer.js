@@ -1,13 +1,9 @@
-import {
-  SET_AUTHENTICATED,
-  SET_UNAUTHENTICATED,
-  SET_USER,
-} from "../types";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, FAV_CAT } from "../types";
 
 const initialState = {
   authenticated: false,
-  loading: false,
-  credentials: {}
+  credentials: {},
+  favoriteCats: []
 };
 
 export default function(state = initialState, action) {
@@ -15,19 +11,21 @@ export default function(state = initialState, action) {
     case SET_AUTHENTICATED:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        credentials: { ...action.payload }
       };
+
     case SET_UNAUTHENTICATED:
       return {
         ...state,
-        authenticated: false
+        authenticated: false,
+        credentials: {}
       };
 
-    case SET_USER:
+    case FAV_CAT:
       return {
-        authenticated: true,
-        loading: false,
-        ...action.payload // spread the rest of the user obj
+        ...state,
+        favoriteCats: [...action.payload]
       };
 
     default:

@@ -5,8 +5,10 @@ import "firebase/auth";
 import firebase from "../../util/config";
 import * as firebaseui from "firebaseui";
 import { connect } from "react-redux";
-import { setAuthenticated } from "../../Redux/actions/userActions";
-
+import {
+  setAuthenticated,
+  setUnAuthenticated
+} from "../../Redux/actions/userActions";
 
 const uiConfig = {
   signInFlow: "popup",
@@ -20,22 +22,23 @@ const uiConfig = {
 class FirebaseAuth extends Component {
   state = {
     auth: false,
-    user: null,
-    accessToken: null,
-    status: null
+    accessToken: null
   };
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged(
       user => {
         if (user) {
-          this.setState({ user });
-          user.getIdToken().then(accessToken => {
-            this.setState({ auth: true, accessToken });
-            this.props.setAuthenticated();
-          });
+          const userCredentials = {
+            displayName: user.displayName,
+            userId: user.uId
+          };
+
+          this.setState({ auth: true });
+          this.props.setAuthenticated(userCredentials);
         } else {
-          this.setState({ auth: false, status: "Signed out" });
+          this.setState({ auth: false });
+          this.props.setUnAuthenticated(user);
         }
       },
       function(error) {
@@ -51,8 +54,8 @@ class FirebaseAuth extends Component {
           <section className="login">
             <h2>Please Sign in or continue as guest</h2>
             <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
+              uiConfig={uiConfig}
+              firebaseAuth={firebase.auth()}
             />
           </section>
         )}
@@ -61,4 +64,6 @@ class FirebaseAuth extends Component {
   }
 }
 
-export default connect(null, { setAuthenticated })(FirebaseAuth);
+export default connect(null, { setAuthenticated, setUnAuthenticated })(
+  FirebaseAuth
+);

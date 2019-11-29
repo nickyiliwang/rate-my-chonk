@@ -46,7 +46,6 @@ nav.mainNav {
   text-align: center;
 }
 
-
 .chonder {
   display: flex;
   justify-content: center;
@@ -55,5 +54,10 @@ nav.mainNav {
 }
 
 .hallCatImageContainer {
-  width: 30%;
+  width: 20%;
+}
+
+.hallListOfCats {
+  display: flex;
+  
 }

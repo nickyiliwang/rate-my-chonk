@@ -1,20 +1,16 @@
 import React from "react";
+// router
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-
-import { setUnAuthenticated } from "../../Redux/actions/userActions";
 
 // firebase
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
-function HandleSignOut(props) {
+function HandleSignOut() {
   let history = useHistory();
-
   const handleSignOut = () => {
     firebase.auth().signOut();
     history.push("/");
-    props.setUnAuthenticated();
   };
 
   return (
@@ -24,4 +20,4 @@ function HandleSignOut(props) {
   );
 }
 
-export default connect(null, { setUnAuthenticated })(HandleSignOut);
+export default HandleSignOut;

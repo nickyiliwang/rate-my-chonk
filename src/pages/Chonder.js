@@ -1,15 +1,22 @@
 import React, { Component } from "react";
 import ImagesOfChonks from "../components/ImagesOfChonks";
+// firebase
 import "firebase/database";
 import firebase from "../util/config";
+// redux
+import { connect } from "react-redux";
+import { favoriteACat } from "../Redux/actions/userActions";
+
 const db = firebase.database();
 
-export default class Chonder extends Component {
+class Chonder extends Component {
   state = {
     catCount: 0,
     catRating: 0,
     catRatingsArr: [],
-    catHandlesArray: ["cat0", "cat1", "cat2", "cat3"]
+    catHandlesArray: ["cat0", "cat1", "cat2", "cat3"],
+    favorite: false
+
   };
 
   componentDidMount() {
@@ -41,10 +48,8 @@ export default class Chonder extends Component {
   }
 
   componentWillUnmount() {
-      console.log('unmounted chonkers')
+    console.log("unmounted chonkers");
   }
-  
-
 
   incrementImgCounter = () => {
     if (this.state.catCount < 3) {
@@ -86,6 +91,14 @@ export default class Chonder extends Component {
     this.setState({ catRating: 0, catRatingsArr: [] });
   };
 
+  handleFavoriteOnClick = () => {
+    const currentCatIndex = this.state.catCount
+    const catToFavorite = this.state.catHandlesArray[currentCatIndex]
+
+
+    console.log(`Favorite ${catToFavorite}`);
+  };
+
   handleOnChange = e => {
     this.setState({
       catRating: e.target.value
@@ -100,6 +113,7 @@ export default class Chonder extends Component {
         <p>{`at ${this.state.catHandlesArray[this.state.catCount]} `}</p>
 
         <div className="userControls">
+          <button onClick={this.handleFavoriteOnClick}>favorite</button>
           <button onClick={this.handleSkipOnClick}>Skip</button>
           <button onClick={this.handleSubmitOnClick}>Submit</button>
         </div>
@@ -115,3 +129,5 @@ export default class Chonder extends Component {
     );
   }
 }
+
+export default connect(null, { favoriteACat })(Chonder);

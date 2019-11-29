@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// Component
+import DisplayUserInfo from '../DisplayUserInfo'
+
 // Redux
 import { connect } from "react-redux";
 import HandleSignOut from "./HandleSignOut";
@@ -14,7 +17,7 @@ class Navbar extends Component {
           <nav className="mainNav">
             <ul>
               <li>
-                <p>Welcome user</p>
+                <DisplayUserInfo />
               </li>
               <li>
                 <HandleSignOut />
