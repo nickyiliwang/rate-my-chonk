@@ -6,14 +6,14 @@ import firebase from "../util/config";
 // redux
 import { connect } from "react-redux";
 import { favoriteACat } from "../Redux/actions/userActions";
-
+// firebase database
 const db = firebase.database();
 
-class Chonder extends Component {
+class chonder extends Component {
   state = {
     catCount: 0,
+    maxCats: null,
     catRating: 0,
-    catRatingsArr: [],
     favorite: false
   };
 
@@ -59,6 +59,7 @@ class Chonder extends Component {
 
   handleSkipOnClick = () => {
     this.incrementImgCounter();
+    this.setState({ catRating: 0 });
   };
 
   updateCatData = (catId, ratingArr) => {
@@ -88,7 +89,6 @@ class Chonder extends Component {
   handleFavoriteOnClick = () => {
     const currentCatIndex = this.state.catCount;
     const catToFavorite = this.props.catHandlesArray[currentCatIndex];
-
     console.log(`Favorite ${catToFavorite}`);
   };
 
@@ -129,4 +129,4 @@ const mapStateToProps = state => ({
   catHandlesArray: state.data.chonks
 });
 
-export default connect(mapStateToProps, { favoriteACat })(Chonder);
+export default connect(mapStateToProps, { favoriteACat })(chonder);

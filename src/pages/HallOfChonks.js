@@ -6,7 +6,7 @@ import firebase from "../util/config";
 import { catArray } from "../components/ImagesOfChonks";
 const db = firebase.database();
 
-export default class HallOfChonks extends Component {
+export default class hallOfChonks extends Component {
   state = {
     catHandlesArray: [],
     catObjectToSort: {},

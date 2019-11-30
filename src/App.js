@@ -8,7 +8,7 @@ import NavBar from "./components/navbar/Navbar";
 import PrivateRoute from "./util/PrivateRoute";
 
 // pages
-import User from "./pages/profile/user";
+import User from "./pages/user";
 import login from "./pages/login";
 import chonder from "./pages/chonder";
 import hallOfChonks from "./pages/hallOfChonks";
@@ -18,7 +18,7 @@ export default class App extends Component {
     return (
       <Router>
         <header>
-            <NavBar />
+          <NavBar />
         </header>
         <main>
           <div className="wrapper">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DisplayUserInfo from "../../components/DisplayUserInfo";
+import DisplayUserInfo from "../components/DisplayUserInfo";
 
 export default class user extends Component {
   render() {

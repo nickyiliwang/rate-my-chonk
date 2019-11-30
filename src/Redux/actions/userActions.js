@@ -6,15 +6,9 @@ export const setAuthenticated = token => dispatch => {
 
 export const setUnAuthenticated = () => dispatch => {
   dispatch({ type: SET_UNAUTHENTICATED });
+  localStorage.clear();
 };
 
 export const favoriteACat = (catHandle, userId) => dispatch => {
-
-
-
-
-
-
-
   dispatch({ type: FAV_CAT, payload: catHandle });
 };
