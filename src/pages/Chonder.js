@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+// components
 import ImagesOfChonks from "../components/ImagesOfChonks";
+// chonk scale image
+import scale from "../assets/scale.jpg";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
@@ -25,7 +28,6 @@ class chonder extends Component {
         this.setState({
           catRatingsArr: data.catArrForAverage
         });
-        console.log(data.catArrForAverage);
       }
     });
   }
@@ -76,7 +78,6 @@ class chonder extends Component {
     this.setState({
       catRatingsArr: newCatArrForAverage
     });
-    console.log(this.state.catRatingsArr);
 
     const catHandle = this.props.catHandlesArray[this.state.catCount];
     console.log(catHandle);
@@ -112,7 +113,9 @@ class chonder extends Component {
           <button onClick={this.handleSkipOnClick}>Skip</button>
           <button onClick={this.handleSubmitOnClick}>Submit</button>
         </div>
+        <img src={scale} alt="chonk scale" />
         <input
+          className="ratingSlider"
           type="range"
           name="rating"
           min="0"
