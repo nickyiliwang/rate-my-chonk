@@ -207,3 +207,11 @@ nav a {
   padding: 0 6px 0 1px;
   min-width: 0;
 }
+
+.uploadedCats {
+  display: flex;
+}
+
+.userUploadedImages {
+  width: 15%;
+}
