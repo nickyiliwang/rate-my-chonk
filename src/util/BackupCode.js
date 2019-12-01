@@ -1,3 +1,5 @@
+// this file contains all the experimental code that I don't want to lose, but they are related to the development of the project
+
 import Swing from "react-swing";
 
 <Swing
@@ -32,7 +34,7 @@ import withFirebaseAuth from "react-with-firebase-auth";
 import React, { Component } from "react";
 import * as firebase from "firebase/app";
 import "firebase/auth";
-import { firebaseConfig } from "../util/config";
+import { firebaseConfig } from "./config";
 
 const app = firebase.initializeApp(firebaseConfig);
 const firebaseAppAuth = app.auth();
@@ -146,5 +148,38 @@ export default connect(null, { setAuthenticated })(FirebaseAuth);
 
 // end of my own auth
 
-firebase.database().ref(`cats/${catHandle}`).push('gimme')
-// generating good db 
+firebase
+  .database()
+  .ref(`cats/${catHandle}`)
+  .push("gimme");
+// generating good db
+
+// firebase multiupdate
+var userId = 1234;
+var photoKey = "sdfg486ds4g";
+var updatePhoto = {};
+updatePhoto[`/photos/${photoKey}/likes`] = 1;
+updatePhoto[`/userPhotos/${userId}/${photoKey}/likes`] = 1;
+firebase
+  .database()
+  .ref()
+  .update(updatePhoto);
+
+// Which produces the desired:
+const result = {
+  photos: {
+    sdfg486ds4g: {
+      url: "http://firebasestorage.com/image1",
+      likes: "1"
+    }
+  },
+  userPhotos: {
+    1234: {
+      sdfg486ds4g: {
+        url: "http://firebasestorage.com/image1",
+        likes: "1"
+      }
+    }
+  }
+};
+//
