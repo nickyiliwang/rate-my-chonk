@@ -74,7 +74,7 @@ export default class hallOfChonks extends Component {
     if (this.state.cats) {
       return sortedCatArr.map(cat => {
         const catIndex = this.state.catHandlesArray.indexOf(cat[0]);
-        const catAverageScore = cat[1];
+        const catAverageScore = Math.round(cat[1]);
         const catSrc = catArray[catIndex];
 
         return (

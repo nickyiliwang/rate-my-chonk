@@ -31,16 +31,18 @@ export default class GetImgFromReddit extends Component {
       });
   }
 
-  renderImages = () => {
-    return this.state.posts.map(post => {
-      return <img key={post.id} src={post.url} alt="" />;
-    });
+  store = () => {
+    // return this.state.posts.map(post => {
+    //   return <img key={post.id} src={post.url} alt="" />;
+    // });
+
+    console.log(this.state.posts);
   };
 
   render() {
     return (
       <div className="wrapper">
-        {this.state.render ? this.renderImages() : "Loading"}
+        {this.state.render ? this.store() : "Loading"}
       </div>
     );
   }
