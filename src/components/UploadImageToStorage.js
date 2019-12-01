@@ -6,7 +6,8 @@ import "firebase/storage";
 // This first saves the image in Firebase storage.
 export const UploadImageToStorage = async (file, allUploads) => {
   const userId = firebase.auth().currentUser.uid;
-  const db = firebase.database().ref(`users/${userId}/userUploads`);
+  const userDb = firebase.database().ref(`users/${userId}/userUploads`);
+  const db = firebase.database();
 
   // Upload the image to Cloud Storage.
   let filePath = userId + "/" + file.name;
@@ -16,10 +17,29 @@ export const UploadImageToStorage = async (file, allUploads) => {
     .put(file);
   const url = await fileSnapshot.ref.getDownloadURL();
   // Update the user data with the image's URL.
-  return db.set([...allUploads, url]).catch(error => {
-    console.error(
-      "There was an error uploading a file to Cloud Storage:",
-      error
-    );
-  });
+  const catHandle = fileSnapshot.metadata.name.split(".").join("");
+
+  if (allUploads) {
+    userDb.set([...allUploads, url]).catch(error => {
+      console.error(
+        "There was an error uploading a file to Cloud Storage:",
+        error
+      );
+    });
+
+    db.ref(`cats/${catHandle}`).push({
+      catRatingsArr: []
+    });
+  } else {
+    userDb.set([url]).catch(error => {
+      console.error(
+        "There was an error uploading a file to Cloud Storage:",
+        error
+      );
+    });
+
+    db.ref(`cats/${catHandle}`).push({
+      catRatingsArr: []
+    });
+  }
 };

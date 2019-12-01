@@ -12,7 +12,8 @@ class Navbar extends Component {
     const { authenticated } = this.props;
     const activeStyleConfig = {
       fontWeight: "bold",
-      color: "red"
+      color: "red",
+      border: "5px solid red"
     };
 
     return (
@@ -27,6 +28,11 @@ class Navbar extends Component {
                 <HandleSignOut />
               </li>
               <li>
+                <NavLink activeStyle={activeStyleConfig} to="/user">
+                  User Profile
+                </NavLink>
+              </li>
+              <li>
                 <NavLink activeStyle={activeStyleConfig} to="/chonder">
                   Chonder
                 </NavLink>
@@ -36,30 +42,19 @@ class Navbar extends Component {
                   Hall of Chonks
                 </NavLink>
               </li>
-              <li>
-                <NavLink activeStyle={activeStyleConfig} to="/user">
-                  User Profile
-                </NavLink>
-              </li>
             </ul>
           </nav>
         ) : (
           <nav className="mainNav">
             <ul>
               <li>
-                <NavLink to="/">
-                  Login
-                </NavLink>
+                <NavLink to="/">Login</NavLink>
               </li>
               <li>
-                <NavLink to="/chonder">
-                  Chonder
-                </NavLink>
+                <NavLink to="/chonder">Chonder</NavLink>
               </li>
               <li>
-                <NavLink to="/hall">
-                  Hall of Chonks
-                </NavLink>
+                <NavLink to="/hall">Hall of Chonks</NavLink>
               </li>
             </ul>
           </nav>

@@ -145,3 +145,6 @@ class FirebaseAuth extends Component {
 export default connect(null, { setAuthenticated })(FirebaseAuth);
 
 // end of my own auth
+
+firebase.database().ref(`cats/${catHandle}`).push('gimme')
+// generating good db 
