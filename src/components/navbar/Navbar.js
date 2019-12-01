@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // Component
-import DisplayUserInfo from '../DisplayUserInfo'
+import DisplayUserInfo from "../DisplayUserInfo";
 
 // Redux
 import { connect } from "react-redux";
@@ -10,6 +10,10 @@ import HandleSignOut from "./HandleSignOut";
 class Navbar extends Component {
   render() {
     const { authenticated } = this.props;
+    const activeStyleConfig = {
+      fontWeight: "bold",
+      color: "red"
+    };
 
     return (
       <div>
@@ -23,13 +27,19 @@ class Navbar extends Component {
                 <HandleSignOut />
               </li>
               <li>
-                <Link to="/chonder">Chonder</Link>
+                <NavLink activeStyle={activeStyleConfig} to="/chonder">
+                  Chonder
+                </NavLink>
               </li>
               <li>
-                <Link to="/hall">Hall of Chonks</Link>
+                <NavLink activeStyle={activeStyleConfig} to="/hall">
+                  Hall of Chonks
+                </NavLink>
               </li>
               <li>
-                <Link to="/user">User Profile</Link>
+                <NavLink activeStyle={activeStyleConfig} to="/user">
+                  User Profile
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -37,13 +47,19 @@ class Navbar extends Component {
           <nav className="mainNav">
             <ul>
               <li>
-                <Link to="/">Login</Link>
+                <NavLink to="/">
+                  Login
+                </NavLink>
               </li>
               <li>
-                <Link to="/chonder">Chonder</Link>
+                <NavLink to="/chonder">
+                  Chonder
+                </NavLink>
               </li>
               <li>
-                <Link to="/hall">Hall of Chonks</Link>
+                <NavLink to="/hall">
+                  Hall of Chonks
+                </NavLink>
               </li>
             </ul>
           </nav>
