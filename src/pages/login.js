@@ -5,7 +5,7 @@ import GetImgFromReddit from "../components/GetImgFromReddit";
 class login extends Component {
   render() {
     return (
-      <div>
+      <div className="login">
         <FirebaseAuth />
         <GetImgFromReddit />
       </div>

@@ -102,10 +102,7 @@ class chonder extends Component {
   render() {
     return (
       <section className="chonder">
-        <h2>Chonder</h2>
         <ImagesOfChonks count={this.state.catCount} />
-        <p>{`at ${this.props.catHandlesArray[this.state.catCount]} `}</p>
-
         <div className="userControls">
           <button onClick={this.handleFavoriteOnClick}>
             {this.state.favorite ? "Un-Favorite" : "Favorite"}
@@ -113,16 +110,18 @@ class chonder extends Component {
           <button onClick={this.handleSkipOnClick}>Skip</button>
           <button onClick={this.handleSubmitOnClick}>Submit</button>
         </div>
-        <img src={scale} alt="chonk scale" />
-        <input
-          className="ratingSlider"
-          type="range"
-          name="rating"
-          min="0"
-          max="100"
-          onChange={this.handleOnChange}
-          value={this.state.catRating}
-        />
+        <div className="userInput">
+          <img className="chonkScale" src={scale} alt="chonk scale" />
+          <input
+            className="ratingSlider"
+            type="range"
+            name="rating"
+            min="0"
+            max="100"
+            onChange={this.handleOnChange}
+            value={this.state.catRating}
+          />
+        </div>
       </section>
     );
   }

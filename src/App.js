@@ -17,15 +17,13 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-        <header>
-          <NavBar />
-        </header>
+        <NavBar />
         <main>
           <div className="wrapper">
             <Switch>
+              <Route exact path="/" component={login} />
               <Route exact path="/chonder" component={chonder} />
               <Route exact path="/hall" component={hallOfChonks} />
-              <Route exact path="/" component={login} />
               <PrivateRoute exact path="/user">
                 <User />
               </PrivateRoute>
