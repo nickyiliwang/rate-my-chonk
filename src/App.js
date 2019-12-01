@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import "./reset.css";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 // Components
 import NavBar from "./components/navbar/Navbar";
 import PrivateRoute from "./util/PrivateRoute";
 
 // pages
-import User from "./pages/user";
+import user from "./pages/user";
 import login from "./pages/login";
 import chonder from "./pages/chonder";
 import hallOfChonks from "./pages/hallOfChonks";
@@ -22,10 +26,12 @@ export default class App extends Component {
           <div className="wrapper">
             <Switch>
               <Route exact path="/" component={login} />
-              <Route exact path="/chonder" component={chonder} />
+              <PrivateRoute exact path="/chonder">
+                <Route exact path="/chonder" component={chonder} />
+              </PrivateRoute>
               <Route exact path="/hall" component={hallOfChonks} />
               <PrivateRoute exact path="/user">
-                <User />
+                <Route exact path="/user" component={user} />
               </PrivateRoute>
             </Switch>
           </div>

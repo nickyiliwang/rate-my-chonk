@@ -196,3 +196,14 @@ nav a {
   padding: 5px;
   margin: 10px;
 }
+
+/* uploading */
+#mediaCapture {
+  display: none;
+}
+
+#image-form #submitImage {
+  width: auto;
+  padding: 0 6px 0 1px;
+  min-width: 0;
+}

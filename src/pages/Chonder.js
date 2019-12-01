@@ -17,7 +17,8 @@ class chonder extends Component {
     catCount: 0,
     maxCats: null,
     catRating: 0,
-    favorite: false
+    favorite: false,
+    catRatingsArr: []
   };
 
   componentDidMount() {
@@ -65,7 +66,7 @@ class chonder extends Component {
   };
 
   updateCatData = (catId, ratingArr) => {
-    db.ref("cats/" + catId).set({
+    db.ref("cats/" + catId).update({
       catArrForAverage: ratingArr
     });
   };

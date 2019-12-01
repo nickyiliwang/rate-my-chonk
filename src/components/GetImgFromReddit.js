@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
+// send stuff to redux
+
 export default class GetImgFromReddit extends Component {
   state = {
     posts: [],
@@ -30,7 +32,7 @@ export default class GetImgFromReddit extends Component {
   }
 
   savePostsToState = () => {
-    console.log("updated redux state with cats");
+    // console.log("updated redux state with cats");
   };
 
   render() {

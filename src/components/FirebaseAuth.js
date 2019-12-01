@@ -21,11 +21,6 @@ const uiConfig = {
 };
 
 class FirebaseAuth extends Component {
-  state = {
-    auth: false,
-    accessToken: null
-  };
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(
       user => {
@@ -34,16 +29,13 @@ class FirebaseAuth extends Component {
             displayName: user.displayName,
             userId: user.uId
           };
-
-          this.setState({ auth: true });
           this.props.setAuthenticated(userCredentials);
         } else {
-          this.setState({ auth: false });
           this.props.setUnAuthenticated(user);
         }
       },
-      function(error) {
-        console.log(error);
+      error => {
+        console.error("something wrong with authentication", error);
       }
     );
   }
@@ -51,7 +43,7 @@ class FirebaseAuth extends Component {
   render() {
     return (
       <div>
-        {this.state.auth ? null : (
+        {!this.props.auth && (
           <section className="login">
             <h2>Please Sign in or continue as guest</h2>
             <StyledFirebaseAuth
@@ -65,6 +57,11 @@ class FirebaseAuth extends Component {
   }
 }
 
-export default connect(null, { setAuthenticated, setUnAuthenticated })(
-  FirebaseAuth
-);
+const mapStateToProps = state => ({
+  auth: state.user.authenticated
+});
+
+export default connect(mapStateToProps, {
+  setAuthenticated,
+  setUnAuthenticated
+})(FirebaseAuth);
