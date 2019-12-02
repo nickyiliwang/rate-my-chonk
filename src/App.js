@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import "./reset.css";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Components
 import NavBar from "./components/navbar/Navbar";
@@ -29,7 +25,9 @@ export default class App extends Component {
               <PrivateRoute exact path="/chonder">
                 <Route exact path="/chonder" component={chonder} />
               </PrivateRoute>
-              <Route exact path="/hall" component={hallOfChonks} />
+              <PrivateRoute exact path="/hall">
+                <Route exact path="/hall" component={hallOfChonks} />
+              </PrivateRoute>
               <PrivateRoute exact path="/user">
                 <Route exact path="/user" component={user} />
               </PrivateRoute>

@@ -4,6 +4,7 @@ import "firebase/database";
 import firebase from "../util/config";
 // cat imgs
 import { catArray } from "../components/ImagesOfChonks";
+// database
 const db = firebase.database();
 
 export default class hallOfChonks extends Component {
@@ -70,7 +71,6 @@ export default class hallOfChonks extends Component {
   };
 
   renderAllCats = sortedCatArr => {
-    console.log(sortedCatArr);
     if (this.state.cats) {
       return sortedCatArr.map(cat => {
         const catIndex = this.state.catHandlesArray.indexOf(cat[0]);

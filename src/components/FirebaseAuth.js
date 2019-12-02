@@ -1,11 +1,12 @@
 // Import FirebaseAuth and firebase.
 import React, { Component } from "react";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+// firebase
 import "firebase/auth";
 import firebase from "../util/config";
 import * as firebaseui from "firebaseui";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+// redux
 import { connect } from "react-redux";
-
 import {
   setAuthenticated,
   setUnAuthenticated
@@ -31,7 +32,7 @@ class FirebaseAuth extends Component {
           };
           this.props.setAuthenticated(userCredentials);
         } else {
-          this.props.setUnAuthenticated(user);
+          this.props.setUnAuthenticated();
         }
       },
       error => {
@@ -42,26 +43,18 @@ class FirebaseAuth extends Component {
 
   render() {
     return (
-      <div>
-        {!this.props.auth && (
-          <section className="login">
-            <h2>Please Sign in or continue as guest</h2>
-            <StyledFirebaseAuth
-              uiConfig={uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
-          </section>
-        )}
-      </div>
+      <section className="authorization">
+        <h2>Please Sign in or continue as guest</h2>
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </section>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.user.authenticated
-});
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   setAuthenticated,
   setUnAuthenticated
 })(FirebaseAuth);

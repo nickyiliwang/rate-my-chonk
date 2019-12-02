@@ -42,7 +42,6 @@ class chonder extends Component {
           this.setState({
             catRatingsArr: data.catArrForAverage
           });
-          console.log(data.catArrForAverage);
         }
       });
     }
