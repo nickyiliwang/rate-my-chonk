@@ -3,7 +3,7 @@ import {
 } from "../types";
 
 const initialState = {
-  chonks: [{id: "cat0", url: {}}, "cat1", "cat2", "cat3"],
+  chonks: [],
 };
 
 export default function(state = initialState, action) {

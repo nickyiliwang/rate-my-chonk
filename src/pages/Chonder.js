@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // components
-import ImagesOfChonks from "../components/ImagesOfChonks";
+import DisplaySingleChonk from "../components/DisplaySingleChonk";
 // chonk scale image
 import scale from "../assets/scale.jpg";
 // firebase
@@ -102,7 +102,7 @@ class chonder extends Component {
   render() {
     return (
       <section className="chonder">
-        <ImagesOfChonks count={this.state.catCount} />
+        <DisplaySingleChonk />
         <div className="userControls">
           <button onClick={this.handleFavoriteOnClick}>
             {this.state.favorite ? "Un-Favorite" : "Favorite"}

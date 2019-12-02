@@ -32,7 +32,7 @@ class GetImgFromReddit extends Component {
   }
 
   saveCatsFromRedditToState = () => {
-    console.log("updated redux state with", this.state.catsFromReddit);
+    catsFromReddit(this.state.catsFromReddit);
   };
 
   render() {
