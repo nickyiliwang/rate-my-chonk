@@ -4,7 +4,7 @@ import { addCatsToStore } from "../Redux/actions/dataActions";
 
 function GetImgFromReddit(props) {
   axios
-    .get("https://old.reddit.com/r/Chonkers/top.json?sort=top&t=all&limit=20")
+    .get("https://old.reddit.com/r/Chonkers/top.json?sort=top&t=all&limit=30")
     .then(res => {
       res.data.data.children.forEach(post => {
         const { id, url } = post.data;
