@@ -154,7 +154,24 @@ firebase
   .push("gimme");
 // generating good db
 
-// firebase multiupdate
+// firebase multi-create
+const userId = 1234
+const newEventKey = 3214
+const photos = firebase.database().ref('photos');
+const newPhotoKey = photos.push().key
+const newPhoto = {};
+newPhoto[`/photos/${newEventKey}`] = { 
+  url: 'http://firebasestorage.com/image1', 
+  likes: 0
+};
+newPhoto[`/userPhotos/${userId}/${newPhotoKey}`] = { 
+  url: 'http://firebasestorage.com/image1', 
+  likes: 0 
+};
+firebase.database().ref().update(newPhoto);
+// end of firebase multi-create
+
+// firebase multi-update
 var userId = 1234;
 var photoKey = "sdfg486ds4g";
 var updatePhoto = {};
@@ -183,3 +200,9 @@ const result = {
   }
 };
 // end of firebase multi
+
+catObjForMultiUpdate[`cats/${catHandle}`] = {
+  catImgUrl: url,
+  // you can't upload empty arrays learned that the hard way
+  catRatingsArr: ["0"]
+};

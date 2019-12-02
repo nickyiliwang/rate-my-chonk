@@ -1,13 +1,9 @@
 import {
   SET_CHONKS,
-  SET_CHONK,
-  SET_USERS,
 } from "../types";
 
 const initialState = {
-  chonks: ["cat0", "cat1", "cat2", "cat3"],
-  chonk: {},
-  users: [],
+  chonks: [{id: "cat0", url: {}}, "cat1", "cat2", "cat3"],
 };
 
 export default function(state = initialState, action) {
@@ -16,19 +12,7 @@ export default function(state = initialState, action) {
     case SET_CHONKS:
       return {
         ...state,
-        chonks: action.payload,
-      };
-
-    case SET_CHONK:
-      return {
-        ...state,
-        chonk: action.payload
-      };
-
-    case SET_USERS:
-      return {
-        ...state,
-        users: action.payload,
+        chonks: [...state.chonks, action.payload],
       };
 
     default:

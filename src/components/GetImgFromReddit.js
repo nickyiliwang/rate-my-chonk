@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
 import axios from "axios";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { addCatsToStore } from "../Redux/actions/dataActions";
 
-// send stuff to redux
-
-export default class GetImgFromReddit extends Component {
+class GetImgFromReddit extends Component {
   state = {
-    posts: [],
+    catsFromReddit: [],
     sendToRedux: false
   };
 
@@ -17,8 +17,8 @@ export default class GetImgFromReddit extends Component {
           const { id, url } = post.data;
           if (url.endsWith(".jpg")) {
             this.setState({
-              posts: [
-                ...this.state.posts,
+              catsFromReddit: [
+                ...this.state.catsFromReddit,
                 {
                   id,
                   url
@@ -31,15 +31,17 @@ export default class GetImgFromReddit extends Component {
       });
   }
 
-  savePostsToState = () => {
-    // console.log("updated redux state with cats");
+  saveCatsFromRedditToState = () => {
+    console.log("updated redux state with", this.state.catsFromReddit);
   };
 
   render() {
     return (
       <Fragment>
-        {this.state.sendToRedux ? this.savePostsToState() : null}
+        {this.state.sendToRedux ? this.saveCatsFromRedditToState() : null}
       </Fragment>
     );
   }
 }
+
+export default connect(null, { addCatsToStore })(GetImgFromReddit);
