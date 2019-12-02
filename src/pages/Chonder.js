@@ -15,6 +15,8 @@ const db = firebase.database();
 class chonder extends Component {
   state = {
     catCount: 0,
+    catHandle: "",
+    catUrl: "",
     maxCats: null,
     catRating: 0,
     favorite: false,
@@ -22,20 +24,32 @@ class chonder extends Component {
   };
 
   componentDidMount() {
-    const catHandle = this.props.catHandlesArray[this.state.catCount];
-    db.ref("cats/" + catHandle).on("value", snapshot => {
-      const data = snapshot.val();
-      if (data) {
-        this.setState({
-          catRatingsArr: data.catArrForAverage
+    const { allCatsArray } = this.props;
+    const { catCount } = this.state;
+    this.setState(
+      {
+        maxCats: allCatsArray.length,
+        catHandle: allCatsArray[catCount].id,
+        catUrl: allCatsArray[catCount].url
+      },
+      () => {
+        const { catHandle } = this.state;
+        db.ref("cats/" + catHandle).on("value", snapshot => {
+          const data = snapshot.val();
+          if (data) {
+            this.setState({
+              catRatingsArr: data.catArrForAverage
+            });
+          }
         });
       }
-    });
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // if the catCount changes, get the cat's avgRating array again from db
     if (prevState.catCount !== this.state.catCount) {
-      const catHandle = this.props.catHandlesArray[this.state.catCount];
+      const { catHandle } = this.state;
       db.ref("cats/" + catHandle).once("value", snapshot => {
         const data = snapshot.val();
         if (data) {
@@ -48,13 +62,20 @@ class chonder extends Component {
   }
 
   incrementImgCounter = () => {
-    if (this.state.catCount < 3) {
+    const { allCatsArray } = this.props;
+    const { catCount, maxCats } = this.state;
+
+    if (catCount < maxCats) {
       this.setState({
-        catCount: this.state.catCount + 1
+        catCount: catCount + 1,
+        catHandle: allCatsArray[catCount].id,
+        catUrl: allCatsArray[catCount].url
       });
     } else {
       this.setState({
-        catCount: 0
+        catCount: 0,
+        catHandle: allCatsArray[catCount].id,
+        catUrl: allCatsArray[catCount].url
       });
     }
   };
@@ -71,25 +92,23 @@ class chonder extends Component {
   };
 
   handleSubmitOnClick = () => {
-    const newCatArrForAverage = [
-      ...this.state.catRatingsArr,
-      this.state.catRating
-    ];
+    const { catHandle, catRatingsArr, catRating } = this.state;
+    // get current cat array numbers from db, set state for later use
+    console.log(catRatingsArr);
+    const newCatArrForAverage = [...catRatingsArr, catRating];
     this.setState({
       catRatingsArr: newCatArrForAverage
     });
 
-    const catHandle = this.props.catHandlesArray[this.state.catCount];
-    console.log(catHandle);
     this.updateCatData(catHandle, newCatArrForAverage);
     this.incrementImgCounter();
-
-    this.setState({ catRating: 0, catRatingsArr: [] });
+    // reset for next vote
+    this.setState({ catRating: 0 });
   };
 
   handleFavoriteOnClick = () => {
     const currentCatIndex = this.state.catCount;
-    const catToFavorite = this.props.catHandlesArray[currentCatIndex];
+    const catToFavorite = this.props.allCatsArray[currentCatIndex];
     console.log(`Favorite ${catToFavorite}`);
   };
 
@@ -102,7 +121,7 @@ class chonder extends Component {
   render() {
     return (
       <section className="chonder">
-        <DisplaySingleChonk />
+        {this.state.catUrl && <DisplaySingleChonk catUrl={this.state.catUrl} />}
         <div className="userControls">
           <button onClick={this.handleFavoriteOnClick}>
             {this.state.favorite ? "Un-Favorite" : "Favorite"}
@@ -128,7 +147,7 @@ class chonder extends Component {
 }
 
 const mapStateToProps = state => ({
-  catHandlesArray: state.data.chonks
+  allCatsArray: state.data.chonks
 });
 
 export default connect(mapStateToProps, { favoriteACat })(chonder);

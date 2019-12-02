@@ -1,9 +1,11 @@
 import React from "react";
 
-export default function DisplaySingleChonk() {
+export default function DisplaySingleChonk({ catUrl }) {
   return (
-    <div className="catImageContainer">
-      <img src={catArray[this.props.count]} alt="cat" />
+    <div className="wrapper">
+      <div className="chonderCatImageContainer">
+        <img src={catUrl} alt="cat" />
+      </div>
     </div>
   );
 }

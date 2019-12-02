@@ -32,7 +32,7 @@ class GetImgFromReddit extends Component {
   }
 
   saveCatsFromRedditToState = () => {
-    catsFromReddit(this.state.catsFromReddit);
+    this.props.addCatsToStore(this.state.catsFromReddit);
   };
 
   render() {

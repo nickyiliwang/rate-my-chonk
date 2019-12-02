@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
     case SET_CHONKS:
       return {
         ...state,
-        chonks: [...state.chonks, action.payload],
+        chonks: [...state.chonks, ...action.payload],
       };
 
     default:

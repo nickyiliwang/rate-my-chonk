@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "firebase/database";
 import firebase from "../util/config";
 // cat imgs
-import { catArray } from "../components/ImagesOfChonks";
+
 // database
 const db = firebase.database();
 
@@ -75,7 +75,7 @@ export default class hallOfChonks extends Component {
       return sortedCatArr.map(cat => {
         const catIndex = this.state.catHandlesArray.indexOf(cat[0]);
         const catAverageScore = Math.round(cat[1]);
-        const catSrc = catArray[catIndex];
+        const catSrc = this.state.catHandlesArray[catIndex];
 
         return (
           <li key={catIndex} className="hallCatImageContainer">

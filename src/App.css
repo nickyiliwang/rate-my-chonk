@@ -68,6 +68,15 @@ nav.mainNav {
   flex-direction: column;
 }
 
+.chonderCatImageContainer img {
+  width: auto;
+  height: 400px;
+}
+
+.chonderCatImageContainer {
+  object-fit: fill;
+}
+
 .userInput {
   width: 50%;
   margin-top: 10px;
