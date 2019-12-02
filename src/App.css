@@ -1,7 +1,14 @@
 body {
   font-size: 20px;
-  margin: 10px;
+  margin-top: 80px;
+  background: #a3a5c3;
 }
+
+/* colors */
+/* 6947E5
+4D7C8A
+523260
+A3A5C3 */
 
 img {
   width: 100%;
@@ -17,8 +24,23 @@ h2 {
   margin: 0 auto;
 }
 
-body {
+/* button css */
+
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
+
+button,
+nav a {
+  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
+  border: 5px solid #ffcdff;
+  border-radius: 12px;
+  background: #ffff7d;
+  padding: 5px;
+  margin: 10px;
+}
+/* end of buttons */
 
 .login {
   margin-top: 20%;
@@ -28,39 +50,39 @@ body {
   flex-direction: column;
 }
 
+/* Nav */
 nav {
   z-index: 9001;
 }
 
+h1 {
+  cursor: pointer;
+}
+
 nav.mainNav {
   position: absolute;
-  bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  top: 0;
   left: 0;
   right: 0;
+  background: #6947E5;
+  padding: 10px 0;
 }
 
 .mainNav ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .mainNav li {
+  float: right;
   margin: 10px;
 }
 
-.login h2 {
-  text-align: center;
+.mainNav li.titleIcon {
+  float: left;
+  margin: 0, 30px;
 }
+/* end of nav */
 
-.hall h2 {
-  text-align: center;
-}
-
-.chonder {
+.chonder .flexContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,12 +90,15 @@ nav.mainNav {
 }
 
 .chonderCatImageContainer img {
+  height: 100%;
   width: auto;
-  height: 400px;
 }
 
 .chonderCatImageContainer {
-  object-fit: fill;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  width: 45%;
 }
 
 .userInput {
@@ -83,10 +108,6 @@ nav.mainNav {
 
 .hallCatImageContainer {
   width: 20%;
-}
-
-.hallListOfCats {
-  display: flex;
 }
 
 /* ranged input css */
@@ -176,23 +197,30 @@ input[type="range"].ratingSlider:focus::-ms-fill-lower {
 input[type="range"].ratingSlider:focus::-ms-fill-upper {
   background: #ffbae6;
 }
+/* end of input */
+/* end of chonders */
 
-/* button css */
-
-a {
-  text-decoration: none;
+/* hall of chonks */
+.hallCatImageContainer img {
+  height: 90%;
+  width: auto;
+  object-fit: cover;
 }
 
-button,
-nav a {
-  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
-  border: 5px solid #ffcdff;
-  border-radius: 12px;
-  background: #ffff7d;
-  padding: 5px;
-  margin: 10px;
+.hallCatImageContainer {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 
+.hallListOfCats {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+/* user page */
 /* uploading */
 #mediaCapture {
   display: none;
@@ -211,10 +239,15 @@ nav a {
 .userUploadedImages {
   width: 15%;
 }
+/* end of uploading */
 
-
-/* colors */
-/* 6947E5
-4D7C8A
-523260
-A3A5C3 */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: #6947E5;
+  color: white;
+  padding: 5px;
+}

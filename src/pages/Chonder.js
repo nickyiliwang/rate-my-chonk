@@ -121,25 +121,31 @@ class chonder extends Component {
   render() {
     return (
       <section className="chonder">
-        {this.state.catUrl && <DisplaySingleChonk catUrl={this.state.catUrl} />}
-        <div className="userControls">
-          <button onClick={this.handleFavoriteOnClick}>
-            {this.state.favorite ? "Un-Favorite" : "Favorite"}
-          </button>
-          <button onClick={this.handleSkipOnClick}>Skip</button>
-          <button onClick={this.handleSubmitOnClick}>Submit</button>
-        </div>
-        <div className="userInput">
-          <img className="chonkScale" src={scale} alt="chonk scale" />
-          <input
-            className="ratingSlider"
-            type="range"
-            name="rating"
-            min="0"
-            max="100"
-            onChange={this.handleOnChange}
-            value={this.state.catRating}
-          />
+        <div className="wrapper flexContainer">
+          {this.state.catUrl && (
+            <DisplaySingleChonk catUrl={this.state.catUrl} />
+          )}
+          <div className="userInput">
+            <div className="chonkScaleImageContainer">
+              <img className="chonkScale" src={scale} alt="chonk scale" />
+            </div>
+            <input
+              className="ratingSlider"
+              type="range"
+              name="rating"
+              min="0"
+              max="100"
+              onChange={this.handleOnChange}
+              value={this.state.catRating}
+            />
+          </div>
+          <div className="userControls">
+            <button onClick={this.handleFavoriteOnClick}>
+              {this.state.favorite ? "Un-Favorite" : "Favorite"}
+            </button>
+            <button onClick={this.handleSkipOnClick}>Skip</button>
+            <button onClick={this.handleSubmitOnClick}>Submit</button>
+          </div>
         </div>
       </section>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 // components
 import FirebaseAuth from "../components/FirebaseAuth";
 import GetImgFromReddit from "../components/GetImgFromReddit";
@@ -12,7 +13,15 @@ class login extends Component {
       <div className="login">
         <GetImgFromReddit />
         <GetImgFromStorage />
-        {!this.props.auth && <FirebaseAuth />}
+        {this.props.auth ? (
+          <Redirect
+            to={{
+              pathname: "/chonder"
+            }}
+          />
+        ) : (
+          <FirebaseAuth />
+        )}
       </div>
     );
   }

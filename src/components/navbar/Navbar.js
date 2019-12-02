@@ -20,13 +20,14 @@ class Navbar extends Component {
       <div>
         {authenticated ? (
           <nav className="mainNav">
-            <ul>
-              <li>
-                <DisplayUserInfo />
+            <ul className="clearfix">
+              <li className="titleIcon">
+                <h1>Rate My Chonk</h1>
               </li>
               <li>
                 <HandleSignOut />
               </li>
+ 
               <li>
                 <NavLink activeStyle={activeStyleConfig} to="/user">
                   User Profile
@@ -42,11 +43,18 @@ class Navbar extends Component {
                   Hall of Chonks
                 </NavLink>
               </li>
+              <li>
+                <DisplayUserInfo />
+              </li>
+
             </ul>
           </nav>
         ) : (
           <nav className="mainNav">
             <ul>
+              <li className="titleIcon">
+                <h1>Rate My Chonk</h1>
+              </li>
               <li>
                 <NavLink to="/">Login</NavLink>
               </li>

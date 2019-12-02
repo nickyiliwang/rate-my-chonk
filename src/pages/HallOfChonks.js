@@ -66,7 +66,7 @@ class hallOfChonks extends Component {
       return (
         <li key={i} className="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
-          <h2>Chonk Score Average: {catAverageScore}</h2>
+          <p>Average: {catAverageScore}</p>
         </li>
       );
     });
@@ -75,8 +75,6 @@ class hallOfChonks extends Component {
   render() {
     return (
       <section className="hall">
-        <h2>HallOfChonks</h2>
-
         {this.state.sortedCatArrToRender === null ? (
           <h2>Loading ... </h2>
         ) : (

@@ -60,43 +60,44 @@ export default class user extends Component {
 
   render() {
     return (
-      <div>
-        <DisplayUserInfo />
-        <p>
-          This is a is your profile page, which contains your uploaded cat
-          images, as well as your favorite cats
-        </p>
-        <div className="formUploadSection">
-          <p>Upload your cat image here:</p>
-          <form
-            onSubmit={e => e.preventDefault()}
-            onChange={this.handleOnChange}
-            id="image-form"
-            action="#"
-          >
-            <input
-              id="mediaCapture"
-              type="file"
-              accept="image/*"
-              capture="camera"
-              ref={input => (this.inputElement = input)}
-            />
-            <button
-              onClick={this.handleClick}
-              id="submitImage"
-              title="Add an image"
-              className="imageUpload"
+      <section className="userProfile">
+        <div className="wrapper">
+          <DisplayUserInfo />
+          <p>
+            This is a is your profile page, which contains your uploaded cat
+            images, as well as your favorite cats
+          </p>
+          <div className="formUploadSection">
+            <p>Upload your cat image here:</p>
+            <form
+              onSubmit={e => e.preventDefault()}
+              onChange={this.handleOnChange}
+              id="image-form"
+              action="#"
             >
-              Image Upload
-            </button>
+              <input
+                id="mediaCapture"
+                type="file"
+                accept="image/*"
+                capture="camera"
+                ref={input => (this.inputElement = input)}
+              />
+              <button
+                onClick={this.handleClick}
+                id="submitImage"
+                title="Add an image"
+                className="imageUpload"
+              >
+                Image Upload
+              </button>
+            </form>
+          </div>
 
-          </form>
+          <ul className="uploadedCats">{this.renderUserUploads()}</ul>
+          <p>Favorite Chonks</p>
+          <ul className="favoriteCats"></ul>
         </div>
-
-        <ul className="uploadedCats">{this.renderUserUploads()}</ul>
-        <p>Favorite Chonks</p>
-        <ul className="favoriteCats"></ul>
-      </div>
+      </section>
     );
   }
 }

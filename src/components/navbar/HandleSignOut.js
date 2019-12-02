@@ -14,9 +14,9 @@ function HandleSignOut() {
   };
 
   return (
-    <div>
-      <button onClick={handleSignOut}>Sign out</button>
-    </div>
+    <a href="#" onClick={handleSignOut}>
+      Sign out
+    </a>
   );
 }
 

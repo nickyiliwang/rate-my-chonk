@@ -34,6 +34,9 @@ export default class App extends Component {
             </Switch>
           </div>
         </main>
+        <footer>
+          <p>Made by Nick Wang</p>
+        </footer>
       </Router>
     );
   }
