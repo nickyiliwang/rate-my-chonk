@@ -9,9 +9,10 @@ const middleware = [thunk];
 
 const reducers = combineReducers({
   user: userReducer,
-  data: dataReducer,
+  data: dataReducer
 });
 
+// store containing redux devtools
 const store = createStore(
   reducers,
   initialState,

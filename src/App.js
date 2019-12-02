@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+// react router
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from "./util/PrivateRoute";
+// css
 import "./reset.css";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 // Components
 import NavBar from "./components/navbar/Navbar";
-import PrivateRoute from "./util/PrivateRoute";
-
 // pages
 import user from "./pages/user";
 import login from "./pages/login";
