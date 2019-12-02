@@ -14,13 +14,13 @@ const db = firebase.database();
 
 class chonder extends Component {
   state = {
-    catCount: 0,
     catHandle: "",
     catUrl: "",
     maxCats: null,
+    catCount: 0,
     catRating: 0,
-    favorite: false,
-    catRatingsArr: []
+    catRatingsArr: [],
+    favorite: false
   };
 
   componentDidMount() {
@@ -74,8 +74,8 @@ class chonder extends Component {
     } else {
       this.setState({
         catCount: 0,
-        catHandle: allCatsArray[catCount].id,
-        catUrl: allCatsArray[catCount].url
+        catHandle: allCatsArray[0].id,
+        catUrl: allCatsArray[0].url
       });
     }
   };
@@ -85,33 +85,33 @@ class chonder extends Component {
     this.setState({ catRating: 0 });
   };
 
-  updateCatData = (catId, ratingArr) => {
+  updateCatData = (catId, ratingArr, imageUrl) => {
     db.ref("cats/" + catId).update({
+      imageUrl,
       catArrForAverage: ratingArr
     });
   };
 
   handleSubmitOnClick = () => {
-    const { catHandle, catRatingsArr, catRating } = this.state;
+    const { catHandle, catRatingsArr, catRating, catUrl } = this.state;
     // get current cat array numbers from db, set state for later use
-    console.log(catRatingsArr);
     const newCatArrForAverage = [...catRatingsArr, catRating];
     this.setState({
       catRatingsArr: newCatArrForAverage
     });
 
-    this.updateCatData(catHandle, newCatArrForAverage);
+    this.updateCatData(catHandle, newCatArrForAverage, catUrl);
     this.incrementImgCounter();
     // reset for next vote
     this.setState({ catRating: 0 });
   };
-
+  // user favorites the cat img
   handleFavoriteOnClick = () => {
     const currentCatIndex = this.state.catCount;
     const catToFavorite = this.props.allCatsArray[currentCatIndex];
-    console.log(`Favorite ${catToFavorite}`);
+    console.log(catToFavorite);
   };
-
+  // user rating input change
   handleOnChange = e => {
     this.setState({
       catRating: e.target.value

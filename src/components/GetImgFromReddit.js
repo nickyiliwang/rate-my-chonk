@@ -1,47 +1,29 @@
 import axios from "axios";
-import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { addCatsToStore } from "../Redux/actions/dataActions";
 
-class GetImgFromReddit extends Component {
-  state = {
-    catsFromReddit: [],
-    sendToRedux: false
-  };
+function GetImgFromReddit(props) {
+  axios
+    .get("https://old.reddit.com/r/Chonkers/top.json?sort=top&t=all&limit=20")
+    .then(res => {
+      res.data.data.children.forEach(post => {
+        const { id, url } = post.data;
+        let catsFromReddit = [];
 
-  componentDidMount() {
-    axios
-      .get("https://old.reddit.com/r/Chonkers/top.json?sort=top&t=all&limit=10")
-      .then(res => {
-        res.data.data.children.forEach(post => {
-          const { id, url } = post.data;
-          if (url.endsWith(".jpg")) {
-            this.setState({
-              catsFromReddit: [
-                ...this.state.catsFromReddit,
-                {
-                  id,
-                  url
-                }
-              ]
-            });
-          }
-        });
-        this.setState({ sendToRedux: true });
+        if (url.endsWith(".jpg")) {
+          catsFromReddit = [
+            ...catsFromReddit,
+            {
+              id,
+              url
+            }
+          ];
+        }
+        props.addCatsToStore(catsFromReddit);
       });
-  }
+    });
 
-  saveCatsFromRedditToState = () => {
-    this.props.addCatsToStore(this.state.catsFromReddit);
-  };
-
-  render() {
-    return (
-      <Fragment>
-        {this.state.sendToRedux ? this.saveCatsFromRedditToState() : null}
-      </Fragment>
-    );
-  }
+  return null;
 }
 
 export default connect(null, { addCatsToStore })(GetImgFromReddit);

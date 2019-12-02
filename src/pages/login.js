@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// components
 import FirebaseAuth from "../components/FirebaseAuth";
 import GetImgFromReddit from "../components/GetImgFromReddit";
 // redux
