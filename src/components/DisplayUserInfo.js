@@ -5,8 +5,8 @@ export class DisplayUserInfo extends Component {
   render() {
     return (
       <div>
-        <p>
-          Hello {this.props.userName === null ? "Guest" : this.props.userName}
+        <p className="userDisplayName">
+          Hello {this.props.userName === null ? "Guest" : this.props.userName} !
         </p>
       </div>
     );

@@ -1,17 +1,22 @@
 body {
   font-size: 20px;
   margin-top: 80px;
-  background: #a3a5c3;
+  background: #f3ffbd;
+  font-family: "Cabin", sans-serif;
 }
-
-/* colors */
-/* 6947E5
-4D7C8A
-523260
-A3A5C3 */
 
 img {
   width: 100%;
+}
+
+p {
+  font-family: "Cabin", sans-serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 h2 {
@@ -31,15 +36,43 @@ a {
   cursor: pointer;
 }
 
-button,
+button {
+  border: none;
+  background: #b2dbbf;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #247ba0;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #f3ffbd;
+  background-color: #247ba0;
+}
+
 nav a {
-  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
-  border: 5px solid #ffcdff;
-  border-radius: 12px;
-  background: #ffff7d;
+  color: black;
+  padding: 5px;
+  margin: 10px;
+  transition: all 0.4s linear;
+}
+
+nav a:hover {
+  color: #247ba0;
+}
+
+.signOut {
   padding: 5px;
   margin: 10px;
 }
+
 /* end of buttons */
 
 .login {
@@ -54,17 +87,12 @@ nav a {
 nav {
   z-index: 9001;
 }
-
-h1 {
-  cursor: pointer;
-}
-
 nav.mainNav {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  background: #6947E5;
+
   padding: 10px 0;
 }
 
@@ -98,16 +126,11 @@ nav.mainNav {
   display: flex;
   justify-content: center;
   height: 50vh;
-  width: 45%;
 }
 
 .userInput {
   width: 50%;
   margin-top: 10px;
-}
-
-.hallCatImageContainer {
-  width: 20%;
 }
 
 /* ranged input css */
@@ -123,44 +146,47 @@ input[type="range"].ratingSlider::-webkit-slider-runnable-track {
   width: 100%;
   height: 13.3px;
   cursor: pointer;
-  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
-  background: #ff91d8;
+  box-shadow: 1.4px 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
+  background: #70c1b3;
   border-radius: 25px;
-  border: 2.3px solid #dbd58f;
+  border: 2.3px solid #f3ffbd;
 }
-
+/* webkit */
 input[type="range"].ratingSlider::-webkit-slider-thumb {
-  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
-  border: 5px solid #ffcdff;
+  box-shadow: 4.1px 4.1px 7.2px #247ba0, 0px 0px 4.1px #247ba0;
+  border: 3px solid #ff1654;
   height: 30px;
   width: 30px;
-  border-radius: 12px;
-  background: #ffff7d;
+  border-radius: 50px;
+  background: #b2dbbf;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -10.65px;
 }
 input[type="range"].ratingSlider:focus::-webkit-slider-runnable-track {
-  background: #ffbae6;
+  background: #f3ffbd;
 }
+/* moz */
 input[type="range"].ratingSlider::-moz-range-track {
   width: 100%;
   height: 13.3px;
   cursor: pointer;
-  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
-  background: #ff91d8;
+  box-shadow: 1.4px 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
+  background: #70c1b3;
   border-radius: 25px;
-  border: 2.3px solid #dbd58f;
+  border: 2.3px solid #f3ffbd;
 }
+
 input[type="range"].ratingSlider::-moz-range-thumb {
-  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
-  border: 5px solid #ffcdff;
+  box-shadow: 4.1px 4.1px 7.2px #247ba0, 0px 0px 4.1px #247ba0;
+  border: 3px solid #ff1654;
   height: 30px;
   width: 30px;
-  border-radius: 12px;
-  background: #ffff7d;
+  border-radius: 50px;
+  background: #b2dbbf;
   cursor: pointer;
 }
+/* others */
 input[type="range"].ratingSlider::-ms-track {
   width: 100%;
   height: 13.3px;
@@ -170,32 +196,32 @@ input[type="range"].ratingSlider::-ms-track {
   color: transparent;
 }
 input[type="range"].ratingSlider::-ms-fill-lower {
-  background: #ff68ca;
-  border: 2.3px solid #dbd58f;
+  background: #f3ffbd;
+  border: 2.3px solid #f3ffbd;
   border-radius: 50px;
-  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
+  box-shadow: 1b2dbbf 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
 }
 input[type="range"].ratingSlider::-ms-fill-upper {
-  background: #ff91d8;
-  border: 2.3px solid #dbd58f;
+  background: #f3ffbd;
+  border: 2.3px solid #f3ffbd;
   border-radius: 50px;
-  box-shadow: 1.4px 1.4px 1.7px #ffb2df, 0px 0px 1.4px #ffccea;
+  box-shadow: 1b2dbbf 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
 }
 input[type="range"].ratingSlider::-ms-thumb {
-  box-shadow: 4.1px 4.1px 7.2px #27aaff, 0px 0px 4.1px #41b4ff;
-  border: 5px solid #ffcdff;
+  box-shadow: 4.1px 4.1px 7.2px #247ba0, 0px 0px 4.1px #247ba0;
+  border: 3px solid #ff1654;
   height: 30px;
   width: 30px;
-  border-radius: 12px;
-  background: #ffff7d;
+  border-radius: 50px;
+  background: #b2dbbf;
   cursor: pointer;
   height: 13.3px;
 }
 input[type="range"].ratingSlider:focus::-ms-fill-lower {
-  background: #ff91d8;
+  background: #f3ffbd;
 }
 input[type="range"].ratingSlider:focus::-ms-fill-upper {
-  background: #ffbae6;
+  background: #f3ffbd;
 }
 /* end of input */
 /* end of chonders */
@@ -206,8 +232,8 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
   width: auto;
   object-fit: cover;
 }
-
 .hallCatImageContainer {
+  width: 20%;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -222,23 +248,55 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
 
 /* user page */
 /* uploading */
+section.userProfile {
+  height: 80vh;
+  padding-top: 20px;
+  display: flex;
+  text-align: center;
+}
+
+section.userProfile p {
+  margin: 20px;
+  text-align: center;
+}
+
+.userProfile .userDisplayName {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 20px;
+}
+
 #mediaCapture {
   display: none;
 }
 
-#image-form #submitImage {
+#image-form {
   width: auto;
   padding: 0 6px 0 1px;
   min-width: 0;
 }
 
-.uploadedCats {
-  display: flex;
+.userUploadedImages {
+  width: 20%;
 }
 
-.userUploadedImages {
-  width: 15%;
+ul.uploadedCats,
+ul.favoriteCats {
+  display: flex;
+  border: 2px dotted #b2dbbf;
+  padding: 20px;
 }
+.uploadedCats img {
+  height: 100%;
+  width: auto;
+}
+
+.uploadedCats li {
+  margin-right: 10px;
+  height: 10vh;
+}
+
 /* end of uploading */
 
 footer {
@@ -247,7 +305,28 @@ footer {
   left: 0;
   right: 0;
   text-align: center;
-  background: #6947E5;
+  background: #70c1b3;
   color: white;
   padding: 5px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 720px) {
+  .mainNav ul :not(h1, p) {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainNav li {
+    float: right;
+    margin: 5px;
+  }
+
+  .mainNav p {
+    display: none;
+  }
 }

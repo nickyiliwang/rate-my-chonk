@@ -10,17 +10,21 @@ import { connect } from "react-redux";
 class login extends Component {
   render() {
     return (
-      <div className="login">
+      <div id="home" className="login">
         <GetImgFromReddit />
         <GetImgFromStorage />
         {this.props.auth ? (
-          <Redirect
-            to={{
-              pathname: "/chonder"
-            }}
-          />
+          <div>
+            <Redirect
+              to={{
+                pathname: "/user"
+              }}
+            />
+          </div>
         ) : (
-          <FirebaseAuth />
+          <div>
+            <FirebaseAuth />
+          </div>
         )}
       </div>
     );

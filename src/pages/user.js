@@ -30,8 +30,23 @@ export default class user extends Component {
           </li>
         );
       });
+    } else {
+      return (
+        <li>
+          <p>All your uploads are here.</p>
+        </li>
+      );
     }
   };
+
+  renderUserFavorites = () => {
+    return (
+      <li>
+        <p>All your favorite cats are here.</p>
+      </li>
+    );
+  };
+
   handleClick = e => {
     this.inputElement.click();
   };
@@ -75,6 +90,10 @@ export default class user extends Component {
               id="image-form"
               action="#"
             >
+              <label
+                aria-label="this is where you upload cat pictures"
+                htmlFor="mediaCapture"
+              ></label>
               <input
                 id="mediaCapture"
                 type="file"
@@ -93,9 +112,10 @@ export default class user extends Component {
             </form>
           </div>
 
+          <p>Chonks you shared :</p>
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
-          <p>Favorite Chonks</p>
-          <ul className="favoriteCats"></ul>
+          <p>Chonks you liked :</p>
+          <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
         </div>
       </section>
     );

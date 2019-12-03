@@ -26,24 +26,25 @@ class chonder extends Component {
   componentDidMount() {
     const { allCatsArray } = this.props;
     const { catCount } = this.state;
-    this.setState(
-      {
-        maxCats: allCatsArray.length,
-        catHandle: allCatsArray[catCount].id,
-        catUrl: allCatsArray[catCount].url
-      },
-      () => {
-        const { catHandle } = this.state;
-        db.ref("cats/" + catHandle).on("value", snapshot => {
-          const data = snapshot.val();
-          if (data) {
-            this.setState({
-              catRatingsArr: data.catArrForAverage
-            });
-          }
-        });
-      }
-    );
+    if (allCatsArray[0]) {
+      this.setState(
+        {
+          maxCats: allCatsArray.length,
+          catHandle: allCatsArray[catCount].id,
+          catUrl: allCatsArray[catCount].url
+        },
+        () => {
+          db.ref("cats/" + this.state.catHandle).on("value", snapshot => {
+            const data = snapshot.val();
+            if (data) {
+              this.setState({
+                catRatingsArr: data.catArrForAverage
+              });
+            }
+          });
+        }
+      );
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -68,8 +69,8 @@ class chonder extends Component {
     if (catCount < maxCats) {
       this.setState({
         catCount: catCount + 1,
-        catHandle: allCatsArray[catCount].id,
-        catUrl: allCatsArray[catCount].url
+        catHandle: allCatsArray[catCount + 1].id,
+        catUrl: allCatsArray[catCount + 1].url
       });
     } else {
       this.setState({

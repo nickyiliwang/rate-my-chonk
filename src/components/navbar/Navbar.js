@@ -12,8 +12,7 @@ class Navbar extends Component {
     const { authenticated } = this.props;
     const activeStyleConfig = {
       fontWeight: "bold",
-      color: "red",
-      border: "5px solid red"
+      borderBottom: "3px solid #ff1654"
     };
 
     return (
