@@ -242,6 +242,35 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
 /* end of chonders */
 
 /* hall of chonks */
+/* giving out metals */
+ul.hallListOfCats li {
+  position: relative;
+}
+
+ul.hallListOfCats li:nth-of-type(1)::after,
+ul.hallListOfCats li:nth-of-type(2)::after,
+ul.hallListOfCats li:nth-of-type(3)::after {
+  background-image: url(./assets/Gold.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -30px;
+  right: -50px;
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+  background-size: 80px auto;
+  z-index: 3;
+  content: "";
+}
+
+ul.hallListOfCats li:nth-of-type(2)::after {
+  background-image: url(./assets/silver.png);
+}
+
+ul.hallListOfCats li:nth-of-type(3)::after {
+  background-image: url(./assets/bronze.png);
+}
+
 .hallCatImageContainer img {
   height: 90%;
   width: auto;
@@ -275,6 +304,9 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
 
 /* user page */
 /* uploading */
+#chonder {
+  font-weight: bold;
+}
 section.userProfile {
   height: 80vh;
   padding-top: 20px;
@@ -286,7 +318,6 @@ section.userProfile p {
   margin: 20px;
   text-align: center;
 }
-
 
 .userProfile .userDisplayName {
   font-family: "Playfair Display", serif;
@@ -310,7 +341,6 @@ ul.favoriteCats {
   display: flex;
   border: 2px dotted #b2dbbf;
   padding: 20px;
-
 }
 .uploadedCats img {
   height: 100%;
@@ -381,7 +411,7 @@ footer {
 
   .mainNav li {
     float: right;
-    margin: 5px;
+    margin: 10px 5px;
   }
 
   .mainNav p {

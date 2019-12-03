@@ -16,17 +16,19 @@ class Navbar extends Component {
     };
 
     return (
-      <div >
+      <div>
         {authenticated ? (
           <nav className="mainNav">
             <ul className="clearfix">
               <li className="titleIcon">
-                <h1>Rate My Chonk</h1>
+                <h1 onClick={() => window.location.reload(false)}>
+                  Rate My Chonk
+                </h1>
               </li>
               <li>
                 <HandleSignOut />
               </li>
- 
+
               <li>
                 <NavLink activeStyle={activeStyleConfig} to="/user">
                   User Profile
@@ -45,14 +47,15 @@ class Navbar extends Component {
               <li>
                 <DisplayUserInfo />
               </li>
-
             </ul>
           </nav>
         ) : (
           <nav className="mainNav">
             <ul>
               <li className="titleIcon">
-                <h1>Rate My Chonk</h1>
+                <h1 onClick={() => window.location.reload(false)}>
+                  Rate My Chonk
+                </h1>
               </li>
               <li>
                 <NavLink to="/">Login</NavLink>

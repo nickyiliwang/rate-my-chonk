@@ -33,7 +33,7 @@ export default class user extends Component {
     } else {
       return (
         <li>
-          <p>All your uploads are here.</p>
+          <p>All your uploads chonks here.</p>
         </li>
       );
     }
@@ -80,7 +80,7 @@ export default class user extends Component {
           <DisplayUserInfo />
           <p>
             This is a is your profile page, which contains your uploaded cat
-            images, as well as your favorite cats. Ready for cats ? 
+            images, as well as your favorite cats.
           </p>
           <div className="formUploadSection">
             <p>Upload your cat image here:</p>
@@ -112,9 +112,9 @@ export default class user extends Component {
             </form>
           </div>
 
-          <p>Chonks you shared :</p>
+          <p>Chonks you uploaded :</p>
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
-          <p>Chonks you liked :</p>
+          <p>You favorite chonks :</p>
           <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
         </div>
       </section>

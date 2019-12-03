@@ -66,7 +66,7 @@ class chonder extends Component {
     const { allCatsArray } = this.props;
     const { catCount, maxCats } = this.state;
 
-    if (catCount < maxCats) {
+    if (catCount < maxCats - 1) {
       this.setState({
         catCount: catCount + 1,
         catHandle: allCatsArray[catCount + 1].id,
