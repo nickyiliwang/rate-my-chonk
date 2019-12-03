@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, FAV_CAT } from "../types";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED,  } from "../types";
 
 export const setAuthenticated = token => dispatch => {
   dispatch({ type: SET_AUTHENTICATED, payload: token });
@@ -7,8 +7,4 @@ export const setAuthenticated = token => dispatch => {
 export const setUnAuthenticated = () => dispatch => {
   dispatch({ type: SET_UNAUTHENTICATED });
   localStorage.clear();
-};
-
-export const favoriteACat = (catHandle, userId) => dispatch => {
-  dispatch({ type: FAV_CAT, payload: catHandle });
 };

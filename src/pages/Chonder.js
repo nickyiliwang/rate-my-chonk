@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
+import { HandleUserFavorite } from "../components/HandleUserFavorties";
 // chonk scale image
 import scale from "../assets/scale.jpg";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
+import 'firebase/auth'
 // redux
 import { connect } from "react-redux";
-import { favoriteACat } from "../Redux/actions/userActions";
 // firebase database
 const db = firebase.database();
 
@@ -111,6 +112,7 @@ class chonder extends Component {
     const currentCatIndex = this.state.catCount;
     const catToFavorite = this.props.allCatsArray[currentCatIndex];
     console.log(catToFavorite);
+    HandleUserFavorite(null, catToFavorite);
   };
   // user rating input change
   handleOnChange = e => {
@@ -157,4 +159,4 @@ const mapStateToProps = state => ({
   allCatsArray: state.data.chonks
 });
 
-export default connect(mapStateToProps, { favoriteACat })(chonder);
+export default connect(mapStateToProps)(chonder);

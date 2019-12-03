@@ -41,6 +41,7 @@ export default class App extends Component {
               id="externalLink"
               href="https://github.com/nickyiliwang?tab=repositories"
               target="_blank"
+              rel="noopener noreferrer"
             >
               Nick Wang
             </a>

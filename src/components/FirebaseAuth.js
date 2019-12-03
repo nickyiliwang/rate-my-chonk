@@ -1,5 +1,7 @@
 // Import FirebaseAuth and firebase.
 import React, { Component } from "react";
+// components
+import GetUserFavFromDb from "../components/GetUserFavFromDb";
 // firebase
 import "firebase/auth";
 import firebase from "../util/config";
@@ -22,6 +24,9 @@ const uiConfig = {
 };
 
 class FirebaseAuth extends Component {
+  state = {
+    userId: null
+  };
   componentDidMount() {
     firebase.auth().onAuthStateChanged(
       user => {
@@ -30,6 +35,7 @@ class FirebaseAuth extends Component {
             displayName: user.displayName,
             userId: user.uId
           };
+          this.setState({ userId: user.uId });
           this.props.setAuthenticated(userCredentials);
         } else {
           this.props.setUnAuthenticated();
@@ -49,6 +55,7 @@ class FirebaseAuth extends Component {
           uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}
         />
+        {this.state.userId && <GetUserFavFromDb userId={this.state.userId} />}
       </section>
     );
   }

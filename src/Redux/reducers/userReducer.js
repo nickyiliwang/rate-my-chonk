@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, SET_UNAUTHENTICATED, FAV_CAT } from "../types";
+import { SET_AUTHENTICATED, SET_UNAUTHENTICATED,  } from "../types";
 
 const initialState = {
   authenticated: false,
@@ -20,12 +20,6 @@ export default function(state = initialState, action) {
         ...state,
         authenticated: false,
         credentials: {}
-      };
-
-    case FAV_CAT:
-      return {
-        ...state,
-        favoriteCats: [...action.payload]
       };
 
     default:
