@@ -66,7 +66,7 @@ class hallOfChonks extends Component {
       return (
         <li key={i} className="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
-          <p>Average: {catAverageScore}</p>
+          <p>Average Chonk Score: {catAverageScore}</p>
         </li>
       );
     });

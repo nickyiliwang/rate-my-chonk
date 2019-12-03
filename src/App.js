@@ -35,7 +35,16 @@ export default class App extends Component {
           </div>
         </main>
         <footer>
-          <p>Made by Nick Wang</p>
+          <p>
+            Made by{" "}
+            <a
+              id="externalLink"
+              href="https://github.com/nickyiliwang?tab=repositories"
+              target="_blank"
+            >
+              Nick Wang
+            </a>
+          </p>
         </footer>
       </Router>
     );

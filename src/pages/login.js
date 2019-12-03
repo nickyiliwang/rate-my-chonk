@@ -13,6 +13,9 @@ class login extends Component {
       <div id="home" className="login">
         <GetImgFromReddit />
         <GetImgFromStorage />
+
+      <h2 className="welcomeText">Welcome to Rate my Chonk !</h2>
+
         {this.props.auth ? (
           <div>
             <Redirect

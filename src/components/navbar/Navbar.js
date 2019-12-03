@@ -16,7 +16,7 @@ class Navbar extends Component {
     };
 
     return (
-      <div>
+      <div >
         {authenticated ? (
           <nav className="mainNav">
             <ul className="clearfix">

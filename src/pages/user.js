@@ -80,7 +80,7 @@ export default class user extends Component {
           <DisplayUserInfo />
           <p>
             This is a is your profile page, which contains your uploaded cat
-            images, as well as your favorite cats
+            images, as well as your favorite cats. Ready for cats ? 
           </p>
           <div className="formUploadSection">
             <p>Upload your cat image here:</p>
