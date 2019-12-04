@@ -12,6 +12,13 @@ const reducers = combineReducers({
   data: dataReducer
 });
 
+// // store containing redux devtools
+// const store = createStore(
+//   reducers,
+//   initialState,
+//   compose(applyMiddleware(...middleware))
+// );
+
 // store containing redux devtools
 const store = createStore(
   reducers,

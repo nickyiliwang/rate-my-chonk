@@ -2,8 +2,7 @@ import { SET_AUTHENTICATED, SET_UNAUTHENTICATED,  } from "../types";
 
 const initialState = {
   authenticated: false,
-  credentials: {},
-  favoriteCats: []
+  credentials: {}
 };
 
 export default function(state = initialState, action) {

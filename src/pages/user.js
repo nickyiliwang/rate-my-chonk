@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import DisplayUserInfo from "../components/DisplayUserInfo";
+import GetUserFavFromDb from "../components/GetUserFavFromDb";
 import { UploadImageToStorage } from "../components/UploadImageToStorage";
 import firebase from "../util/config";
 import "firebase/auth";
 
 export default class user extends Component {
   state = {
-    allUploads: null
+    allUploads: null,
+    allUserFavCatsArray: null
   };
 
   componentDidMount() {
@@ -17,7 +19,10 @@ export default class user extends Component {
       .on("value", snapShot => {
         const data = snapShot.val();
         if (data) {
-          this.setState({ allUploads: data.userUploads });
+          this.setState({
+            allUploads: data.userUploads,
+            allUserFavCatsArray: data.userFavorites
+          });
         }
       });
   }
@@ -37,14 +42,6 @@ export default class user extends Component {
         </li>
       );
     }
-  };
-
-  renderUserFavorites = () => {
-    return (
-      <li>
-        <p>All your favorite cats are here.</p>
-      </li>
-    );
   };
 
   handleClick = e => {
@@ -77,7 +74,7 @@ export default class user extends Component {
     return (
       <section className="userProfile">
         <div className="wrapper">
-          <DisplayUserInfo />
+          <GetUserFavFromDb />
           <p>
             This is a is your profile page, which contains your uploaded cat
             images, as well as your favorite cats.
@@ -115,7 +112,9 @@ export default class user extends Component {
           <p>Chonks you uploaded :</p>
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
           <p>You favorite chonks :</p>
-          <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
+          <ul className="favoriteCats">
+            <DisplayUserInfo />
+          </ul>
         </div>
       </section>
     );

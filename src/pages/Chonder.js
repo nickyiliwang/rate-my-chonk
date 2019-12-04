@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
-import { HandleUserFavorite } from "../components/HandleUserFavorties";
+import { HandleUserFavorite } from "../components/HandleUserFavorites";
 // chonk scale image
 import scale from "../assets/scale.jpg";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
-import 'firebase/auth'
+import "firebase/auth";
 // redux
 import { connect } from "react-redux";
 // firebase database
@@ -21,7 +21,7 @@ class chonder extends Component {
     catCount: 0,
     catRating: 0,
     catRatingsArr: [],
-    favorite: false
+    allFavCatsHandlesArray: []
   };
 
   componentDidMount() {
@@ -45,6 +45,14 @@ class chonder extends Component {
           });
         }
       );
+    }
+
+    if (allFavCatsArray[0]) {
+      allFavCatsArray.forEach(cat => {
+        this.setState({
+          allFavCatsHandlesArray: [...this.state.allFavCatsHandlesArray, cat]
+        });
+      });
     }
   }
 
@@ -109,10 +117,16 @@ class chonder extends Component {
   };
   // user favorites the cat img
   handleFavoriteOnClick = () => {
-    const currentCatIndex = this.state.catCount;
-    const catToFavorite = this.props.allCatsArray[currentCatIndex];
-    console.log(catToFavorite);
-    HandleUserFavorite(null, catToFavorite);
+    if (
+      this.state.allFavCatsHandlesArray.indexOf(this.state.catHandle) === -1
+    ) {
+      const catToFavorite = {
+        handle: this.state.catHandle,
+        imageUrl: this.state.catUrl
+      }
+      console.log(catToFavorite);
+      HandleUserFavorite(this.props.allFavCatsArray, catToFavorite);
+    }
   };
   // user rating input change
   handleOnChange = e => {
@@ -144,7 +158,11 @@ class chonder extends Component {
           </div>
           <div className="userControls">
             <button onClick={this.handleFavoriteOnClick}>
-              {this.state.favorite ? "Un-Favorite" : "Favorite"}
+              {this.state.allFavCatsHandlesArray.indexOf(
+                this.state.catHandle
+              ) === -1
+                ? "Favorite"
+                : "Un-Favorite"}
             </button>
             <button onClick={this.handleSkipOnClick}>Skip</button>
             <button onClick={this.handleSubmitOnClick}>Submit</button>
@@ -156,7 +174,8 @@ class chonder extends Component {
 }
 
 const mapStateToProps = state => ({
-  allCatsArray: state.data.chonks
+  allCatsArray: state.data.chonks,
+  allFavCatsArray: state.data.favChonks
 });
 
 export default connect(mapStateToProps)(chonder);
