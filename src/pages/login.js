@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import FirebaseAuth from "../components/FirebaseAuth";
 import GetImgFromReddit from "../components/GetImgFromReddit";
 import GetImgFromStorage from "../components/GetImgFromStorage";
+import GetUserFavFromDb from "../components/GetUserFavFromDb";
 // redux
 import { connect } from "react-redux";
 
@@ -13,7 +14,7 @@ class login extends Component {
       <div id="home" className="login">
         <GetImgFromReddit />
         <GetImgFromStorage />
-
+        <GetUserFavFromDb />
         <h2 className="welcomeText">Welcome to Rate my Chonk !</h2>
 
         {this.props.auth ? (

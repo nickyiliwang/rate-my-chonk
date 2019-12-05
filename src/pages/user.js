@@ -44,7 +44,7 @@ export default class user extends Component {
     }
   };
 
-  renderUserUploads = () => {
+  renderUserFavorites = () => {
     if (this.state.allUserFavCatsArray) {
       return this.state.allUserFavCatsArray.map((cat, i) => {
         const url = cat.imageUrl;
@@ -135,7 +135,7 @@ export default class user extends Component {
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
           <p>You favorite chonks :</p>
           <ul className="favoriteCats">
-            {this.renderUserUploads()}
+            {this.renderUserFavorites()}
           </ul>
         </div>
       </section>

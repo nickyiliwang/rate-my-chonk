@@ -43,6 +43,15 @@ class chonder extends Component {
               });
             }
           });
+          db.ref("users/" + this.props.userId).on("value", snapshot => {
+            const data = snapshot.val();
+            if (data) {
+              this.setState({
+                allFavCatsHandlesArray: [...this.state.allFavCatsHandlesArray, data.userFavorites]
+              });
+              
+            }
+          });
         }
       );
     }
@@ -123,7 +132,7 @@ class chonder extends Component {
       const catToFavorite = {
         handle: this.state.catHandle,
         imageUrl: this.state.catUrl
-      }
+      };
       console.log(catToFavorite);
       HandleUserFavorite(this.props.allFavCatsArray, catToFavorite);
     }
@@ -175,7 +184,8 @@ class chonder extends Component {
 
 const mapStateToProps = state => ({
   allCatsArray: state.data.chonks,
-  allFavCatsArray: state.data.favChonks
+  allFavCatsArray: state.data.favChonks,
+  userId: state.user.credentials.userId
 });
 
 export default connect(mapStateToProps)(chonder);

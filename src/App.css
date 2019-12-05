@@ -102,7 +102,6 @@ nav.mainNav {
   padding: 10px 0;
 }
 
-
 .mainNav li {
   float: right;
   margin: 10px;
@@ -340,12 +339,14 @@ ul.favoriteCats {
   border: 2px dotted #b2dbbf;
   padding: 20px;
 }
-.uploadedCats img {
+.uploadedCats img,
+.favoriteCats img {
   height: 100%;
   width: auto;
 }
 
-.uploadedCats li {
+.uploadedCats li,
+.favoriteCats li {
   margin-right: 10px;
   height: 15vh;
   width: auto;
