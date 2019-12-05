@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DisplayUserInfo from "../components/DisplayUserInfo";
-import GetUserFavFromDb from "../components/GetUserFavFromDb";
 import { UploadImageToStorage } from "../components/UploadImageToStorage";
 import firebase from "../util/config";
 import "firebase/auth";
@@ -16,12 +15,13 @@ export default class user extends Component {
     firebase
       .database()
       .ref(`users/${userId}`)
-      .on("value", snapShot => {
+      .once("value", snapShot => {
         const data = snapShot.val();
         if (data) {
           this.setState({
             allUploads: data.userUploads,
             allUserFavCatsArray: data.userFavorites
+          }, () => {
           });
         }
       });
@@ -43,6 +43,28 @@ export default class user extends Component {
       );
     }
   };
+
+  renderUserUploads = () => {
+    if (this.state.allUserFavCatsArray) {
+      return this.state.allUserFavCatsArray.map((cat, i) => {
+        const url = cat.imageUrl;
+        return (
+          <li className="userFavoriteImages" key={i}>
+            <img src={url} alt="user favorite chonks" />
+          </li>
+        );
+      });
+    } else {
+      return (
+        <li>
+          <p>All your favorite chonks are here.</p>
+        </li>
+      );
+    }
+    
+  };
+
+
 
   handleClick = e => {
     this.inputElement.click();
@@ -74,7 +96,7 @@ export default class user extends Component {
     return (
       <section className="userProfile">
         <div className="wrapper">
-          <GetUserFavFromDb />
+          <DisplayUserInfo />
           <p>
             This is a is your profile page, which contains your uploaded cat
             images, as well as your favorite cats.
@@ -113,7 +135,7 @@ export default class user extends Component {
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
           <p>You favorite chonks :</p>
           <ul className="favoriteCats">
-            <DisplayUserInfo />
+            {this.renderUserUploads()}
           </ul>
         </div>
       </section>

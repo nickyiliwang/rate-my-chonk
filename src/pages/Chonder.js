@@ -25,7 +25,7 @@ class chonder extends Component {
   };
 
   componentDidMount() {
-    const { allCatsArray } = this.props;
+    const { allCatsArray, allFavCatsArray } = this.props;
     const { catCount } = this.state;
     if (allCatsArray[0]) {
       this.setState(

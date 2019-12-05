@@ -12,21 +12,21 @@ const reducers = combineReducers({
   data: dataReducer
 });
 
+// store not containing dev tools
+const store = createStore(
+  reducers,
+  initialState,
+  compose(applyMiddleware(...middleware))
+);
+
 // // store containing redux devtools
 // const store = createStore(
 //   reducers,
 //   initialState,
-//   compose(applyMiddleware(...middleware))
+//   compose(
+//     applyMiddleware(...middleware),
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//   )
 // );
-
-// store containing redux devtools
-const store = createStore(
-  reducers,
-  initialState,
-  compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
 
 export default store;
