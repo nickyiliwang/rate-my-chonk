@@ -47,9 +47,11 @@ class chonder extends Component {
             const data = snapshot.val();
             if (data) {
               this.setState({
-                allFavCatsHandlesArray: [...this.state.allFavCatsHandlesArray, data.userFavorites]
+                allFavCatsHandlesArray: [
+                  ...this.state.allFavCatsHandlesArray,
+                  data.userFavorites
+                ]
               });
-              
             }
           });
         }

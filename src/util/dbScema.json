@@ -1,0 +1,44 @@
+{
+  "allCats" : {
+    "1wlg4yr55f141webp" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2F1wlg4yr55f141.webp?alt=media&token=5026331a-be4c-4bc1-9611-64f9b2dc9982"
+    },
+    "Screen Shot 2019-11-22 at 25720 PMpng" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/5QsznOQlJFhNMMmPHcU15bPvmrV2%2FScreen%20Shot%202019-11-22%20at%202.57.20%20PM.png?alt=media&token=58ad448a-03d3-4060-8640-4fe31bf012cc"
+    },
+    "bqlwgipmb4141webp" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fbqlwgipmb4141.webp?alt=media&token=3c776360-3b8d-4d50-88c1-25223e2ff7fe"
+    }
+  },
+  "cats" : {
+    "e0hubu" : {
+      "catArrForAverage" : [ 0, "26", 0, "38", "57", "58", "83", "57", "33", "100", "100", "0", "41", 0, "94", "64", "84", "70", "52", "4", "38", "54", "29", "57", "58" ],
+      "imageUrl" : "https://i.redd.it/etkju2c2uf041.jpg"
+    },
+    "e4w7d2" : {
+      "catArrForAverage" : [ 0, "26", 0, "38", "57", "58", "83", "57", "33", "100", "100", "0", "41", 0, "94", "64", "84", "70", "52", "4", "38", "54", "56", "100" ],
+      "imageUrl" : "https://i.redd.it/igi1ephml6241.jpg"
+    },
+    "q761u5enw0141webp" : {
+      "catArrForAverage" : [ "76", 0, 0, 0, 0, 0, 0, "100", "44", "57", "100", "81", "66", "100", "100", "60", "47", "63" ],
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fq761u5enw0141.webp?alt=media&token=fa101e02-875a-42da-9708-7121de16225f"
+    }
+  },
+  "users" : {
+    "NS3ptl7HjYhlysXYkybb8iFaMjC2" : {
+      "userUploads" : [ "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/NS3ptl7HjYhlysXYkybb8iFaMjC2%2Fcats-photoshop-funny-cakes1todough1-fb__700-png.jpg?alt=media&token=efcb656a-5c83-46ff-bc0d-34238732b703" ]
+    },
+    "enqB1u8yoQYdgMyZLncRn4FZt4n1" : {
+      "userFavorites" : [ {
+        "handle" : "q761u5enw0141webp",
+        "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fq761u5enw0141.webp?alt=media&token=fa101e02-875a-42da-9708-7121de16225f"
+      } ]
+    },
+    "iYqkedl6Z7ZmAIyG7DRbwRh2iUZ2" : {
+      "userFavorites" : [ {
+        "handle" : "dq6d5z",
+        "imageUrl" : "https://i.redd.it/dl9q2sn2n3w31.jpg"
+      } ]
+    }
+  }
+}
