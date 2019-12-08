@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { addUserFav } from "../Redux/actions/dataActions";
 // firebase
 import firebase from "../util/config";
-import "firebase/auth";
 import "firebase/database";
 
 const GetUserFavFromDb = props => {

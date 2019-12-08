@@ -1,15 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-// Component
-import DisplayUserInfo from "../DisplayUserInfo";
-
+import React, { Fragment } from "react";
 // firebase
 import * as firebase from "firebase/app";
 import "firebase/auth";
-
 // router
 import { useHistory } from "react-router-dom";
-
+import { NavLink } from "react-router-dom";
+// mui
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
@@ -17,7 +13,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import IconButton from "@material-ui/core/IconButton";
@@ -25,28 +20,52 @@ import Warning from "@material-ui/icons/Warning";
 import PermIdentity from "@material-ui/icons/PermIdentity";
 import HowToVote from "@material-ui/icons/HowToVote";
 import Ballot from "@material-ui/icons/Ballot";
+import Tooltip from "@material-ui/core/Tooltip";
+// Redux
+import { connect } from "react-redux";
 
-const useStyles = makeStyles({
+// mui
+const useStyles = makeStyles(theme => ({
   list: {
     width: 250
   },
   fullList: {
     width: "auto"
+  },
+  // these buttons will be aligned to right side of abbBar
+  toolbarButtonsRight: {
+    [theme.breakpoints.down("335")]: {
+      marginLeft: "0"
+    },
+    [theme.breakpoints.up("335")]: {
+      marginLeft: "auto"
+    }
+  },
+  listItemText: {
+    color: "#247ba0",
+    width: "200px"
   }
-});
+}));
+
+// router active style
 const activeStyleConfig = {
   fontWeight: "bold",
   borderBottom: "3px solid #ff1654"
 };
 
-export default function MuiDrawer() {
+function MuiDrawer(props) {
+  // handle sign-out
   let history = useHistory();
   const handleSignOut = () => {
     firebase.auth().signOut();
     history.push("/");
   };
 
+  // redux
+  const { authenticated } = props;
+
   const classes = useStyles();
+  // react hooks
   const [state, setState] = React.useState({
     right: false
   });
@@ -73,19 +92,28 @@ export default function MuiDrawer() {
         <ChevronRightIcon />
       </IconButton>
       <List>
-        <ListItem button key="Sign out">
-          <ListItemIcon>
-            <Warning />
-          </ListItemIcon>
-          <ListItemText primary="Sign out" onClick={handleSignOut} />
-        </ListItem>
+        {authenticated && (
+          <ListItem button key="Sign out">
+            <ListItemIcon>
+              <Warning />
+            </ListItemIcon>
+            <ListItemText
+              primary="Sign out"
+              onClick={handleSignOut}
+              className={classes.listItemText}
+            />
+          </ListItem>
+        )}
 
         <ListItem button key="User Profile">
           <ListItemIcon>
             <PermIdentity />
           </ListItemIcon>
           <NavLink activeStyle={activeStyleConfig} to="/user">
-            <ListItemText primary="User Profile" />
+            <ListItemText
+              primary="User Profile"
+              className={classes.listItemText}
+            />
           </NavLink>
         </ListItem>
 
@@ -94,7 +122,7 @@ export default function MuiDrawer() {
             <HowToVote />
           </ListItemIcon>
           <NavLink activeStyle={activeStyleConfig} to="/chonder">
-            <ListItemText primary="Chonder" />
+            <ListItemText primary="Chonder" className={classes.listItemText} />
           </NavLink>
         </ListItem>
 
@@ -103,7 +131,10 @@ export default function MuiDrawer() {
             <Ballot />
           </ListItemIcon>
           <NavLink activeStyle={activeStyleConfig} to="/hall">
-            <ListItemText primary="Hall of Chonks" />
+            <ListItemText
+              primary="Hall of Chonks"
+              className={classes.listItemText}
+            />
           </NavLink>
         </ListItem>
       </List>
@@ -111,10 +142,47 @@ export default function MuiDrawer() {
   );
 
   return (
-    <div>
-      <Button onClick={toggleDrawer("right", true)}>
-        <MenuIcon />
-      </Button>
+    <Fragment>
+      <Fragment>
+        {/* hall */}
+        <Tooltip title="User Profile">
+          <Button
+            component={NavLink}
+            to="/user"
+            className={classes.toolbarButtonsRight}
+          >
+            <PermIdentity />
+          </Button>
+        </Tooltip>
+        {/* hall */}
+        <Tooltip title="Hall of Chonks">
+          <Button component={NavLink} to="/hall">
+            <Ballot />
+          </Button>
+        </Tooltip>
+        {/* chonks */}
+        <Tooltip title="Chonder">
+          <Button component={NavLink} to="/chonder">
+            <HowToVote />
+          </Button>
+        </Tooltip>
+
+        {authenticated && (
+          <Tooltip title="Sign out">
+            <Button onClick={handleSignOut}>
+              <Warning />
+            </Button>
+          </Tooltip>
+        )}
+
+        {/* nav */}
+        <Tooltip title="Navigation">
+          <Button onClick={toggleDrawer("right", true)}>
+            <MenuIcon />
+          </Button>
+        </Tooltip>
+      </Fragment>
+
       <Drawer
         anchor="right"
         open={state.right}
@@ -122,6 +190,12 @@ export default function MuiDrawer() {
       >
         {sideList("right")}
       </Drawer>
-    </div>
+    </Fragment>
   );
 }
+
+const mapStateToProps = state => ({
+  authenticated: state.user.authenticated
+});
+
+export default connect(mapStateToProps)(MuiDrawer);

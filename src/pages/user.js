@@ -18,11 +18,12 @@ export default class user extends Component {
       .once("value", snapShot => {
         const data = snapShot.val();
         if (data) {
-          this.setState({
-            allUploads: data.userUploads,
-            allUserFavCatsArray: data.userFavorites
-          }, () => {
-          });
+          this.setState(
+            {
+              allUploads: data.userUploads,
+              allUserFavCatsArray: data.userFavorites
+            }
+          );
         }
       });
   }
@@ -38,7 +39,7 @@ export default class user extends Component {
     } else {
       return (
         <li>
-          <p>All your uploads chonks here.</p>
+          <p>All your uploaded chonks are here.</p>
         </li>
       );
     }
@@ -61,10 +62,7 @@ export default class user extends Component {
         </li>
       );
     }
-    
   };
-
-
 
   handleClick = e => {
     this.inputElement.click();
@@ -102,7 +100,7 @@ export default class user extends Component {
             images, as well as your favorite cats.
           </p>
           <div className="formUploadSection">
-            <p>Upload your cat image here:</p>
+            <p>Upload your cute chonks here:</p>
             <form
               onSubmit={e => e.preventDefault()}
               onChange={this.handleOnChange}
@@ -133,10 +131,8 @@ export default class user extends Component {
 
           <p>Chonks you uploaded :</p>
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
-          <p>You favorite chonks :</p>
-          <ul className="favoriteCats">
-            {this.renderUserFavorites()}
-          </ul>
+          <p>Your favorite chonks :</p>
+          <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
         </div>
       </section>
     );

@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 export class DisplayUserInfo extends Component {
   render() {
     return (
-      <div>
-        <p className="userDisplayName">
-          Hello {this.props.userName === null ? "Guest" : this.props.userName} !
-        </p>
-      </div>
+      <p className="userDisplayName">
+        Hello {this.props.userName === null ? "Guest" : this.props.userName} !
+      </p>
     );
   }
 }

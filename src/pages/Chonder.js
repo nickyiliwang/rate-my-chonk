@@ -11,8 +11,6 @@ import "firebase/auth";
 // redux
 import { connect } from "react-redux";
 
-import Input from '@material-ui/core/Input';
-
 // firebase database
 const db = firebase.database();
 
@@ -24,7 +22,7 @@ class chonder extends Component {
     catCount: 0,
     catRating: 0,
     catRatingsArr: [],
-    allFavCatsHandlesArray: []
+    allFavCatsArray: []
   };
 
   componentDidMount() {
@@ -38,7 +36,7 @@ class chonder extends Component {
           catUrl: allCatsArray[catCount].url
         },
         () => {
-          db.ref("cats/" + this.state.catHandle).on("value", snapshot => {
+          db.ref("cats/" + this.state.catHandle).once("value", snapshot => {
             const data = snapshot.val();
             if (data) {
               this.setState({
@@ -46,14 +44,11 @@ class chonder extends Component {
               });
             }
           });
-          db.ref("users/" + this.props.userId).on("value", snapshot => {
+          db.ref("users/" + this.props.userId).once("value", snapshot => {
             const data = snapshot.val();
             if (data) {
               this.setState({
-                allFavCatsHandlesArray: [
-                  ...this.state.allFavCatsHandlesArray,
-                  data.userFavorites
-                ]
+                allFavCatsArray: [...data.userFavorites]
               });
             }
           });
@@ -64,7 +59,7 @@ class chonder extends Component {
     if (allFavCatsArray[0]) {
       allFavCatsArray.forEach(cat => {
         this.setState({
-          allFavCatsHandlesArray: [...this.state.allFavCatsHandlesArray, cat]
+          allFavCatsArray: [...this.state.allFavCatsArray, cat]
         });
       });
     }
@@ -131,15 +126,16 @@ class chonder extends Component {
   };
   // user favorites the cat img
   handleFavoriteOnClick = () => {
-    if (
-      this.state.allFavCatsHandlesArray.indexOf(this.state.catHandle) === -1
-    ) {
+    const { catHandle, catUrl, allFavCatsArray } = this.state;
+    if (allFavCatsArray.indexOf(catHandle) === -1) {
+      console.log(allFavCatsArray);
+
       const catToFavorite = {
-        handle: this.state.catHandle,
-        imageUrl: this.state.catUrl
+        handle: catHandle,
+        imageUrl: catUrl
       };
       console.log(catToFavorite);
-      HandleUserFavorite(this.props.allFavCatsArray, catToFavorite);
+      HandleUserFavorite(allFavCatsArray, catToFavorite);
     }
   };
   // user rating input change
@@ -173,9 +169,7 @@ class chonder extends Component {
           </div>
           <div className="userControls">
             <button onClick={this.handleFavoriteOnClick}>
-              {this.state.allFavCatsHandlesArray.indexOf(
-                this.state.catHandle
-              ) === -1
+              {this.state.allFavCatsArray.indexOf(this.state.catHandle) === -1
                 ? "Favorite"
                 : "Un-Favorite"}
             </button>

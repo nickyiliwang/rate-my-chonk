@@ -1,23 +1,22 @@
 #chonder {
   font-weight: bold;
 }
+
 section.userProfile {
   height: 80vh;
-  padding-top: 20px;
   display: flex;
   text-align: center;
-}
+  p {
+    margin: 20px;
+    text-align: center;
+  }
 
-section.userProfile p {
-  margin: 20px;
-  text-align: center;
-}
-
-.userProfile .userDisplayName {
-  font-family: "Playfair Display", serif;
-  font-weight: bold;
-  font-size: 2rem;
-  margin: 20px;
+  .userDisplayName {
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 20px;
+  }
 }
 
 #mediaCapture {
@@ -51,9 +50,3 @@ ul.favoriteCats {
 }
 
 /* end of uploading */
-
-@media only screen and (max-width: 425px) {
-  ul.uploadedCats {
-    overflow: scroll;
-  }
-}
