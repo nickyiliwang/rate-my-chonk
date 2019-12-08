@@ -1,0 +1,21 @@
+// variables
+
+// font colours
+$primaryDarkBlue: #247ba0;
+$primaryLightGreen: #70c1b3;
+$primaryLighterGreen: #b2dbbf;
+$primaryAccentRed: #ff1654;
+$primaryBlack: #0f0f0f;
+$primaryWhite: #ffffff;
+
+// background colors
+$primaryBackgroundYellow: #f3ffbd;
+
+// mixins
+
+// Centering
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

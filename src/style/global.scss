@@ -1,6 +1,6 @@
 body {
   font-size: 20px;
-  background: #f3ffbd;
+  background: $primaryBackgroundYellow;
   font-family: "Cabin", sans-serif;
 }
 
@@ -33,19 +33,19 @@ button {
   font-family: "Cabin", sans-serif;
   font-weight: 700;
   border: none;
-  background: #b2dbbf;
+  background: $primaryLighterGreen;
   display: inline-block;
   padding: 10px 20px;
   margin: 0 10px;
   border-radius: 5px;
   box-sizing: border-box;
   text-decoration: none;
-  color: #247ba0;
+  color: $primaryDarkBlue;
   text-align: center;
   transition: all 0.2s;
 }
 
 button:hover {
-  color: #f3ffbd;
-  background-color: #247ba0;
+  color: $primaryBackgroundYellow;
+  background: $primaryDarkBlue;
 }
