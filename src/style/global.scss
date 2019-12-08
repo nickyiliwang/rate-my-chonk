@@ -1,0 +1,57 @@
+body {
+  font-size: 20px;
+  background: #f3ffbd;
+  font-family: "Cabin", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+p {
+  font-family: "Cabin", sans-serif;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* button css */
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  font-family: "Cabin", sans-serif;
+  font-weight: 700;
+  border: none;
+  background: #b2dbbf;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #247ba0;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  color: #f3ffbd;
+  background-color: #247ba0;
+}

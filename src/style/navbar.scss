@@ -1,0 +1,84 @@
+nav a {
+  color: black;
+  padding: 5px;
+  margin: 10px;
+  transition: all 0.4s linear;
+}
+
+nav a:hover {
+  color: #247ba0;
+}
+
+.signOut {
+  padding: 5px;
+  margin: 10px;
+}
+
+/* Nav */
+nav {
+  z-index: 9001;
+}
+nav.mainNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 10px 0;
+}
+
+.mainNav li {
+  float: right;
+  margin: 10px;
+}
+
+.mainNav li.titleIcon {
+  float: left;
+  margin: 0, 30px;
+}
+/* end of nav */
+
+// responsive
+@media only screen and (max-width: 720px) {
+  .mainNav ul :not(h1, p) {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainNav li {
+    float: right;
+    margin: 5px;
+  }
+
+  .mainNav p {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+}
+
+@media only screen and (max-width: 520px) {
+}
+
+@media only screen and (max-width: 425px) {
+  .mainNav ul :not(h1, p) {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainNav li {
+    float: right;
+    margin: 10px 5px;
+  }
+
+  .mainNav p {
+    display: none;
+  }
+}

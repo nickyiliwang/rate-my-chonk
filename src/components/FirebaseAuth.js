@@ -22,7 +22,6 @@ const uiConfig = {
 };
 
 class FirebaseAuth extends Component {
-
   componentDidMount() {
     firebase.auth().onAuthStateChanged(
       user => {

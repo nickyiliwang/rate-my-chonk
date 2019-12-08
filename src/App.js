@@ -3,8 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./util/PrivateRoute";
 // css
-import "./reset.css";
-import "./App.css";
+import "./style/styles.scss";
 // Components
 import NavBar from "./components/navbar/Navbar";
 // pages

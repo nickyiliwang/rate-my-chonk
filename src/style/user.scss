@@ -1,0 +1,63 @@
+/* user page */
+/* uploading */
+#chonder {
+  font-weight: bold;
+}
+section.userProfile {
+  height: 80vh;
+  padding-top: 20px;
+  display: flex;
+  text-align: center;
+}
+
+section.userProfile p {
+  margin: 20px;
+  text-align: center;
+}
+
+.userProfile .userDisplayName {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 20px;
+}
+
+#mediaCapture {
+  display: none;
+}
+
+#image-form {
+  width: auto;
+  padding: 0 6px 0 1px;
+  min-width: 0;
+}
+
+ul.uploadedCats,
+ul.favoriteCats {
+  display: flex;
+  border: 2px dotted #b2dbbf;
+  padding: 20px;
+}
+.uploadedCats img,
+.favoriteCats img {
+  height: 100%;
+  width: auto;
+}
+
+.uploadedCats li,
+.favoriteCats li {
+  margin-right: 10px;
+  height: 15vh;
+  width: auto;
+  margin: 10px;
+}
+
+/* end of uploading */
+
+
+@media only screen and (max-width: 425px) {
+
+  ul.uploadedCats {
+    overflow: scroll;
+  }
+}

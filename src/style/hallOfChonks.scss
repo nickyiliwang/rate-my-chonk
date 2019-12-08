@@ -1,0 +1,79 @@
+/* hall of chonks */
+/* giving out metals */
+ul.hallListOfCats li {
+  position: relative;
+}
+
+ul.hallListOfCats li:nth-of-type(1)::after,
+ul.hallListOfCats li:nth-of-type(2)::after,
+ul.hallListOfCats li:nth-of-type(3)::after {
+  background-repeat: no-repeat;
+  position: absolute;
+  top: -30px;
+  right: -50px;
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+  background-size: 80px auto;
+  z-index: 3;
+  content: "";
+}
+
+ul.hallListOfCats li:nth-of-type(1)::after {
+  background-image: url(../assets/Gold.png);
+}
+
+ul.hallListOfCats li:nth-of-type(2)::after {
+  background-image: url(../assets/silver.png);
+}
+
+ul.hallListOfCats li:nth-of-type(3)::after {
+  background-image: url(../assets/bronze.png);
+}
+
+.hallCatImageContainer img {
+  height: 90%;
+  width: auto;
+  object-fit: cover;
+}
+
+.hallCatImageContainer img {
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.hallCatImageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 20%;
+  height: 300px;
+  margin: 20px;
+  background: #b2dbbf;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.hallListOfCats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+}
+
+/* responsive */
+@media only screen and (max-width: 900px) {
+  .hallCatImageContainer {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+}
+
+@media only screen and (max-width: 425px) {
+  .hallCatImageContainer {
+    width: 100%;
+  }
+}

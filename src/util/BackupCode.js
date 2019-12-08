@@ -155,20 +155,23 @@ firebase
 // generating good db
 
 // firebase multi-create
-const userId = 1234
-const newEventKey = 3214
-const photos = firebase.database().ref('photos');
-const newPhotoKey = photos.push().key
+const userId = 1234;
+const newEventKey = 3214;
+const photos = firebase.database().ref("photos");
+const newPhotoKey = photos.push().key;
 const newPhoto = {};
-newPhoto[`/photos/${newEventKey}`] = { 
-  url: 'http://firebasestorage.com/image1', 
+newPhoto[`/photos/${newEventKey}`] = {
+  url: "http://firebasestorage.com/image1",
   likes: 0
 };
-newPhoto[`/userPhotos/${userId}/${newPhotoKey}`] = { 
-  url: 'http://firebasestorage.com/image1', 
-  likes: 0 
+newPhoto[`/userPhotos/${userId}/${newPhotoKey}`] = {
+  url: "http://firebasestorage.com/image1",
+  likes: 0
 };
-firebase.database().ref().update(newPhoto);
+firebase
+  .database()
+  .ref()
+  .update(newPhoto);
 // end of firebase multi-create
 
 // firebase multi-update
@@ -206,4 +209,3 @@ catObjForMultiUpdate[`cats/${catHandle}`] = {
   // you can't upload empty arrays learned that the hard way
   catRatingsArr: ["0"]
 };
-
