@@ -10,6 +10,9 @@ import firebase from "../util/config";
 import "firebase/auth";
 // redux
 import { connect } from "react-redux";
+
+import Input from '@material-ui/core/Input';
+
 // firebase database
 const db = firebase.database();
 
@@ -157,6 +160,7 @@ class chonder extends Component {
             <div className="chonkScaleImageContainer">
               <img className="chonkScale" src={scale} alt="chonk scale" />
             </div>
+
             <input
               className="ratingSlider"
               type="range"

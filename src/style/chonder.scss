@@ -1,14 +1,11 @@
-.chonder .flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.chonderCatImageContainer img {
-  height: 100%;
-  width: auto;
-  border-radius: 10px;
+.chonder {
+  margin-top: 10px;
+  .flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .chonderCatImageContainer {
@@ -18,6 +15,12 @@
   justify-content: center;
   height: 50vh;
   border-radius: 10px;
+
+  img {
+    height: 100%;
+    width: auto;
+    border-radius: 10px;
+  }
 }
 
 .chonkScaleImageContainer img {
@@ -121,7 +124,6 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
   background: #f3ffbd;
 }
 /* end of input */
-/* end of chonders */
 
 @media only screen and (max-width: 720px) {
   .userInput {
@@ -131,6 +133,18 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
 }
 
 @media only screen and (max-width: 425px) {
+  .chonderCatImageContainer {
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 10px;
+    }
+  }
+
+  .chonderCatImageContainer {
+    height: 35vh;
+  }
+
   .userInput {
     width: 100%;
     margin: 20px;

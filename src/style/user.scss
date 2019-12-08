@@ -1,5 +1,3 @@
-/* user page */
-/* uploading */
 #chonder {
   font-weight: bold;
 }
@@ -37,26 +35,24 @@ ul.favoriteCats {
   display: flex;
   border: 2px dotted #b2dbbf;
   padding: 20px;
-}
-.uploadedCats img,
-.favoriteCats img {
-  height: 100%;
-  width: auto;
-}
+  overflow: scroll;
 
-.uploadedCats li,
-.favoriteCats li {
-  margin-right: 10px;
-  height: 15vh;
-  width: auto;
-  margin: 10px;
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+  li {
+    margin-right: 10px;
+    height: 15vh;
+    width: auto;
+    margin: 10px;
+  }
 }
 
 /* end of uploading */
 
-
 @media only screen and (max-width: 425px) {
-
   ul.uploadedCats {
     overflow: scroll;
   }
