@@ -209,3 +209,78 @@ catObjForMultiUpdate[`cats/${catHandle}`] = {
   // you can't upload empty arrays learned that the hard way
   catRatingsArr: ["0"]
 };
+
+// // mui menu
+// <div>
+//   <Button
+//     aria-controls="simple-menu"
+//     aria-haspopup="true"
+//     onClick={handleClick}
+//   >
+//     Open Menu
+//   </Button>
+//   <Menu
+//     id="simple-menu"
+//     anchorEl={anchorEl}
+//     keepMounted
+//     open={Boolean(anchorEl)}
+//     onClose={handleClose}
+//   >
+//     <MenuItem onClick={handleClose}>Profile</MenuItem>
+//     <MenuItem onClick={handleClose}>My account</MenuItem>
+//     <MenuItem onClick={handleClose}>Logout</MenuItem>
+//   </Menu>
+// </div>;
+
+// navbar
+<div className="mainNav">
+  {authenticated ? (
+    <nav className="mainNav">
+      <ul className="clearfix">
+        <li className="titleIcon">
+          <h1 onClick={() => window.location.reload(false)}>Rate My Chonk</h1>
+        </li>
+        <li>
+          <HandleSignOut />
+        </li>
+
+        <li>
+          <NavLink activeStyle={activeStyleConfig} to="/user">
+            User Profile
+          </NavLink>
+        </li>
+        
+        <li className="chonderNav">
+          <NavLink activeStyle={activeStyleConfig} to="/chonder">
+            Chonder
+          </NavLink>
+        </li>
+        <li className="hallOfChonksNav">
+          <NavLink activeStyle={activeStyleConfig} to="/hall">
+            Hall of Chonks
+          </NavLink>
+        </li>
+        <li>
+          <DisplayUserInfo />
+        </li>
+      </ul>
+    </nav>
+  ) : (
+    <nav className="mainNav">
+      <ul>
+        <li className="titleIcon">
+          <h1 onClick={() => window.location.reload(false)}>Rate My Chonk</h1>
+        </li>
+        <li>
+          <NavLink to="/">Login</NavLink>
+        </li>
+        <li className="chonderNav">
+          <NavLink to="/chonder">Chonder</NavLink>
+        </li>
+        <li className="hallOfChonksNav">
+          <NavLink to="/hall">Hall of Chonks</NavLink>
+        </li>
+      </ul>
+    </nav>
+  )}
+</div>;
