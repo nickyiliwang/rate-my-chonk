@@ -5,3 +5,4 @@ export const SET_USER = "SET_USER";
 export const SET_FAV = "SET_FAV"
 // Data Types
 export const SET_CHONKS = "SET_CHONKS";
+export const REMOVE_CHONKS = "REMOVE_CHONKS";

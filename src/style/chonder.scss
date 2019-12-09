@@ -30,7 +30,7 @@
 
 .userInput {
   width: 40%;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 /* ranged input css with browser support */
@@ -133,7 +133,13 @@ input[type="range"].ratingSlider:focus::-ms-fill-upper {
 
 @media only screen and (max-width: 720px) {
   .userInput {
-    width: 50%;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .userInput {
+    width: 70%;
   }
 }
 

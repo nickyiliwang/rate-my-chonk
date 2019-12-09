@@ -1,13 +1,16 @@
 import React from "react";
-import SimpleExpansionPanel from "./ExpansionPanel";
+import ExpansionPanel from "./ExpansionPanel";
 
-export default function DisplaySingleChonk({ catUrl }) {
+export default function DisplaySingleChonk({
+  catUrl,
+  handleNewGetCatsFromReddit
+}) {
   return (
     <div className="">
       <div className="chonderCatImageContainer">
         <img src={catUrl} alt="cat" />
       </div>
-      <SimpleExpansionPanel />
+      <ExpansionPanel handleNewGetCatsFromReddit={handleNewGetCatsFromReddit} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { SET_CHONKS, SET_FAV } from "../types";
+import { SET_CHONKS, SET_FAV, REMOVE_CHONKS } from "../types";
 
 const initialState = {
   chonks: [],
@@ -11,6 +11,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         chonks: [...state.chonks, ...action.payload]
+      };
+
+    case REMOVE_CHONKS:
+      return {
+        ...state,
+        chonks: []
       };
 
     case SET_FAV:

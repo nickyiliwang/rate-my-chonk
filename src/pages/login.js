@@ -14,7 +14,7 @@ class login extends Component {
   render() {
     return (
       <div id="home" className="login">
-        <GetImgFromReddit />
+        <GetImgFromReddit timeQuery="all" />
         <GetImgFromStorage />
         <GetUserFavFromDb />
         <h2 className="welcomeText">Welcome to Rate my Chonk !</h2>

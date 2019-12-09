@@ -10,7 +10,7 @@ import firebase from "../util/config";
 import "firebase/auth";
 // redux
 import { connect } from "react-redux";
-
+import GetImgFromReddit from "../components/GetImgFromReddit";
 // firebase database
 const db = firebase.database();
 
@@ -22,7 +22,8 @@ class chonder extends Component {
     catCount: 0,
     catRating: 0,
     catRatingsArr: [],
-    allFavCatsArray: []
+    allFavCatsArray: [],
+    timeQuery: "all"
   };
 
   componentDidMount() {
@@ -78,6 +79,16 @@ class chonder extends Component {
         }
       });
     }
+
+    if (prevProps.allCatsArray !== this.props.allCatsArray) {
+      if (this.props.allCatsArray[0]) {
+        this.setState({
+          catCount: 0,
+          catHandle: this.props.allCatsArray[0].id,
+          catUrl: this.props.allCatsArray[0].url
+        });
+      }
+    }
   }
 
   incrementImgCounter = () => {
@@ -97,6 +108,12 @@ class chonder extends Component {
         catUrl: allCatsArray[0].url
       });
     }
+  };
+
+  handleNewGetCatsFromReddit = time => {
+    this.setState({
+      timeQuery: time
+    });
   };
 
   handleSkipOnClick = () => {
@@ -128,13 +145,10 @@ class chonder extends Component {
   handleFavoriteOnClick = () => {
     const { catHandle, catUrl, allFavCatsArray } = this.state;
     if (allFavCatsArray.indexOf(catHandle) === -1) {
-      console.log(allFavCatsArray);
-
       const catToFavorite = {
         handle: catHandle,
         imageUrl: catUrl
       };
-      console.log(catToFavorite);
       HandleUserFavorite(allFavCatsArray, catToFavorite);
     }
   };
@@ -149,8 +163,12 @@ class chonder extends Component {
     return (
       <section className="chonder">
         <div className="wrapper flexContainer">
+          <GetImgFromReddit timeQuery={this.state.timeQuery} />
           {this.state.catUrl && (
-            <DisplaySingleChonk catUrl={this.state.catUrl} />
+            <DisplaySingleChonk
+              handleNewGetCatsFromReddit={this.handleNewGetCatsFromReddit}
+              catUrl={this.state.catUrl}
+            />
           )}
           <div className="userInput">
             <div className="chonkScaleImageContainer">
