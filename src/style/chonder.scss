@@ -10,7 +10,7 @@
 
 .chonderCatImageContainer {
   padding: 10px;
-  background: $primaryLighterGreen;
+  background: $primaryBackgroundDarkerGrey;
   display: flex;
   justify-content: center;
   height: 50vh;
@@ -47,9 +47,9 @@ input[type="range"].ratingSlider::-webkit-slider-runnable-track {
   height: 13.3px;
   cursor: pointer;
   box-shadow: 1.4px 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
-  background: $primaryLightGreen;
+  background: $primaryDarkBrown;
   border-radius: 25px;
-  border: 2.3px solid $primaryBackgroundYellow;
+  border: 2.3px solid $primaryBackgroundGrey;
 }
 /* webkit */
 input[type="range"].ratingSlider::-webkit-slider-thumb {
@@ -58,7 +58,7 @@ input[type="range"].ratingSlider::-webkit-slider-thumb {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background: $primaryLighterGreen;
+  background: $primaryBackgroundDarkerGrey;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -10.65px;
@@ -72,9 +72,9 @@ input[type="range"].ratingSlider::-moz-range-track {
   height: 13.3px;
   cursor: pointer;
   box-shadow: 1.4px 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
-  background: $primaryLightGreen;
+  background: $primaryDarkBrown;
   border-radius: 25px;
-  border: 2.3px solid $primaryBackgroundYellow;
+  border: 2.3px solid $primaryBackgroundGrey;
 }
 
 input[type="range"].ratingSlider::-moz-range-thumb {
@@ -83,7 +83,7 @@ input[type="range"].ratingSlider::-moz-range-thumb {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background: $primaryLighterGreen;
+  background: $primaryBackgroundDarkerGrey;
   cursor: pointer;
 }
 /* others */
@@ -96,14 +96,14 @@ input[type="range"].ratingSlider::-ms-track {
   color: transparent;
 }
 input[type="range"].ratingSlider::-ms-fill-lower {
-  background: $primaryBackgroundYellow;
-  border: 2.3px solid$primaryBackgroundYellow;
+  background: $primaryBackgroundGrey;
+  border: 2.3px solid$primaryBackgroundGrey;
   border-radius: 50px;
   box-shadow: 1b2dbbf 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
 }
 input[type="range"].ratingSlider::-ms-fill-upper {
-  background: $primaryBackgroundYellow;
-  border: 2.3px solid$primaryBackgroundYellow;
+  background: $primaryBackgroundGrey;
+  border: 2.3px solid$primaryBackgroundGrey;
   border-radius: 50px;
   box-shadow: 1b2dbbf 1.4px 1.7px #ff1654, 0px 0px 1.4px #ff1654;
 }
@@ -113,15 +113,15 @@ input[type="range"].ratingSlider::-ms-thumb {
   height: 30px;
   width: 30px;
   border-radius: 50px;
-  background: $primaryLighterGreen;
+  background: $primaryBackgroundDarkerGrey;
   cursor: pointer;
   height: 13.3px;
 }
 input[type="range"].ratingSlider:focus::-ms-fill-lower {
-  background: $primaryBackgroundYellow;
+  background: $primaryBackgroundGrey;
 }
 input[type="range"].ratingSlider:focus::-ms-fill-upper {
-  background: $primaryBackgroundYellow;
+  background: $primaryBackgroundGrey;
 }
 /* end of input */
 

@@ -32,7 +32,7 @@ section.userProfile {
 ul.uploadedCats,
 ul.favoriteCats {
   display: flex;
-  border: 2px dotted $primaryLighterGreen;
+  border: 2px dotted $primaryBackgroundDarkerGrey;
   padding: 20px;
   overflow: scroll;
 

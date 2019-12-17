@@ -16,7 +16,7 @@ class hallOfChonks extends Component {
       const data = snapshot.val();
       if (data) {
         for (const key in data) {
-          if (data.hasOwnProperty(key)) {
+          if (data.hasOwnProperty(key) && data[key] !== '') {
             const cat = data[key];
             cat.catAverageScore = null;
             this.setState({
