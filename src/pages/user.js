@@ -94,8 +94,8 @@ export default class user extends Component {
         <div className="wrapper">
           <DisplayUserInfo />
           <p>
-            This is a is your profile page, which contains your uploaded cat
-            images, as well as your favorite cats. Navigate to the chonder page
+            This is a is your profile page, where you can upload your cat
+            images, and contain your favorite chonks. Navigate to the chonder page
             on the top right to browse, rate, and favorite chonks!
           </p>
           <div className="formUploadSection">
