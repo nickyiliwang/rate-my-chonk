@@ -44,6 +44,15 @@ export default class App extends Component {
             >
               Nick Wang
             </a>
+            ,{" "}
+            <a
+              id="externalLink"
+              href="https://pets.webmd.com/cats/guide/fat-cats-getting-tubby-tabby-back-into-shape#1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Need help?
+            </a>
           </p>
         </footer>
       </Router>

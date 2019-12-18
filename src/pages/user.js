@@ -18,12 +18,10 @@ export default class user extends Component {
       .once("value", snapShot => {
         const data = snapShot.val();
         if (data) {
-          this.setState(
-            {
-              allUploads: data.userUploads,
-              allUserFavCatsArray: data.userFavorites
-            }
-          );
+          this.setState({
+            allUploads: data.userUploads,
+            allUserFavCatsArray: data.userFavorites
+          });
         }
       });
   }
@@ -97,7 +95,8 @@ export default class user extends Component {
           <DisplayUserInfo />
           <p>
             This is a is your profile page, which contains your uploaded cat
-            images, as well as your favorite cats.
+            images, as well as your favorite cats. Navigate to the chonder page
+            on the top right to browse, rate, and favorite chonks!
           </p>
           <div className="formUploadSection">
             <p>Upload your cute chonks here:</p>
