@@ -16,7 +16,7 @@ class hallOfChonks extends Component {
       const data = snapshot.val();
       if (data) {
         for (const key in data) {
-          if (data.hasOwnProperty(key) && data[key] !== '') {
+          if (data.hasOwnProperty(key) && data[key] !== "") {
             const cat = data[key];
             cat.catAverageScore = null;
             this.setState({
@@ -24,10 +24,20 @@ class hallOfChonks extends Component {
             });
           }
         }
+
         this.generateObjectForSorting(this.state.allCatsArray);
       }
     });
   }
+
+  calculateAverage = arr => {
+    if (arr) {
+      const sum = arr.reduce((acc, ini) => parseInt(acc) + parseInt(ini), 0);
+      return sum / arr.length;
+    } else {
+      return 0;
+    }
+  };
 
   generateObjectForSorting = arrayToSort => {
     for (const key in arrayToSort) {
@@ -43,28 +53,20 @@ class hallOfChonks extends Component {
     });
   };
 
-  calculateAverage = arr => {
-    if (arr) {
-      const sum = arr.reduce((acc, ini) => parseInt(acc) + parseInt(ini), 0);
-      return sum / arr.length;
-    } else {
-      return 0;
-    }
-  };
-
   sortCatsObjectByHighScore = objToSort => {
     return objToSort.sort((a, b) =>
       a.catAverageScore < b.catAverageScore ? 1 : -1
     );
   };
 
+  // rendering helper fn
   renderAllCats = sortedCatArr => {
     return sortedCatArr.map((cat, i) => {
       const catAverageScore = Math.round(cat.catAverageScore);
       const catSrc = cat.imageUrl;
 
       return (
-        <li key={i} className="hallCatImageContainer">
+        <li key={i} class="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
           <p>Average Chonk Score: {catAverageScore}</p>
         </li>
@@ -76,6 +78,7 @@ class hallOfChonks extends Component {
     return (
       <section className="hall">
         {this.state.sortedCatArrToRender === null ? (
+          // change to to loading circle/skaleton
           <h2>Loading ... </h2>
         ) : (
           <ul className="hallListOfCats">
