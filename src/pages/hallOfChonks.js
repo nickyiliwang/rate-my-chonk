@@ -1,14 +1,24 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
+// Mui
+import LinearProgress from "@material-ui/core/LinearProgress";
+// infinite scroll
+import InfiniteScroll from "react-infinite-scroll-component";
+// scroll to top
+import ScrollUpButton from "react-scroll-up-button";
 // database
 const db = firebase.database();
 
-class hallOfChonks extends Component {
+class hallOfChonks extends PureComponent {
   state = {
     allCatsArray: [],
-    sortedCatArrToRender: null
+    sortedCatArrToRender: null,
+    chunkedArrays: null,
+    pages: null,
+    pageNumber: 0,
+    hasMore: true
   };
 
   componentDidMount() {
@@ -24,7 +34,6 @@ class hallOfChonks extends Component {
             });
           }
         }
-
         this.generateObjectForSorting(this.state.allCatsArray);
       }
     });
@@ -39,6 +48,20 @@ class hallOfChonks extends Component {
     }
   };
 
+  sortCatsObjectByHighScore = objToSort => {
+    return objToSort.sort((a, b) =>
+      a.catAverageScore < b.catAverageScore ? 1 : -1
+    );
+  };
+
+  chunkArray = (myArray, chunk_size) => {
+    let results = [];
+    while (myArray.length) {
+      results.push(myArray.splice(0, chunk_size));
+    }
+    return results;
+  };
+
   generateObjectForSorting = arrayToSort => {
     for (const key in arrayToSort) {
       if (arrayToSort.hasOwnProperty(key)) {
@@ -48,15 +71,37 @@ class hallOfChonks extends Component {
     }
 
     const sortedAllCatsArray = this.sortCatsObjectByHighScore(arrayToSort);
+
+    // here we want to separate them into pages
+
+    const chunkedArrays = this.chunkArray(sortedAllCatsArray, 16);
+
     this.setState({
-      sortedCatArrToRender: sortedAllCatsArray
+      pages: chunkedArrays.length,
+      chunkedArrays,
+      sortedCatArrToRender: chunkedArrays[0]
     });
   };
 
-  sortCatsObjectByHighScore = objToSort => {
-    return objToSort.sort((a, b) =>
-      a.catAverageScore < b.catAverageScore ? 1 : -1
-    );
+  fetchMoreData = () => {
+    if (this.state.pages - 1 !== this.state.pageNumber) {
+      this.setState(
+        {
+          pageNumber: this.state.pageNumber + 1
+        },
+        () => {
+          this.setState({
+            sortedCatArrToRender: this.state.sortedCatArrToRender.concat(
+              this.state.chunkedArrays[this.state.pageNumber]
+            )
+          });
+        }
+      );
+    } else {
+      this.setState({
+        hasMore: false
+      });
+    }
   };
 
   // rendering helper fn
@@ -64,12 +109,11 @@ class hallOfChonks extends Component {
     return sortedCatArr.map((cat, i) => {
       const catAverageScore = Math.round(cat.catAverageScore);
       const catSrc = cat.imageUrl;
-
       return (
-        <li key={i} class="hallCatImageContainer">
+        <div key={i} className="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
           <p>Average Chonk Score: {catAverageScore}</p>
-        </li>
+        </div>
       );
     });
   };
@@ -78,13 +122,22 @@ class hallOfChonks extends Component {
     return (
       <section className="hall">
         {this.state.sortedCatArrToRender === null ? (
-          // change to to loading circle/skaleton
-          <h2>Loading ... </h2>
+          <LinearProgress
+            style={{ position: "absolute", top: "64px", left: "0", right: "0" }}
+            color="secondary"
+          />
         ) : (
-          <ul className="hallListOfCats">
+          <InfiniteScroll
+            className="hallListOfCats"
+            scrollThreshold={0.7}
+            dataLength={this.state.sortedCatArrToRender.length}
+            next={this.fetchMoreData}
+            hasMore={this.state.hasMore}
+          >
             {this.renderAllCats(this.state.sortedCatArrToRender)}
-          </ul>
+          </InfiniteScroll>
         )}
+        <ScrollUpButton style={{ bottom: "40px" }} />
       </section>
     );
   }
