@@ -137,7 +137,7 @@ class hallOfChonks extends PureComponent {
             {this.renderAllCats(this.state.sortedCatArrToRender)}
           </InfiniteScroll>
         )}
-        <ScrollUpButton style={{ bottom: "40px" }} />
+        <ScrollUpButton style={{ bottom: "40px" }} AnimationDuration={0} />
       </section>
     );
   }
