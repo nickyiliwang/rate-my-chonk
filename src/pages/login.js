@@ -5,7 +5,7 @@ import FirebaseAuth from "../components/FirebaseAuth";
 import GetImgFromReddit from "../components/GetImgFromReddit";
 import GetImgFromStorage from "../components/GetImgFromStorage";
 import GetUserFavFromDb from "../components/GetUserFavFromDb";
-import TypedReactDemo from "../components/Typed";
+import ReactTypedLib from "../components/Typed";
 
 // redux
 import { connect } from "react-redux";
@@ -18,7 +18,7 @@ class login extends Component {
         <GetImgFromStorage />
         <GetUserFavFromDb />
         <h2 className="welcomeText">Welcome to Rate my Chonk !</h2>
-        <TypedReactDemo
+        <ReactTypedLib
           strings={[
             "Cute chubby cats",
             "Rate, favorite, browse",

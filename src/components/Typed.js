@@ -1,7 +1,7 @@
 import React from "react";
 import Typed from "typed.js";
 
-export default class TypedReactDemo extends React.Component {
+export default class ReactTypedLib extends React.Component {
   componentDidMount() {
     // If you want to pass more options as props, simply add
     // your desired props to this destructuring assignment.

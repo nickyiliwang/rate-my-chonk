@@ -68,6 +68,7 @@ export default class user extends Component {
 
   // Returns true if a user is signed-in.
   isUserSignedIn() {
+    // Converts Object to boolean. If it was falsey (e.g. 0, null, undefined, etc.), it will be false, otherwise, true.
     return !!firebase.auth().currentUser;
   }
 
@@ -95,8 +96,8 @@ export default class user extends Component {
           <DisplayUserInfo />
           <p>
             This is a is your profile page, where you can upload your cat
-            images, and contain your favorite chonks. Navigate to the chonder page
-            on the top right to browse, rate, and favorite chonks!
+            images, and contain your favorite chonks. Navigate to the chonder
+            page on the top right to browse, rate, and favorite chonks!
           </p>
           <div className="formUploadSection">
             <p>Upload your cute chonks here:</p>
