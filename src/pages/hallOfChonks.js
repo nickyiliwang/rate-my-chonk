@@ -109,6 +109,7 @@ class hallOfChonks extends PureComponent {
     return sortedCatArr.map((cat, i) => {
       const catAverageScore = Math.round(cat.catAverageScore);
       const catSrc = cat.imageUrl;
+      console.log(cat)
       return (
         <div key={i} className="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
