@@ -22,11 +22,11 @@ export default class chonkProfile extends Component {
             if (data) {
               const hasProperty = data.userFavorites.find(
                 fav => fav.handle === urlHandle
-              ).imageUrl;
+              );
 
-              if (hasProperty) {
+              if (hasProperty !== undefined) {
                 this.setState({
-                  imageSrc: hasProperty
+                  imageSrc: hasProperty.imageUrl
                 });
               } else {
                 const tokenID = `${this.props.match.url.split("chonk/")[1]}${
