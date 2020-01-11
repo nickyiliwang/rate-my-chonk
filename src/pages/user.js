@@ -3,6 +3,7 @@ import DisplayUserInfo from "../components/DisplayUserInfo";
 import { UploadImageToStorage } from "../components/UploadImageToStorage";
 import firebase from "../util/config";
 import "firebase/auth";
+import { Router, Link } from "react-router-dom";
 
 export default class user extends Component {
   state = {
@@ -25,12 +26,15 @@ export default class user extends Component {
         }
       });
   }
+
   renderUserUploads = () => {
     if (this.state.allUploads) {
       return this.state.allUploads.map(url => {
         return (
           <li className="userUploadedImages" key={url}>
-            <img src={url} alt="user uploaded images" />
+            <Link to={`chonk/${url.split("ken=")[1]}`}>
+              <img src={url} alt="user uploaded images" />
+            </Link>
           </li>
         );
       });
@@ -96,8 +100,8 @@ export default class user extends Component {
           <DisplayUserInfo />
           <p>
             This is a is your profile page, where you can upload your cat
-            images, and contain your favorite chonks. Navigate to the chonder
-            page on the top right to browse, rate, and favorite chonks!
+            images, and save your favorite chonks. Navigate to the chonder page
+            on the top right to browse, rate, and favorite chonks!
           </p>
           <div className="formUploadSection">
             <p>Upload your cute chonks here:</p>
@@ -130,9 +134,14 @@ export default class user extends Component {
           </div>
 
           <p>Chonks you uploaded :</p>
+          {/* <Router> */}
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
           <p>Your favorite chonks :</p>
           <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
+          {/* <Switch>
+            <Route path="/:id" children={<Child />} />
+          </Switch> */}
+          {/* </Router> */}
         </div>
       </section>
     );

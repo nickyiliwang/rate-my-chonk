@@ -37,9 +37,9 @@ function SimpleExpansionPanel(props) {
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          {["day", "week", "month", "year", "all"].map(time => {
+          {["day", "week", "month", "year", "all"].map((time, index) => {
             return (
-              <Tooltip title={`Top r/Chonks from this ${time}`}>
+              <Tooltip key={index} title={`Top r/Chonks from this ${time}`}>
                 <Button onClick={() => props.handleNewGetCatsFromReddit(time)}>
                   <Typography>{time}</Typography>
                 </Button>
