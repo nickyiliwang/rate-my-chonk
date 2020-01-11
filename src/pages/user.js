@@ -3,7 +3,7 @@ import DisplayUserInfo from "../components/DisplayUserInfo";
 import { UploadImageToStorage } from "../components/UploadImageToStorage";
 import firebase from "../util/config";
 import "firebase/auth";
-import { Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class user extends Component {
   state = {
@@ -32,7 +32,7 @@ export default class user extends Component {
       return this.state.allUploads.map(url => {
         return (
           <li className="userUploadedImages" key={url}>
-            <Link to={`chonk/${url.split("ken=")[1]}`}>
+            <Link to={`chonk/${url.split("com/o/")[1]}`}>
               <img src={url} alt="user uploaded images" />
             </Link>
           </li>
@@ -51,9 +51,12 @@ export default class user extends Component {
     if (this.state.allUserFavCatsArray) {
       return this.state.allUserFavCatsArray.map((cat, i) => {
         const url = cat.imageUrl;
+        const catHandle = cat.handle;
         return (
           <li className="userFavoriteImages" key={i}>
-            <img src={url} alt="user favorite chonks" />
+            <Link to={`chonk/${catHandle}`}>
+              <img src={url} alt="user favorite chonks" />
+            </Link>
           </li>
         );
       });
@@ -134,14 +137,9 @@ export default class user extends Component {
           </div>
 
           <p>Chonks you uploaded :</p>
-          {/* <Router> */}
           <ul className="uploadedCats">{this.renderUserUploads()}</ul>
           <p>Your favorite chonks :</p>
           <ul className="favoriteCats">{this.renderUserFavorites()}</ul>
-          {/* <Switch>
-            <Route path="/:id" children={<Child />} />
-          </Switch> */}
-          {/* </Router> */}
         </div>
       </section>
     );

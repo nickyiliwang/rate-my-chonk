@@ -11,6 +11,7 @@ import user from "./pages/user";
 import login from "./pages/login";
 import chonder from "./pages/chonder";
 import hallOfChonks from "./pages/hallOfChonks";
+import chonkProfile from "./pages/chonkProfile";
 
 export default class App extends Component {
   render() {
@@ -20,6 +21,7 @@ export default class App extends Component {
         <main>
           <div className="wrapper">
             <Switch>
+              <Route exact path="/chonk/:id" component={chonkProfile} />
               <Route exact path="/" component={login} />
               <PrivateRoute exact path="/chonder">
                 <Route exact path="/chonder" component={chonder} />
