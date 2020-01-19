@@ -45,9 +45,3 @@
 // user interacts with how ever many pictures of cats, they can vote, favorite(has an info about only registered users can save chonks), and 
 
 // maybe they can have an default user Profile with name of guest, and current favorites, once they register, they can even upload pictures. that means the upload component will be nested in the user profile page.
-
-
-
-
-
-

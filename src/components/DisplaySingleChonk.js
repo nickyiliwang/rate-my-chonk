@@ -6,7 +6,7 @@ export default function DisplaySingleChonk({
   handleNewGetCatsFromReddit
 }) {
   return (
-    <div className="">
+    <div>
       <div className="chonderCatImageContainer">
         <img src={catUrl} alt="cat" />
       </div>

@@ -27,7 +27,8 @@ import { connect } from "react-redux";
 // mui
 const useStyles = makeStyles(theme => ({
   list: {
-    width: 250
+    width: "250px",
+    overflow: "hidden"
   },
   fullList: {
     width: "auto"
@@ -49,8 +50,9 @@ const useStyles = makeStyles(theme => ({
 
 // router active style
 const activeStyleConfig = {
-  fontWeight: "bold",
-  borderBottom: "3px solid #ff1654"
+  borderBottom: "3px solid #ff1654",
+  width: "60%",
+  overflow: "hidden"
 };
 
 function MuiDrawer(props) {
@@ -174,7 +176,6 @@ function MuiDrawer(props) {
             </Button>
           </Tooltip>
         )}
-
         {/* nav */}
         <Tooltip title="Navigation">
           <Button onClick={toggleDrawer("right", true)}>

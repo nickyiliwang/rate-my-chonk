@@ -63,7 +63,7 @@ export default class user extends Component {
     } else {
       return (
         <li>
-          <p>All your favorite chonks are here.</p>
+          <p>Favorite a chonk to see it appear here</p>
         </li>
       );
     }

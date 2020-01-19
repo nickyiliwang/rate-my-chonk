@@ -31,28 +31,24 @@
   background-image: url(../assets/bronze.png);
 }
 
-.hallCatImageContainer img {
-  height: 90%;
-  width: auto;
-  object-fit: cover;
-}
-
-.hallCatImageContainer img {
-  border-radius: 10px;
-  padding-bottom: 10px;
-}
-
 .hallCatImageContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
-  width: 20%;
-  height: 300px;
-  margin: 20px;
+  width: auto;
+  height: 320px;
+  margin: 25px 10px 20px 10px;
   background: $primaryBackgroundDarkerGrey;
-  padding: 10px;
+  padding: 8px;
   border-radius: 10px;
+}
+
+.hallCatImageContainer img {
+  height: 90%;
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .hallListOfCats {
@@ -65,11 +61,9 @@
 /* responsive */
 @media only screen and (max-width: 900px) {
   .hallCatImageContainer {
+    height: 420px; //blaze it
     width: 40%;
   }
-}
-
-@media only screen and (max-width: 720px) {
 }
 
 @media only screen and (max-width: 425px) {

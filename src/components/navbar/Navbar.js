@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
   iconButton: {
     [theme.breakpoints.down("480")]: {
-      display: 'none'
+      display: "none"
     }
   }
 }));
@@ -45,7 +45,10 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Button onClick={() => window.location.reload(false)} className={classes.iconButton}>
+          <Button
+            onClick={() => window.location.reload(false)}
+            className={classes.iconButton}
+          >
             <Typography className={classes.iconTypography} variant="h1">
               Rate My Chonk
             </Typography>

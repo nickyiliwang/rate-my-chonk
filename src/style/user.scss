@@ -1,7 +1,3 @@
-#chonder {
-  font-weight: bold;
-}
-
 section.userProfile {
   height: 80vh;
   display: flex;
@@ -32,9 +28,10 @@ section.userProfile {
 ul.uploadedCats,
 ul.favoriteCats {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   border: 2px dotted $primaryBackgroundDarkerGrey;
   padding: 20px;
-  overflow: scroll;
 
   img {
     height: 100%;
@@ -43,9 +40,26 @@ ul.favoriteCats {
 
   li {
     height: 15vw;
-    margin-right: 10px;
-    margin: 10px;
+    margin: 5px;
   }
 }
 
-/* end of uploading */
+// https://w3bits.com/css-image-hover-zoom/
+/* [1] The container */
+.userUploadedImages,
+.userFavoriteImages {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.userUploadedImages img,
+.userFavoriteImages img {
+  transition: transform 0.3s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.userUploadedImages:hover img,
+.userFavoriteImages:hover img {
+  transform: scale(1.2);
+}
