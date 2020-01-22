@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 // firebase
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -13,6 +13,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+// mui icons
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import IconButton from "@material-ui/core/IconButton";
@@ -68,7 +69,7 @@ function MuiDrawer(props) {
 
   const classes = useStyles();
   // react hooks
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     right: false
   });
 
@@ -83,6 +84,7 @@ function MuiDrawer(props) {
     setState({ ...state, [side]: open });
   };
 
+  // renders the always appearing list of nav icon buttons
   const sideList = side => (
     <div
       className={classes.list}
@@ -146,7 +148,7 @@ function MuiDrawer(props) {
   return (
     <Fragment>
       <Fragment>
-        {/* hall */}
+        {/* user */}
         <Tooltip title="User Profile">
           <Button
             component={NavLink}
@@ -168,7 +170,7 @@ function MuiDrawer(props) {
             <HowToVote />
           </Button>
         </Tooltip>
-
+        {/* Sign-out */}
         {authenticated && (
           <Tooltip title="Sign out">
             <Button onClick={handleSignOut}>

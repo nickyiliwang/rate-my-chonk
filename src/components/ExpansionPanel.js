@@ -1,15 +1,17 @@
 import React from "react";
+// mui
 import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button/Button";
-// import GetImgFromReddit from "./GetImgFromReddit";
+import { Tooltip } from "@material-ui/core";
+// mui icon
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+// redux
 import { connect } from "react-redux";
 import { removeAllCats } from "../Redux/actions/dataActions";
-import { Tooltip } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {

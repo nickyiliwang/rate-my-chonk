@@ -8,7 +8,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-// mui
+// mui styles
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -46,7 +46,7 @@ export default function Navbar() {
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Button
-            onClick={() => window.location.reload(false)}
+            onClick={() => window.location.reload()}
             className={classes.iconButton}
           >
             <Typography className={classes.iconTypography} variant="h1">

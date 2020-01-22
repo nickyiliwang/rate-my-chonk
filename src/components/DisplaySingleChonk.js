@@ -8,7 +8,7 @@ export default function DisplaySingleChonk({
   return (
     <div>
       <div className="chonderCatImageContainer">
-        <img src={catUrl} alt="cat" />
+        <img src={catUrl} alt="cute chubby cat that will melt your heart" />
       </div>
       <ExpansionPanel handleNewGetCatsFromReddit={handleNewGetCatsFromReddit} />
     </div>

@@ -4,9 +4,9 @@
   position: relative;
 }
 
-.hallListOfCats div:nth-of-type(1)::after,
-.hallListOfCats div:nth-of-type(2)::after,
-.hallListOfCats div:nth-of-type(3)::after {
+.hallListOfCats div.hallCatImageContainer:nth-of-type(1)::after,
+.hallListOfCats div.hallCatImageContainer:nth-of-type(2)::after,
+.hallListOfCats div.hallCatImageContainer:nth-of-type(3)::after {
   content: "";
   background-repeat: no-repeat;
   position: absolute;
@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-content: center;
   width: auto;
-  height: 320px;
+  height: 450px;
   margin: 25px 10px 20px 10px;
   background: $primaryBackgroundDarkerGrey;
   padding: 8px;
@@ -44,7 +44,7 @@
 }
 
 .hallCatImageContainer img {
-  height: 90%;
+  height: 80%;
   width: auto;
   object-fit: cover;
   border-radius: 10px;
@@ -56,6 +56,16 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
+}
+
+.user-controls {
+  margin: 5px 0;
+  text-align: center;
+
+  button {
+    font-size: 1rem;
+    margin-top: 3px;
+  }
 }
 
 /* responsive */

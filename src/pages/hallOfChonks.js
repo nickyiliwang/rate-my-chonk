@@ -4,7 +4,7 @@ import "firebase/database";
 import firebase from "../util/config";
 // Mui
 import LinearProgress from "@material-ui/core/LinearProgress";
-// infinite scroll
+// infinite scroll for lazy load
 import InfiniteScroll from "react-infinite-scroll-component";
 // scroll to top
 import ScrollUpButton from "react-scroll-up-button";
@@ -54,12 +54,14 @@ class hallOfChonks extends PureComponent {
     );
   };
 
-  chunkArray = (myArray, chunk_size) => {
-    let results = [];
-    while (myArray.length) {
-      results.push(myArray.splice(0, chunk_size));
+  // https://ourcodeworld.com/articles/read/278/how-to-split-an-array-into-chunks-of-the-same-size-easily-in-javascript
+  // we chunk the array to smaller size for pagination and lazy load
+  chunkArray = (rawData, chunk_size) => {
+    let chunkedData = [];
+    while (rawData.length) {
+      chunkedData.push(rawData.splice(0, chunk_size));
     }
-    return results;
+    return chunkedData;
   };
 
   generateObjectForSorting = arrayToSort => {
@@ -85,9 +87,10 @@ class hallOfChonks extends PureComponent {
 
   fetchMoreData = () => {
     if (this.state.pages - 1 !== this.state.pageNumber) {
+      let newPageNumber = this.state.pageNumber;
       this.setState(
         {
-          pageNumber: this.state.pageNumber + 1
+          pageNumber: newPageNumber + 1
         },
         () => {
           this.setState({
@@ -109,11 +112,14 @@ class hallOfChonks extends PureComponent {
     return sortedCatArr.map((cat, i) => {
       const catAverageScore = Math.round(cat.catAverageScore);
       const catSrc = cat.imageUrl;
-      console.log(cat)
       return (
         <div key={i} className="hallCatImageContainer">
           <img src={catSrc} alt="chonk" />
-          <p>Average Chonk Score: {catAverageScore}</p>
+          <div className="user-controls">
+            <p>Average Chonk Score: {catAverageScore}</p>
+            <button>View Full</button>
+            <button>Favorite</button>
+          </div>
         </div>
       );
     });

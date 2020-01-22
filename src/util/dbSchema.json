@@ -1,0 +1,99 @@
+{
+  // All user uploaded cats saved in firebase storage
+  "allCats" : {
+    "1577045212332641498192770378461jpg" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/BZfgtlkJc1hYlDTQkzR2yHoLTC23%2F1577045212332641498192770378461.jpg?alt=media&token=0c41a975-5579-4875-8763-912b17672da7"
+    },
+    "1wlg4yr55f141webp" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2F1wlg4yr55f141.webp?alt=media&token=5026331a-be4c-4bc1-9611-64f9b2dc9982"
+    },
+    "20150524_162748jpg" : {
+      "catImgUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/oYVw4UIdnIfrxYTdbnfiuRnMufs1%2F20150524_162748.jpg?alt=media&token=c444a9a4-99ec-4e59-a18c-4f50f0621abb"
+    }
+  },
+  // all user votes for calculating averages for hall of chonk to determine the winners, with image url to display, this includes user uploaded cats and reddit scraped cats
+  "cats" : {
+    "1wlg4yr55f141webp" : {
+      "catArrForAverage" : [ "76", 0, 0, 0, 0, 0, "100", 0, "26", "50", "29", "57", "55", "43", "35", "42", "60", "47", "42", "50", "100", "100", "40", "58" ],
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2F1wlg4yr55f141.webp?alt=media&token=5026331a-be4c-4bc1-9611-64f9b2dc9982"
+    },
+    "IMG_0640JPG" : {
+      "catArrForAverage" : [ "76", 0, 0, 0, 0, 0, "100", 0, "26", "50", "29", "57", "55", "43", "35", "42", "60", "47", "42", "50", "100", "100", "40", "58", "0", 0 ],
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/TEfesHekAWbQEcZXrW5av28daog2%2FIMG_0640.JPG?alt=media&token=2397b12b-4953-404c-9c0f-6ba0d3e0bc4c"
+    },
+    "Mike-and-Apollo-2jpg" : {
+      "catArrForAverage" : [ "76", 0, 0, 0, 0, 0, "100", 0, "26", "50", "29", "57", "55", "43", "35", "42", "60", "47", "42", "50", "100", "100", "40", "58", "0", 0, 0 ],
+      "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/NS3ptl7HjYhlysXYkybb8iFaMjC2%2FMike-and-Apollo-2.jpg?alt=media&token=a7357467-8521-4cf0-ae92-ccfa640460e7"
+    }
+  },
+  // includes all cats the user favorites, and uploaded, using their uid as keys
+  "users" : {
+    "FU9EYM1lfbVSJZhCHPL7IauTC8y2" : {
+      "userFavorites" : [ {
+        "handle" : "e8ms0t",
+        "imageUrl" : "https://i.redd.it/x632clbfzq341.jpg"
+      }, {
+        "handle" : "e8rsbp",
+        "imageUrl" : "https://i.imgur.com/MN1sVzG.jpg"
+      }, {
+        "handle" : "ebnc88",
+        "imageUrl" : "https://i.redd.it/1m25igwu03541.jpg"
+      }, {
+        "handle" : "eclyvc",
+        "imageUrl" : "https://i.redd.it/6hyzv5tfth541.jpg"
+      }, {
+        "handle" : "en27no",
+        "imageUrl" : "https://i.redd.it/abzsa0p6l2a41.jpg"
+      }, {
+        "handle" : "ep0u4e",
+        "imageUrl" : "https://i.redd.it/fukhfv87axa41.jpg"
+      } ]
+    },
+    "LAPNzQA4Llb4wwVgCbSl8ZLHvWW2" : {
+      "userFavorites" : [ {
+        "handle" : "1wlg4yr55f141webp",
+        "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2F1wlg4yr55f141.webp?alt=media&token=5026331a-be4c-4bc1-9611-64f9b2dc9982"
+      }, {
+        "handle" : "q761u5enw0141webp",
+        "imageUrl" : "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fq761u5enw0141.webp?alt=media&token=fa101e02-875a-42da-9708-7121de16225f"
+      }, {
+        "handle" : "cxwt4r",
+        "imageUrl" : "https://i.redd.it/ju22br6yysj31.jpg"
+      }, {
+        "handle" : "da7656",
+        "imageUrl" : "https://i.redd.it/njcm5zdbk7p31.jpg"
+      }, {
+        "handle" : "e7uqlx",
+        "imageUrl" : "https://i.redd.it/ve3le1pndf341.jpg"
+      }, {
+        "handle" : "e883we",
+        "imageUrl" : "https://i.redd.it/5g7jt1x11l341.jpg"
+      }, {
+        "handle" : "e5gzif",
+        "imageUrl" : "https://i.imgur.com/iqVJ3LO.jpg"
+      }, {
+        "handle" : "e9ku3h",
+        "imageUrl" : "https://i.imgur.com/bJTcOZ6.jpg"
+      }, {
+        "handle" : "d2svnd",
+        "imageUrl" : "https://i.redd.it/dugp5kqdrzl31.jpg"
+      }, {
+        "handle" : "e5gzif",
+        "imageUrl" : "https://i.imgur.com/iqVJ3LO.jpg"
+      }, {
+        "handle" : "eifu0s",
+        "imageUrl" : "https://i.redd.it/bhyhyemkh4841.jpg"
+      }, {
+        "handle" : "eoeek4",
+        "imageUrl" : "https://i.redd.it/0yelt26rina41.jpg"
+      }, {
+        "handle" : "epi1ki",
+        "imageUrl" : "https://i.redd.it/vll8ecrkk4b41.jpg"
+      }, {
+        "handle" : "eozs50",
+        "imageUrl" : "https://i.redd.it/q47wq2vymwa41.jpg"
+      } ],
+      "userUploads" : [ "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2F1wlg4yr55f141.webp?alt=media&token=5026331a-be4c-4bc1-9611-64f9b2dc9982", "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fbqlwgipmb4141.webp?alt=media&token=3c776360-3b8d-4d50-88c1-25223e2ff7fe", "https://firebasestorage.googleapis.com/v0/b/rate-my-chonk.appspot.com/o/LAPNzQA4Llb4wwVgCbSl8ZLHvWW2%2Fq761u5enw0141.webp?alt=media&token=fa101e02-875a-42da-9708-7121de16225f" ]
+    }
+  }
+}
