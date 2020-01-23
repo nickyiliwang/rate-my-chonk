@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import generateDataForSorting from "../components/generateDataForSorting";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
@@ -34,10 +35,12 @@ class hallOfChonks extends PureComponent {
             });
           }
         }
+        generateDataForSorting(this.state.allCatsArray);
         this.generateObjectForSorting(this.state.allCatsArray);
       }
     });
   }
+
 
   calculateAverage = arr => {
     if (arr) {
@@ -78,6 +81,9 @@ class hallOfChonks extends PureComponent {
 
     const chunkedArrays = this.chunkArray(sortedAllCatsArray, 16);
 
+
+    
+// need a callback to set the state instead of this, we need a callback that runs a function that passes thingys
     this.setState({
       pages: chunkedArrays.length,
       chunkedArrays,
