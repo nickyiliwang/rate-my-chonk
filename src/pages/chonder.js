@@ -21,13 +21,13 @@ class chonder extends Component {
     maxCats: null,
     catCount: 0,
     catRating: 0,
-    catRatingsArr: [],
-    allFavCatsArray: [],
+    catRatings: [],
+    allFavCats: [],
     timeQuery: "all"
   };
 
   componentDidMount() {
-    const { allCatsArray, allFavCatsArray } = this.props;
+    const { allCatsArray, allFavCats } = this.props;
     const { catCount } = this.state;
     if (allCatsArray[0]) {
       this.setState(
@@ -41,7 +41,7 @@ class chonder extends Component {
             const data = snapshot.val();
             if (data) {
               this.setState({
-                catRatingsArr: data.catArrForAverage
+                catRatings: data.catArrForAverage
               });
             }
           });
@@ -49,7 +49,7 @@ class chonder extends Component {
             const data = snapshot.val();
             if (data) {
               this.setState({
-                allFavCatsArray: [...data.userFavorites]
+                allFavCats: [...data.userFavorites]
               });
             }
           });
@@ -57,10 +57,10 @@ class chonder extends Component {
       );
     }
 
-    if (allFavCatsArray[0]) {
-      allFavCatsArray.forEach(cat => {
+    if (allFavCats[0]) {
+      allFavCats.forEach(cat => {
         this.setState({
-          allFavCatsArray: [...this.state.allFavCatsArray, cat]
+          allFavCats: [...this.state.allFavCats, cat]
         });
       });
     }
@@ -74,7 +74,7 @@ class chonder extends Component {
         const data = snapshot.val();
         if (data) {
           this.setState({
-            catRatingsArr: data.catArrForAverage
+            catRatings: data.catArrForAverage
           });
         }
       });
@@ -129,11 +129,11 @@ class chonder extends Component {
   };
 
   handleSubmitOnClick = () => {
-    const { catHandle, catRatingsArr, catRating, catUrl } = this.state;
+    const { catHandle, catRatings, catRating, catUrl } = this.state;
     // get current cat array numbers from db, set state for later use
-    const newCatArrForAverage = [...catRatingsArr, catRating];
+    const newCatArrForAverage = [...catRatings, catRating];
     this.setState({
-      catRatingsArr: newCatArrForAverage
+      catRatings: newCatArrForAverage
     });
 
     this.updateCatData(catHandle, newCatArrForAverage, catUrl);
@@ -143,13 +143,13 @@ class chonder extends Component {
   };
   // user favorites the cat img
   handleFavoriteOnClick = () => {
-    const { catHandle, catUrl, allFavCatsArray } = this.state;
-    if (allFavCatsArray.indexOf(catHandle) === -1) {
+    const { catHandle, catUrl, allFavCats } = this.state;
+    if (allFavCats.indexOf(catHandle) === -1) {
       const catToFavorite = {
         handle: catHandle,
         imageUrl: catUrl
       };
-      HandleUserFavorite(allFavCatsArray, catToFavorite);
+      HandleUserFavorite(allFavCats, catToFavorite);
     }
   };
   // user rating input change
@@ -187,7 +187,7 @@ class chonder extends Component {
           </div>
           <div className="userControls">
             <button onClick={this.handleFavoriteOnClick}>
-              {this.state.allFavCatsArray.indexOf(this.state.catHandle) === -1
+              {this.state.allFavCats.indexOf(this.state.catHandle) === -1
                 ? "Favorite"
                 : "Un-Favorite"}
             </button>
@@ -202,7 +202,7 @@ class chonder extends Component {
 
 const mapStateToProps = state => ({
   allCatsArray: state.data.chonks,
-  allFavCatsArray: state.data.favChonks,
+  allFavCats: state.data.favChonks,
   userId: state.user.credentials.userId
 });
 
