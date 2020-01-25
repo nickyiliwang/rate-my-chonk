@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+// sorting function
 import generateDataForSorting from "../components/generateDataForSorting";
 // firebase
 import "firebase/database";

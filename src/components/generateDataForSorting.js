@@ -24,6 +24,28 @@ export default function generateDataForSorting(props) {
     return chunkedData;
   };
 
+  generateObjectForSorting = arrayToSort => {
+    for (const key in arrayToSort) {
+      if (arrayToSort.hasOwnProperty(key)) {
+        const cat = arrayToSort[key];
+        cat.catAverageScore = this.calculateAverage(cat.catArrForAverage);
+      }
+    }
+
+    const sortedAllCatsArray = this.sortCatsObjectByHighScore(arrayToSort);
+
+    // here we want to separate them into pages
+
+    const chunkedArrays = this.chunkArray(sortedAllCatsArray, 16);
+
+    // need a callback to set the state instead of this, we need a callback that runs a function that passes thingys
+    this.setState({
+      pages: chunkedArrays.length,
+      chunkedArrays,
+      sortedCatArrToRender: chunkedArrays[0]
+    });
+  };
+
   //   TODO:
   // this function need to accept a callback in order to become just an function that does no rendering.
 }
