@@ -1,6 +1,4 @@
 import React, { PureComponent } from "react";
-// sorting function
-import generateDataForSorting from "../components/generateDataForSorting";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
@@ -28,6 +26,7 @@ class hallOfChonks extends PureComponent {
       const data = snapshot.val();
       if (data) {
         for (const key in data) {
+          // data[key] !== "" is a bug idk how to fix
           if (data.hasOwnProperty(key) && data[key] !== "") {
             const cat = data[key];
             cat.catAverageScore = null;
@@ -36,12 +35,10 @@ class hallOfChonks extends PureComponent {
             });
           }
         }
-        generateDataForSorting(this.state.allCatsArray);
         this.generateObjectForSorting(this.state.allCatsArray);
       }
     });
   }
-
 
   calculateAverage = arr => {
     if (arr) {
@@ -79,12 +76,8 @@ class hallOfChonks extends PureComponent {
     const sortedAllCatsArray = this.sortCatsObjectByHighScore(arrayToSort);
 
     // here we want to separate them into pages
-
     const chunkedArrays = this.chunkArray(sortedAllCatsArray, 16);
 
-
-    
-// need a callback to set the state instead of this, we need a callback that runs a function that passes thingys
     this.setState({
       pages: chunkedArrays.length,
       chunkedArrays,
@@ -92,6 +85,7 @@ class hallOfChonks extends PureComponent {
     });
   };
 
+  // fetching / lazy loading logic
   fetchMoreData = () => {
     if (this.state.pages - 1 !== this.state.pageNumber) {
       let newPageNumber = this.state.pageNumber;
@@ -114,7 +108,6 @@ class hallOfChonks extends PureComponent {
     }
   };
 
-  // rendering helper fn
   renderAllCats = sortedCatArr => {
     return sortedCatArr.map((cat, i) => {
       const catAverageScore = Math.round(cat.catAverageScore);

@@ -1,10 +1,13 @@
 ## Rate my chonk
+
 You can rate the cats on a subreddit called chonkers
 
 DEMO: https://rate-my-chonk.firebaseapp.com/
 
 Todo:
 Don't forget to take out redux dev tools
+
+You should be able to go to a single chonk's page and rate that single chonk
 
 Different options to get chonks for voting, ie. recent
 If the user signs out as a guest, just do a delete in firebase
@@ -15,12 +18,12 @@ More flexible ways of getting chonks
 
 Recent reddit alltime posts, this week 30 days, 1 year.
 
-handle User Favorites: 
+handle User Favorites:
 Get the obj and update redux with it, then update the user route on firebase, then do checks if the user favorites the cat, have the button be un-favorite. If the hasPropertyOf the handleName in their fav, then unfav the cat and update the fav array. In the user profile, get the fav array, and use the array keys to identify the keys in the object and get their src to display.
 
 Low Prio:
 Anon auth, As guest, signup is shown on the user page as well as navbar
-Comments, likes, and 
+Comments, likes, and
 Once the user logs in with their account/ created new account, they will have their favorite cats
 Possible updates to the way averages are calculated, instead of arrays, we can use 2 keys, starting average, and vote count. But it might complicate things.
 Enlarge chonk scale with magnify with slider change
@@ -41,19 +44,17 @@ Simplistic UI, usability first. Making the few pages I have looking good.
 3 major UI designs: mobile first, Tablet second, and desktop last
 
 User experience:
-Within the same session of voting chonks, i want a state that keeps the current cat image position incase they escape the loop and want to continue voting, 
+Within the same session of voting chonks, i want a state that keeps the current cat image position incase they escape the loop and want to continue voting,
 
 UI:
 Loading state
 
-
 current favorites, once they register, they can even upload pictures. that means the upload component will be nested in the user profile page.
 
-once the user login, we need to get the saved cats from firebase to display it on the user's page, 
+once the user login, we need to get the saved cats from firebase to display it on the user's page,
 
 Flow:
 Get a list of 10 chonkers from reddit, and add them into Redux, then we can display each piece of data later, ideally we can then start populating the data with firebase storage pictures. Once the state is populated with all the data (key: {catId: xxx, imageUrl: xxx}) , we can use arr.length to get an randomNumber to start, and set the catCount to that, and use the max number to rerun the entire database.
-
 
 Pages
 Prio:
@@ -64,7 +65,7 @@ List of all chonkers
 Chonkfile - Chonk Profile
 Profile of a single chonk
 
-Second: 
+Second:
 Signup
 login
 User Profile
@@ -76,7 +77,6 @@ Navbar
 Uploading
 
 Second:
-
 
 Public Route
 Login path = “/”
