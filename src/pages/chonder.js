@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// mui
+import Slider from "../components/Slider";
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
 import { HandleUserFavorite } from "../components/HandleUserFavorites";
@@ -184,13 +186,11 @@ class chonder extends Component {
               onChange={this.handleOnChange}
               value={this.state.catRating}
             />
+
+            <Slider />
           </div>
           <div className="userControls">
-            <button onClick={this.handleFavoriteOnClick}>
-              {this.state.allFavCats.indexOf(this.state.catHandle) === -1
-                ? "Favorite"
-                : "Un-Favorite"}
-            </button>
+            <button onClick={this.handleFavoriteOnClick}>Favorite</button>
             <button onClick={this.handleSkipOnClick}>Skip</button>
             <button onClick={this.handleSubmitOnClick}>Submit</button>
           </div>

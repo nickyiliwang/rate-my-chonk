@@ -7,6 +7,8 @@ DEMO: https://rate-my-chonk.firebaseapp.com/
 Todo:
 Don't forget to take out redux dev tools
 
+should be able to Un-Favorite
+
 You should be able to go to a single chonk's page and rate that single chonk
 
 Different options to get chonks for voting, ie. recent
