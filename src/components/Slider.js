@@ -4,16 +4,13 @@ import Slider from "@material-ui/core/Slider";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: 300 + theme.spacing(3) * 2
-  },
-  margin: {
-    height: theme.spacing(3)
+    width: 450 + theme.spacing(3) * 2
   }
 }));
 
-const PrettoSlider = withStyles({
+const ChonkSlider = withStyles({
   root: {
-    color: "#52af77",
+    color: "red",
     height: 8
   },
   thumb: {
@@ -44,32 +41,37 @@ const PrettoSlider = withStyles({
 const marks = [
   {
     value: 0,
-    label: "0°C"
+    label: "Fine Boi"
   },
   {
     value: 20,
-    label: "20°C"
+    label: "Chomnk"
   },
   {
-    value: 37,
-    label: "37°C"
+    value: 40,
+    label: "HEFTY"
+  },
+  {
+    value: 70,
+    label: "MEGACHONK"
   },
   {
     value: 100,
-    label: "100°C"
+    label: "OH LAWD HE COMIN"
   }
 ];
 
-export default function CustomizedSlider() {
+export default function CustomizedSlider({ onValueChange }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <PrettoSlider
+      <ChonkSlider
         valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={20}
+        aria-label="chonk slider"
+        defaultValue={0}
         marks={marks}
+        onChangeCommitted={(e, val) => onValueChange(val)}
       />
     </div>
   );

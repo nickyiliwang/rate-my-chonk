@@ -155,10 +155,12 @@ class chonder extends Component {
     }
   };
   // user rating input change
-  handleOnChange = e => {
-    this.setState({
-      catRating: e.target.value
-    });
+  handleOnChange = val => {
+    console.log(val);
+
+    // this.setState({
+    //   catRating: val
+    // });
   };
 
   render() {
@@ -176,18 +178,7 @@ class chonder extends Component {
             <div className="chonkScaleImageContainer">
               <img className="chonkScale" src={scale} alt="chonk scale" />
             </div>
-
-            <input
-              className="ratingSlider"
-              type="range"
-              name="rating"
-              min="0"
-              max="100"
-              onChange={this.handleOnChange}
-              value={this.state.catRating}
-            />
-
-            <Slider />
+            <Slider onValueChange={this.handleOnChange} />
           </div>
           <div className="userControls">
             <button onClick={this.handleFavoriteOnClick}>Favorite</button>
