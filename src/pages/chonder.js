@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+// toasts
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // mui
 import Slider from "../components/Slider";
 // components
@@ -134,10 +137,10 @@ class chonder extends Component {
     const { catHandle, catRatings, catRating, catUrl } = this.state;
     // get current cat array numbers from db, set state for later use
     const newCatArrForAverage = [...catRatings, catRating];
+    toast.success(`You voted ${this.state.catRating}`);
     this.setState({
       catRatings: newCatArrForAverage
     });
-
     this.updateCatData(catHandle, newCatArrForAverage, catUrl);
     this.incrementImgCounter();
     // reset for next vote
@@ -152,6 +155,7 @@ class chonder extends Component {
         imageUrl: catUrl
       };
       HandleUserFavorite(allFavCats, catToFavorite);
+      toast.success("Cute Chonk Favored !");
     }
   };
   // user rating input change
@@ -184,6 +188,12 @@ class chonder extends Component {
             <button onClick={this.handleFavoriteOnClick}>Favorite</button>
             <button onClick={this.handleSkipOnClick}>Skip</button>
             <button onClick={this.handleSubmitOnClick}>Submit</button>
+            <ToastContainer
+              hideProgressBar
+              pauseOnHover={false}
+              position="top-center"
+              autoClose={1500}
+            />
           </div>
         </div>
       </section>
