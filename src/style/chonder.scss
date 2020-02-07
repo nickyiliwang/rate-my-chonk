@@ -6,6 +6,21 @@
     align-items: center;
     flex-direction: column;
   }
+
+  .display-single-chonk {
+    .favorite-button,
+    .skip-button {
+      position: absolute;
+    }
+
+    .favorite-button {
+      bottom: 60px;
+    }
+
+    .skip-button {
+      position: absolute;
+    }
+  }
 }
 
 .chonderCatImageContainer {
@@ -16,6 +31,7 @@
   height: 50vh;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  position: relative;
 
   img {
     height: 100%;

@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // mui
 import Slider from "../components/Slider";
+
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
 import { HandleUserFavorite } from "../components/HandleUserFavorites";
@@ -28,7 +29,8 @@ class chonder extends Component {
     catRating: 0,
     catRatings: [],
     allFavCats: [],
-    timeQuery: "all"
+    timeQuery: "all",
+    isFavorite: false
   };
 
   componentDidMount() {
@@ -124,6 +126,7 @@ class chonder extends Component {
   handleSkipOnClick = () => {
     this.incrementImgCounter();
     this.setState({ catRating: 0 });
+    console.log('clicked')
   };
 
   updateCatData = (catId, ratingArr, imageUrl) => {
@@ -148,14 +151,18 @@ class chonder extends Component {
   };
   // user favorites the cat img
   handleFavoriteOnClick = () => {
-    const { catHandle, catUrl, allFavCats } = this.state;
-    if (allFavCats.indexOf(catHandle) === -1) {
+    const { catHandle, catUrl, allFavCats, isFavorite } = this.state;
+    if (allFavCats.indexOf(catHandle) === -1 && isFavorite === false) {
       const catToFavorite = {
         handle: catHandle,
         imageUrl: catUrl
       };
       HandleUserFavorite(allFavCats, catToFavorite);
       toast.success("Cute Chonk Favored !");
+      this.setState({ isFavorite: true });
+    } else {
+      this.setState({ isFavorite: true });
+      toast.error("Chonk Already Favored !");
     }
   };
   // user rating input change
@@ -173,10 +180,15 @@ class chonder extends Component {
         <div className="wrapper flexContainer">
           <GetImgFromReddit timeQuery={this.state.timeQuery} />
           {this.state.catUrl && (
-            <DisplaySingleChonk
-              handleNewGetCatsFromReddit={this.handleNewGetCatsFromReddit}
-              catUrl={this.state.catUrl}
-            />
+            <div className="display-single-chonk">
+              <DisplaySingleChonk
+                handleNewGetCatsFromReddit={this.handleNewGetCatsFromReddit}
+                handleFavoriteOnClick={this.handleFavoriteOnClick}
+                handleSkipOnClick={this.handleSkipOnClick}
+                isFavorite={this.state.isFavorite}
+                catUrl={this.state.catUrl}
+              />
+            </div>
           )}
           <div className="userInput">
             <div className="chonkScaleImageContainer">
@@ -185,9 +197,6 @@ class chonder extends Component {
             <Slider onValueChange={this.handleOnChange} />
           </div>
           <div className="userControls">
-            <button onClick={this.handleFavoriteOnClick}>Favorite</button>
-            <button onClick={this.handleSkipOnClick}>Skip</button>
-            <button onClick={this.handleSubmitOnClick}>Submit</button>
             <ToastContainer
               hideProgressBar
               pauseOnHover={false}
