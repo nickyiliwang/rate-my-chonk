@@ -2,14 +2,14 @@ import React, { Component } from "react";
 // toasts
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// mui
-import Slider from "../components/Slider";
-
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
 import { HandleUserFavorite } from "../components/HandleUserFavorites";
 // chonk scale image
-import scale from "../assets/scale.jpg";
+// mui
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button/Button";
+import { Tooltip } from "@material-ui/core";
 // firebase
 import "firebase/database";
 import firebase from "../util/config";
@@ -30,7 +30,33 @@ class chonder extends Component {
     catRatings: [],
     allFavCats: [],
     timeQuery: "all",
-    isFavorite: false
+    isFavorite: false,
+    catRatingsForBtn: [
+      {
+        name: "A Fine Boi",
+        rating: 20
+      },
+      {
+        name: "He Chomnk",
+        rating: 35
+      },
+      {
+        name: "A Heckin' Chonker",
+        rating: 50
+      },
+      {
+        name: "HEFTYCHONK",
+        rating: 65
+      },
+      {
+        name: "MEGACHONKER",
+        rating: 80
+      },
+      {
+        name: "OH LAWD HE COMIN",
+        rating: 100
+      }
+    ]
   };
 
   componentDidMount() {
@@ -126,7 +152,6 @@ class chonder extends Component {
   handleSkipOnClick = () => {
     this.incrementImgCounter();
     this.setState({ catRating: 0 });
-    console.log('clicked')
   };
 
   updateCatData = (catId, ratingArr, imageUrl) => {
@@ -168,7 +193,6 @@ class chonder extends Component {
   // user rating input change
   handleOnChange = val => {
     console.log(val);
-
     // this.setState({
     //   catRating: val
     // });
@@ -191,10 +215,15 @@ class chonder extends Component {
             </div>
           )}
           <div className="userInput">
-            <div className="chonkScaleImageContainer">
-              <img className="chonkScale" src={scale} alt="chonk scale" />
-            </div>
-            <Slider onValueChange={this.handleOnChange} />
+            {this.state.catRatingsForBtn.map((num, index) => {
+              return (
+                <Tooltip key={index} title={`Top r/Chonks from this ${num}`}>
+                  <Button>
+                    <Typography>{num}</Typography>
+                  </Button>
+                </Tooltip>
+              );
+            })}
           </div>
           <div className="userControls">
             <ToastContainer

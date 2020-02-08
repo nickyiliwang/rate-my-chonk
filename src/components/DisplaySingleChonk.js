@@ -3,6 +3,7 @@ import ExpansionPanel from "./ExpansionPanel";
 // mui icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 const DisplaySingleChonk = ({
   catUrl,
@@ -19,7 +20,7 @@ const DisplaySingleChonk = ({
           {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </button>
         <button className="skip-button" onClick={handleSkipOnClick}>
-          Skip
+          <NavigateNextIcon fontSize="large" />
         </button>
       </div>
       <ExpansionPanel handleNewGetCatsFromReddit={handleNewGetCatsFromReddit} />
