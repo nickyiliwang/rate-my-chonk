@@ -11,21 +11,19 @@ const DisplaySingleChonk = ({
   handleFavoriteOnClick,
   handleSkipOnClick,
   isFavorite
-}) => {
-  return (
-    <div>
-      <div className="chonderCatImageContainer">
-        <img src={catUrl} alt="cute chubby cat that will melt your heart" />
-        <button className="favorite-button" onClick={handleFavoriteOnClick}>
-          {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-        </button>
-        <button className="skip-button" onClick={handleSkipOnClick}>
-          <NavigateNextIcon fontSize="large" />
-        </button>
-      </div>
-      <ExpansionPanel handleNewGetCatsFromReddit={handleNewGetCatsFromReddit} />
+}) => (
+  <>
+    <div className="chonderCatImageContainer">
+      <img src={catUrl} alt="cute chubby cat that will melt your heart" />
+      <button className="favorite-button" onClick={handleFavoriteOnClick}>
+        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      </button>
+      <button className="skip-button" onClick={handleSkipOnClick}>
+        <NavigateNextIcon fontSize="large" />
+      </button>
     </div>
-  );
-};
+    <ExpansionPanel handleNewGetCatsFromReddit={handleNewGetCatsFromReddit} />
+  </>
+);
 
 export default DisplaySingleChonk;

@@ -38,6 +38,8 @@ function SimpleExpansionPanel(props) {
             Get Chonks from: Default(r/chonker all time + userUploads)
           </Typography>
         </ExpansionPanelSummary>
+
+        {/* USE REDUX HERE MAKE SENSE */}
         <ExpansionPanelDetails>
           {["day", "week", "month", "year", "all"].map((time, index) => {
             return (

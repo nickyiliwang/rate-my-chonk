@@ -3,6 +3,8 @@ import { addUserFav } from "../Redux/actions/dataActions";
 // firebase
 import firebase from "../util/config";
 import "firebase/database";
+import "firebase/auth";
+// instead of using redux for auth, we just need firebase/auth
 
 const GetUserFavFromDb = props => {
   const db = firebase.database();
