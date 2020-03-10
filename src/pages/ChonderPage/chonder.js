@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // components
 import DisplaySingleChonk from "../components/DisplaySingleChonk";
-import { HandleUserFavorite } from "../components/HandleUserFavorites";
+import { HandleUserFavorite } from "../../components/HandleUserFavorites";
 // chonk scale image
 // mui
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +12,7 @@ import Button from "@material-ui/core/Button/Button";
 import { Tooltip } from "@material-ui/core";
 // firebase
 import "firebase/database";
-import firebase from "../util/config";
+import firebase from "../../util/config";
 import "firebase/auth";
 // redux
 import { connect } from "react-redux";

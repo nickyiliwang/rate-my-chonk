@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "../util/config";
+import firebase from "../../util/config";
 import "firebase/auth";
 
 export default class chonkProfile extends Component {
@@ -48,7 +48,7 @@ export default class chonkProfile extends Component {
   render() {
     return (
       <div>
-        <img src={this.state.imageSrc} alt="user uploaded images" />
+        <img src={this.state.imageSrc} alt="user uploads" />
       </div>
     );
   }

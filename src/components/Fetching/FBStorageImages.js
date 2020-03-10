@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import { addCatsToStore } from "../Redux/actions/dataActions";
+import { addCatsToStore } from "../../Redux/actions/dataActions";
 // firebase
-import firebase from "../util/config";
+import firebase from "../../util/config";
 import "firebase/database";
 
 const db = firebase.database().ref("allCats");

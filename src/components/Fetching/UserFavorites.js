@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import { addUserFav } from "../Redux/actions/dataActions";
+import { addUserFav } from "../../Redux/actions/dataActions";
 // firebase
-import firebase from "../util/config";
+import firebase from "../../util/config";
 import "firebase/database";
 import "firebase/auth";
 // instead of using redux for auth, we just need firebase/auth
