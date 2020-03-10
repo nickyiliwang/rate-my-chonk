@@ -11,7 +11,7 @@ import { Tooltip } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // redux
 import { connect } from "react-redux";
-import { removeAllCats } from "../Redux/actions/dataActions";
+import { removeAllCats } from "../../Redux/actions/dataActions";
 
 const useStyles = makeStyles(theme => ({
   root: {

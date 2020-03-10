@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 // firebase
 import "firebase/auth";
-import firebase from "../util/config";
+import firebase from "../../util/config";
 import * as firebaseui from "firebaseui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 // redux
@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import {
   setAuthenticated,
   setUnAuthenticated
-} from "../Redux/actions/userActions";
+} from "../../Redux/actions/userActions";
 
 const uiConfig = {
   signInFlow: "popup",

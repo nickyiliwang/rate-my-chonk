@@ -21,7 +21,7 @@ export default class App extends Component {
         <main>
           <div className="wrapper">
             <Switch>
-              {/* <Route exact path="/chonk/:id" component={chonkProfile} />
+              <Route exact path="/chonk/:id" component={chonkProfile} />
               <Route exact path="/" component={login} />
               <PrivateRoute exact path="/chonder">
                 <Route exact path="/chonder" component={chonder} />
@@ -31,12 +31,12 @@ export default class App extends Component {
               </PrivateRoute>
               <PrivateRoute exact path="/user">
                 <Route exact path="/user" component={user} />
-              </PrivateRoute> */}
-              <Route exact path="/chonk/:id" component={chonkProfile} />
+              </PrivateRoute>
+              {/* <Route exact path="/chonk/:id" component={chonkProfile} />
               <Route exact path="/" component={login} />
               <Route exact path="/chonder" component={chonder} />
               <Route exact path="/hall" component={hallOfChonks} />
-              <Route exact path="/user" component={user} />
+              <Route exact path="/user" component={user} /> */}
             </Switch>
           </div>
         </main>

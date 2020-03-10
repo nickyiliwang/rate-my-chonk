@@ -6,10 +6,10 @@ import "firebase/database";
 
 const db = firebase.database().ref("allCats");
 
-function GetImgFromStorage(props) {
-  db.once("value", snapshot => {
-    const data = snapshot.val();
-    let catsFromStorage = [];
+function GetImgFromStorage({ addCatsToStore }) {
+  let catsFromStorage = [];
+  db.once("value", async snapshot => {
+    const data = await snapshot.val();
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
         catsFromStorage = [
@@ -21,7 +21,8 @@ function GetImgFromStorage(props) {
         ];
       }
     }
-    props.addCatsToStore(catsFromStorage);
+
+    addCatsToStore(catsFromStorage);
   });
   return null;
 }

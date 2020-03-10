@@ -1,5 +1,5 @@
 import React from "react";
-import ExpansionPanel from "./ExpansionPanel";
+import ExpansionPanel from "../ExpansionPanel/ExpansionPanel";
 // mui icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
