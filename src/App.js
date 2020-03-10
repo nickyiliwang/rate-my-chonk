@@ -7,62 +7,62 @@ import "./style/styles.scss";
 // Components
 import NavBar from "./components/navbar/Navbar";
 // pages
-import user from "./pages/user";
-import login from "./pages/login";
-import chonder from "./pages/chonder";
-import hallOfChonks from "./pages/hallOfChonks";
-import chonkProfile from "./pages/chonkProfile";
+import UserPage from "./pages/user/UserPage";
+import LoginPage from "./pages/login/LoginPage";
+import ChonderPage from "./pages/chonder/ChonderPage";
+import HallOfChonksPage from "./pages/hallOfChonks/HallOfChonksPage";
+import ChonkProfilePage from "./pages/chonkProfile/ChonkProfilePage";
 
-export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <NavBar />
-        <main>
-          <div className="wrapper">
-            <Switch>
-              <Route exact path="/chonk/:id" component={chonkProfile} />
-              <Route exact path="/" component={login} />
-              <PrivateRoute exact path="/chonder">
-                <Route exact path="/chonder" component={chonder} />
-              </PrivateRoute>
-              <PrivateRoute exact path="/hall">
-                <Route exact path="/hall" component={hallOfChonks} />
-              </PrivateRoute>
-              <PrivateRoute exact path="/user">
-                <Route exact path="/user" component={user} />
-              </PrivateRoute>
-              {/* <Route exact path="/chonk/:id" component={chonkProfile} />
-              <Route exact path="/" component={login} />
-              <Route exact path="/chonder" component={chonder} />
-              <Route exact path="/hall" component={hallOfChonks} />
-              <Route exact path="/user" component={user} /> */}
-            </Switch>
-          </div>
-        </main>
-        <footer>
-          <p>
-            Made by{" "}
-            <a
-              id="externalLink"
-              href="https://github.com/nickyiliwang?tab=repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Nick Wang
-            </a>
-            ,{" "}
-            <a
-              id="externalLink"
-              href="https://pets.webmd.com/cats/guide/fat-cats-getting-tubby-tabby-back-into-shape#1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Help your chonk?
-            </a>
-          </p>
-        </footer>
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <NavBar />
+    <main>
+      <div className="wrapper">
+        <Switch>
+          <Route exact path="/chonk/:id" component={ChonkProfilePage} />
+          <Route exact path="/" component={LoginPage} />
+          <PrivateRoute exact path="/chonder">
+            <Route exact path="/chonder" component={ChonderPage} />
+          </PrivateRoute>
+          <PrivateRoute exact path="/hall">
+            <Route exact path="/hall" component={HallOfChonksPage} />
+          </PrivateRoute>
+          <PrivateRoute exact path="/user">
+            <Route exact path="/user" component={UserPage} />
+          </PrivateRoute>
+
+          {/* Dev Routes */}
+          {/* <Route exact path="/chonk/:id" component={chonkProfile} />
+          <Route exact path="/" component={login} />
+          <Route exact path="/chonder" component={chonder} />
+          <Route exact path="/hall" component={hallOfChonks} />
+          <Route exact path="/user" component={user} /> */}
+        </Switch>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Made by{" "}
+        <a
+          id="externalLink"
+          href="https://github.com/nickyiliwang?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Nick Wang
+        </a>
+        ,{" "}
+        <a
+          id="externalLink"
+          href="https://pets.webmd.com/cats/guide/fat-cats-getting-tubby-tabby-back-into-shape#1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Help your chonk?
+        </a>
+      </p>
+    </footer>
+  </Router>
+);
+
+export default App;
