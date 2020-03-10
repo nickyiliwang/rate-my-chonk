@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 // firebase
 import "firebase/database";
-import firebase from "../util/config";
+import firebase from "../../util/config";
 // Mui
 import LinearProgress from "@material-ui/core/LinearProgress";
 // infinite scroll for lazy load

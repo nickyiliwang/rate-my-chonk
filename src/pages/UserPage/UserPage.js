@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DisplayUserInfo from "../components/DisplayUserInfo";
-import { UploadImageToStorage } from "../components/UploadImageToStorage";
-import firebase from "../util/config";
+import { UploadImageToStorage } from "../../components/UploadImageToStorage";
+import firebase from "../../util/config";
 import "firebase/auth";
 import { Link } from "react-router-dom";
 
