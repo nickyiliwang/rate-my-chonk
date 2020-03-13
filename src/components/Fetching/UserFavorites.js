@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addUserFav } from "../../Redux/actions/dataActions";
+import { addUserFav } from "../../Redux/data/dataActions";
 // firebase
 import firebase from "../../util/config";
 import "firebase/database";

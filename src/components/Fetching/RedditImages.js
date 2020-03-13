@@ -1,6 +1,6 @@
 import axios from "axios";
 import { connect } from "react-redux";
-import { addCatsToStore, removeAllCats } from "../../Redux/actions/dataActions";
+import { addCatsToStore, removeAllCats } from "../../Redux/data/dataActions";
 
 function GetImgFromReddit(props) {
   let catsFromReddit = [];

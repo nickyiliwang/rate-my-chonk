@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import {
   setAuthenticated,
   setUnAuthenticated
-} from "../../Redux/actions/userActions";
+} from "../../Redux/user/userActions";
 
 const uiConfig = {
   signInFlow: "popup",

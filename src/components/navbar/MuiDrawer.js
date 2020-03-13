@@ -1,29 +1,29 @@
-import React, { Fragment, useState } from "./node_modules/react";
+import React, { Fragment, useState } from "react";
 // firebase
-import * as firebase from "./node_modules/firebase/app";
-import "./node_modules/firebase/auth";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 // router
-import { useHistory } from "./node_modules/react-router-dom";
-import { NavLink } from "./node_modules/react-router-dom";
+import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // mui
-import { makeStyles } from "./node_modules/@material-ui/core/styles";
-import Drawer from "./node_modules/@material-ui/core/Drawer";
-import Button from "./node_modules/@material-ui/core/Button";
-import List from "./node_modules/@material-ui/core/List";
-import ListItem from "./node_modules/@material-ui/core/ListItem";
-import ListItemIcon from "./node_modules/@material-ui/core/ListItemIcon";
-import ListItemText from "./node_modules/@material-ui/core/ListItemText";
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 // mui icons
-import MenuIcon from "./node_modules/@material-ui/icons/Menu";
-import ChevronRightIcon from "./node_modules/@material-ui/icons/ChevronRight";
-import IconButton from "./node_modules/@material-ui/core/IconButton";
-import Warning from "./node_modules/@material-ui/icons/Warning";
-import PermIdentity from "./node_modules/@material-ui/icons/PermIdentity";
-import HowToVote from "./node_modules/@material-ui/icons/HowToVote";
-import Ballot from "./node_modules/@material-ui/icons/Ballot";
-import Tooltip from "./node_modules/@material-ui/core/Tooltip";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import IconButton from "@material-ui/core/IconButton";
+import Warning from "@material-ui/icons/Warning";
+import PermIdentity from "@material-ui/icons/PermIdentity";
+import HowToVote from "@material-ui/icons/HowToVote";
+import Ballot from "@material-ui/icons/Ballot";
+import Tooltip from "@material-ui/core/Tooltip";
 // Redux
-import { connect } from "./node_modules/react-redux";
+import { connect } from "react-redux";
 
 // mui
 const useStyles = makeStyles(theme => ({

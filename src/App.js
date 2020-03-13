@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 // react router
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./util/PrivateRoute";
 // css
 import "./style/styles.scss";
 // Components
-import NavBar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 // pages
 import UserPage from "./pages/user/UserPage";
 import LoginPage from "./pages/login/LoginPage";
@@ -15,7 +15,7 @@ import ChonkProfilePage from "./pages/chonkProfile/ChonkProfilePage";
 
 const App = () => (
   <Router>
-    <NavBar />
+    <Navbar />
     <main>
       <div className="wrapper">
         <Switch>

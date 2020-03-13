@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DisplayUserInfo from "../components/DisplayUserInfo";
+import UserInfo from "../../components/UserInfo/UserInfo";
 import { UploadImageToStorage } from "../../components/UploadImageToStorage/UploadImageToStorage";
 import firebase from "../../util/config";
 import "firebase/auth";
@@ -100,7 +100,7 @@ export default class user extends Component {
     return (
       <section className="userProfile">
         <div className="wrapper">
-          <DisplayUserInfo />
+          <UserInfo />
           <p>
             This is a is your profile page, where you can upload your cat
             images, and save your favorite chonks. Navigate to the chonder page

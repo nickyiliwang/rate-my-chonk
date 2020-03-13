@@ -1,22 +1,22 @@
-import React, { Component } from "./node_modules/react";
+import React, { Component } from "react";
 // toasts
-import { ToastContainer, toast } from "./node_modules/react-toastify";
-import "./node_modules/react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // components
-import DisplaySingleChonk from "../components/DisplaySingleChonk";
+import SingleChonk from "../../components/SingleChonk/SingleChonk";
 import { HandleUserFavorite } from "../../components/UserFavorites.js/HandleUserFavorites";
 // chonk scale image
 // mui
-import Typography from "./node_modules/@material-ui/core/Typography";
-import Button from "./node_modules/@material-ui/core/Button/Button";
-import { Tooltip } from "./node_modules/@material-ui/core";
+import Typography from "@material-ui/core/Typography/Typography";
+import Button from "@material-ui/core/Button/Button";
+import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 // firebase
-import "./node_modules/firebase/database";
+import "firebase/database";
 import firebase from "../../util/config";
-import "./node_modules/firebase/auth";
+import "firebase/auth";
 // redux
-import { connect } from "./node_modules/react-redux";
-import GetImgFromReddit from "../components/GetImgFromReddit";
+import { connect } from "react-redux";
+import RedditImages from "../../components/Fetching/RedditImages";
 // firebase database
 const db = firebase.database();
 
@@ -202,10 +202,10 @@ class chonder extends Component {
     return (
       <section className="chonder">
         <div className="wrapper flexContainer">
-          <GetImgFromReddit timeQuery={this.state.timeQuery} />
+          <RedditImages timeQuery={this.state.timeQuery} />
           {this.state.catUrl && (
             <div className="display-single-chonk">
-              <DisplaySingleChonk
+              <SingleChonk
                 handleNewGetCatsFromReddit={this.handleNewGetCatsFromReddit}
                 handleFavoriteOnClick={this.handleFavoriteOnClick}
                 handleSkipOnClick={this.handleSkipOnClick}
