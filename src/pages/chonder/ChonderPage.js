@@ -7,7 +7,6 @@ import SingleChonk from "../../components/SingleChonk/SingleChonk";
 import { HandleUserFavorite } from "../../components/UserFavorites.js/HandleUserFavorites";
 // chonk scale image
 // mui
-import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
 import Tooltip from "@material-ui/core/Tooltip/Tooltip";
 // firebase
@@ -161,11 +160,11 @@ class chonder extends Component {
     });
   };
 
-  handleSubmitOnClick = () => {
-    const { catHandle, catRatings, catRating, catUrl } = this.state;
+  handleSubmitOnClick = (description, catRating) => {
+    const { catHandle, catRatings, catUrl } = this.state;
     // get current cat array numbers from db, set state for later use
     const newCatArrForAverage = [...catRatings, catRating];
-    toast.success(`You voted ${this.state.catRating}`);
+    toast.success(`This is a ${description} !`);
     this.setState({
       catRatings: newCatArrForAverage
     });
@@ -174,6 +173,7 @@ class chonder extends Component {
     // reset for next vote
     this.setState({ catRating: 0 });
   };
+
   // user favorites the cat img
   handleFavoriteOnClick = () => {
     const { catHandle, catUrl, allFavCats, isFavorite } = this.state;
@@ -215,11 +215,15 @@ class chonder extends Component {
             </div>
           )}
           <div className="userInput">
-            {this.state.catRatingsForBtn.map((num, index) => {
+            {this.state.catRatingsForBtn.map((buttonInfo, index) => {
+              const { name, rating } = buttonInfo;
+
               return (
-                <Tooltip key={index} title={`Top r/Chonks from this ${num}`}>
-                  <Button>
-                    <Typography>{num}</Typography>
+                <Tooltip key={index} title={name}>
+                  <Button
+                    onClick={() => this.handleSubmitOnClick(name, rating)}
+                  >
+                    {name} {rating}
                   </Button>
                 </Tooltip>
               );

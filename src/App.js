@@ -19,8 +19,12 @@ const App = () => (
     <main>
       <div className="wrapper">
         <Switch>
-          <Route exact path="/chonk/:id" component={ChonkProfilePage} />
-          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/chonk/:id">
+            <ChonkProfilePage />
+          </Route>
+          <Route exact path="/">
+            <LoginPage />
+          </Route>
           <PrivateRoute exact path="/chonder">
             <Route exact path="/chonder" component={ChonderPage} />
           </PrivateRoute>

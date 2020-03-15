@@ -1,5 +1,7 @@
 ## Rate my chonk
 
+be able to sort by weekly votes, monthly votes, and daily votes.
+
 You can rate the cats on a subreddit called chonkers
 
 DEMO: https://rate-my-chonk.firebaseapp.com/
